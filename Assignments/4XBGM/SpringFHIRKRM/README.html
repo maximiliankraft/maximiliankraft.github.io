@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="spring-fhir">Spring FHIR</h1>
+<h2 id="aufgabe">Aufgabe</h2>
+<p>Implementiere die Entitäten <a href="https://www.hl7.org/fhir/patient.html">Patient</a> und <a href="https://www.hl7.org/fhir/practitionier.html">Practitioner</a> auf eine Weise dass sie mit dem FHIR-Standard kompatibel sind. Diese FHIR-Ressoucen haben auch eine vielzahl an Unterressoucen welche ebenfalls implementiert werden müssen.</p>
+<h3 id="lombok">Lombok</h3>
+<p>Tipp: Um nicht immer Getter, Setter etc. in einer Klasse implementieren zu müssen, kann man mit <code>lombok</code>
+(bereits in dem Projekt eingebunden) sich diese im Java-Bytecode automatisch generieren lassen.</p>
+<h4 id="beispiel-klasse">Beispiel-Klasse</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">@Getter</span>
+<span class="hljs-meta">@Setter</span>
+<span class="hljs-meta">@AllArgsConstructor</span>
+<span class="hljs-meta">@NoArgsConstructor</span>
+<span class="hljs-meta">@ToString</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Something</span> </span>{
+    <span class="hljs-keyword">int</span> someProperty = <span class="hljs-number">0</span>;
+}
+</div></code></pre>
+<h3 id="tipps-f%C3%BCr-die-implementierung">Tipps für die Implementierung</h3>
+<p>Da sowohl <code>Patient</code> als auch <code>Pracitioner</code> Personen sind wäre es möglich eine abstrakte Basisiklasse Person zu erstellen
+in der allgemeine Properties bereits enthalten sind.</p>
+<p>Da beide Controller ein sehr ähnliches Verhalten haben kann man dieses unabhängig vom Typ mittels <em>generics</em> implementieren.
+Für je Patient als auch Pracitioner kann dann eine Ableitung davon anderen Mappings zugeordnet sein.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PersonController</span>&lt;<span class="hljs-title">T</span>, ...&gt;</span>{
+    
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;T&gt; <span class="hljs-title">getAllEntities</span><span class="hljs-params">()</span></span>{
+        ...
+    }
+
+    ...
+}
+
+<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/patient"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PatientController</span> </span>{
+
+    PersonController&lt;Patient&gt; baseController;
+
+    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">"/"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> List&lt;Patient&gt; <span class="hljs-title">getAllEntities</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">return</span> baseController.getAllEntities();
+    }
+    
+    ...
+}
+
+</div></code></pre>
+<h2 id="fhir">FHIR</h2>
+<p>FHIR steht für <code>Fast Healthcare Interoperability Resources</code>. Und ist ein von <a href="https://www.hl7.org/about/index.cfm?ref=nav">HL7</a> v
+eröffentlichter Standard um Daten im Gesundheitsbereich Programmübergreifend austauschen zu können.
+<a href="https://www.hl7.org/about/index.cfm?ref=nav">HL7</a> ist eine Organisation welche für die ANSI in den USA Standards
+im Gesundheitswesen entwickelt. Durch diesen Standard können alle möglichen Gesundheitsprogrammen Daten
+untereinander austauschen.</p>
+<h2 id="tests">Tests</h2>
+<p>Implementiere deinen eigenen Test der die Daten auf FHIR-Kompatibilität prüft.</p>
+<p>Du kannst prüfen, ob die von dir generierten JSON-Daten für einen Patienten passen, indem du sie mit dem Beispiel von <a href="https://www.hl7.org/fhir/patient.html">hier</a> vergleichst.</p>
+<p>Erstelle dazu JSON-Daten anhand der Dokumentation und vergleiche mittels Soll- und Ist-Wert (Expected and Actual Value).</p>
+<h4 id="beispiel-test">Beispiel-Test</h4>
+<pre class="hljs"><code><div><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCompareReturnedPatientJSONtoFHIRCompliantJSON</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{
+    mockMvc
+        .perform(get(<span class="hljs-string">"/patient/1"</span>)) <span class="hljs-comment">// get patient with id 1</span>
+        .andExpect(status().isOk()) <span class="hljs-comment">// expect 200 HTTP status code</span>
+        .andExpect(content().json(<span class="hljs-string">'{"your_patient": "test_data"}'</span>)); <span class="hljs-comment">// returned data should be of type json and</span>
+        <span class="hljs-comment">// contain the same parameters as the test data</span>
+}
+</div></code></pre>
+<p>Die initialen Testdaten sollen in der Ressourcendatei <code>import.sql</code> direkt als SQL-Statements eingefügt werden.
+Beim Start deines Programmes werden alle SQL-Befehle in dieser Datei ausgeführt.</p>
+<h3 id="generierung-von-sql-daten">Generierung von SQL-Daten</h3>
+<p>Um zu testen ob deine SQL-Statements funktionieren kannst du sie bevor du sie in <code>import.sql</code> einfügst auch manuell
+ausführen. Starte dazu den Webserfer und gehe dann auf die Weboberfläche der H2-Datenbank.
+Diese erreichst du unter: http://localhost:8080/h2-console</p>
+<p>Wenn dein Befehl ohne Fehler ausgeführt wird, kannst du ihn bedenkenlos einfügen. Beachte aber, dass im Ausgangszustand dieses Projekts noch keine Entitäten angelegt wurden. Es ist also noch kein <code>CREATE TABLE</code>-Statement ausgeführt worden.</p>
+<h2 id="api-designrichtlinien">API-Designrichtlinien</h2>
+<p>Bitte beachte bei den HTTP-Requestmethoden den dazugehörigen
+<a href="https://www.rfc-editor.org/rfc/rfc7231#section-4.3">RFC 7231 Sektion 4.3</a></p>
+<p>Kurz zusammengefasst, wann man was nimmt:</p>
+<table>
+    <tr>
+        <td>GET</td>
+        <td>Wenn man eine Ressource holt</td>
+    </tr>
+    <tr>
+        <td>POST</td>
+        <td>Wenn man eine nicht identifizierte Ressource hochlädt oder ändert</td>
+    </tr>
+    <tr>
+        <td>PUT</td>
+        <td>Wenn man eine identifizierte Ressource hochlädt</td>
+    </tr>
+    <tr>
+        <td>PATCH</td>
+        <td>Wenn man eine identifizierte Ressource teilweise ändert. Hat einen extra RFC, siehe: <a href="https://www.rfc-editor.org/rfc/rfc5789">RFC 5789</a></td>
+    </tr>
+    <tr>
+        <td>DELETE</td>
+        <td>Wenn man eine Ressource löscht</td>
+    </tr>
+</table>
+<p>Auch gibt es einen schönen Blogartikel von Stackoverflow in dem gutes API-Design erklärt wird.
+<a href="https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/">Blogartikel: Best practises for REST API Design</a></p>
+<h2 id="native-queries">Native Queries</h2>
+<p>Um komplexere Abfragen jeglicher Art durchführen kann man direkt SQL einsetzen. In Spring gibt es die Möglichkeit
+mit der <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query">@Query Annotation</a>
+Abfragen direkt zu definieren.
+Prüfe vor der Query-Verwendung in der H2-Console ob die Abfragen auch richtig sind.</p>
+<p>Gib jeder Funktion in einem Repository diese Annotation mit der entsprechenden Abfrage. Eine Anleitung wie man diese
+Aufbaut findest du <a href="https://www.baeldung.com/spring-data-jpa-query">hier</a>.</p>
+
+</body>
+</html>
