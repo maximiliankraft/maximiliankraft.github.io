@@ -473,6 +473,55 @@ Für je Patient als auch Pracitioner kann dann eine Ableitung davon anderen Mapp
 }
 
 </div></code></pre>
+<h3 id="daten-miteinander-logisch-verkn%C3%BCpfen">Daten miteinander logisch verknüpfen</h3>
+<p>Möchte man zwei Tabellen in SQL Miteinander verknüpfen ist dies über einen <code>foreign key constraint</code> mit anschliessendem JOIN möglich. Spring (insbesondere die JPA) weis aber nicht wie die Entitäten (Klassen mit <code>@Entitiy</code>-Annotation) zusammengehören, es sei den man gibt ihr die richtigen Annotationen. Hat man also in SQL 2 miteinander verbundende Tabellen:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> Practitioner(
+    <span class="hljs-keyword">id</span> <span class="hljs-built_in">integer</span> PRIMARY <span class="hljs-keyword">KEY</span>
+    fullName <span class="hljs-built_in">text</span>
+)
+
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> Patient(
+    <span class="hljs-keyword">id</span> <span class="hljs-built_in">integer</span> PRIMARY <span class="hljs-keyword">KEY</span>
+    fullName <span class="hljs-built_in">text</span>,
+    attendingPractitioner <span class="hljs-built_in">integer</span> <span class="hljs-keyword">references</span> Practitioner(<span class="hljs-keyword">id</span>)
+)
+</div></code></pre>
+<p>wäre das äquivalent in Java dazu</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@Entity</span>
+<span class="hljs-meta">@Getter</span>
+<span class="hljs-meta">@Setter</span>
+<span class="hljs-meta">@Table</span>(name = <span class="hljs-string">"Patient"</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Patient</span></span>{
+    <span class="hljs-meta">@Id</span>
+    <span class="hljs-meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)
+    <span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"pat_id"</span>, nullable = <span class="hljs-keyword">false</span>)
+    Long pNr;
+
+    <span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"fullName"</span>)
+    String fullName;
+
+    <span class="hljs-comment">// join column ist nicht unbedingt notwendig, hier genauer erklärt</span>
+    <span class="hljs-comment">// -&gt; https://stackoverflow.com/a/37542849/17996814</span>
+    <span class="hljs-meta">@JoinColumn</span>(name=<span class="hljs-string">"pract_id"</span>, nullable = <span class="hljs-keyword">false</span>)
+    <span class="hljs-meta">@OneToOne</span>
+    Practitioner attendingPractitioner;
+}
+
+<span class="hljs-meta">@Entity</span>
+<span class="hljs-meta">@Getter</span>
+<span class="hljs-meta">@Setter</span>
+<span class="hljs-meta">@Table</span>(name = <span class="hljs-string">"Practitioner"</span>)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Practitioner</span></span>{
+    <span class="hljs-meta">@Id</span>
+    <span class="hljs-meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)
+    <span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"pract_id"</span>, nullable = <span class="hljs-keyword">false</span>)
+    Long pNr;
+
+    <span class="hljs-meta">@Column</span>(name = <span class="hljs-string">"fullName"</span>)
+    String fullName;
+}
+
+</div></code></pre>
 <h2 id="fhir">FHIR</h2>
 <p>FHIR steht für <code>Fast Healthcare Interoperability Resources</code>. Und ist ein von <a href="https://www.hl7.org/about/index.cfm?ref=nav">HL7</a> v
 eröffentlichter Standard um Daten im Gesundheitsbereich Programmübergreifend austauschen zu können.

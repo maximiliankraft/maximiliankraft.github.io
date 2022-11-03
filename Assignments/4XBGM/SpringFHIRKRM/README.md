@@ -124,6 +124,62 @@ public class PatientController {
 
 ```
 
+### Daten miteinander logisch verknüpfen
+Möchte man zwei Tabellen in SQL Miteinander verknüpfen ist dies über einen `foreign key constraint` mit anschliessendem JOIN möglich. Spring (insbesondere die JPA) weis aber nicht wie die Entitäten (Klassen mit `@Entitiy`-Annotation) zusammengehören, es sei den man gibt ihr die richtigen Annotationen. Hat man also in SQL 2 miteinander verbundende Tabellen:
+
+```sql
+create table Practitioner(
+    id integer PRIMARY KEY
+    fullName text
+)
+
+create table Patient(
+    id integer PRIMARY KEY
+    fullName text,
+    attendingPractitioner integer references Practitioner(id)
+)
+```
+
+wäre das äquivalent in Java dazu
+
+```java
+@Entity
+@Getter
+@Setter
+@Table(name = "Patient")
+class Patient{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pat_id", nullable = false)
+    Long pNr;
+
+    @Column(name = "fullName")
+    String fullName;
+
+    // join column ist nicht unbedingt notwendig, hier genauer erklärt
+    // -> https://stackoverflow.com/a/37542849/17996814
+    @JoinColumn(name="pract_id", nullable = false)
+    @OneToOne
+    Practitioner attendingPractitioner;
+}
+
+@Entity
+@Getter
+@Setter
+@Table(name = "Practitioner")
+class Practitioner{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pract_id", nullable = false)
+    Long pNr;
+
+    @Column(name = "fullName")
+    String fullName;
+}
+
+```
+
+
 ## FHIR
 FHIR steht für `Fast Healthcare Interoperability Resources`. Und ist ein von [HL7](https://www.hl7.org/about/index.cfm?ref=nav) v
 eröffentlichter Standard um Daten im Gesundheitsbereich Programmübergreifend austauschen zu können. 
