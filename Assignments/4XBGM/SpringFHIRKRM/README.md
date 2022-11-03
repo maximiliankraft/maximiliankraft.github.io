@@ -3,7 +3,7 @@
 ## Aufgabe
 Implementiere die Entitäten [Patient](https://www.hl7.org/fhir/patient.html) und [Practitioner](https://www.hl7.org/fhir/Practitioner.html) auf eine Weise dass sie mit dem FHIR-Standard kompatibel sind. Diese FHIR-Ressoucen haben auch eine vielzahl an Unterressoucen welche ebenfalls implementiert werden müssen. 
 
-Die Entitäten Patient und Practitioner müssen nicht komplett umgesetzt werden. Das retournierte JSON von Practitioner soll so aussehen:
+Die Entitäten Patient und Practitioner müssen nicht komplett umgesetzt werden. Sollte ein Subtyp noch ein JSON-Objekt als Subtyp haben, kann dieses durch einen einfachen Typen (String, Number, Boolean, Null) ersetzt werden. Wird also z.B auf eine `Organization` verwiesen - eine eher komplexe Ressource - kann diese z.B durch einen String ersetzt werden in dem der Firmenname eingetragen ist. 
 
 
 ### Patient
