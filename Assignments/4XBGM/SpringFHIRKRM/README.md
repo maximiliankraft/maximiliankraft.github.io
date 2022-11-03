@@ -3,7 +3,78 @@
 ## Aufgabe
 Implementiere die Entitäten [Patient](https://www.hl7.org/fhir/patient.html) und [Practitioner](https://www.hl7.org/fhir/Practitioner.html) auf eine Weise dass sie mit dem FHIR-Standard kompatibel sind. Diese FHIR-Ressoucen haben auch eine vielzahl an Unterressoucen welche ebenfalls implementiert werden müssen. 
 
-### Lombok
+Die Entitäten Patient und Practitioner müssen nicht komplett umgesetzt werden. Das retournierte JSON von Practitioner soll so aussehen:
+
+
+### Patient
+```json
+{
+  "resourceType" : "Patient",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // An identifier for this patient
+  "active" : <boolean>, // Whether this patient's record is in active use
+  "name" : [{ HumanName }], // A name associated with the patient
+  "telecom" : [{ ContactPoint }], // A contact detail for the individual
+  "gender" : "<code>", // male | female | other | unknown
+  "birthDate" : "<date>", // The date of birth for the individual
+  // deceased[x]: Indicates if the individual is deceased or not. One of these 2:
+  "deceasedBoolean" : <boolean>,
+  // NICHT NOTWENDIG"deceasedDateTime" : "<dateTime>",
+  "address" : [{ Address }], // An address for the individual
+  // NICHT NOTWENDIG"maritalStatus" : { CodeableConcept }, // Marital (civil) status of a patient
+  // multipleBirth[x]: Whether patient is part of a multiple birth. One of these 2:
+  "multipleBirthBoolean" : <boolean>,
+  // NICHT NOTWENDIG"multipleBirthInteger" : <integer>,
+  // NICHT NOTWENDIG"photo" : [{ Attachment }], // Image of the patient
+  "contact" : [{ // A contact party (e.g. guardian, partner, friend) for the patient
+    "relationship" : [{ CodeableConcept }], // The kind of relationship
+    "name" : { HumanName }, // A name associated with the contact person
+    "telecom" : [{ ContactPoint }], // A contact detail for the person
+    "address" : { Address }, // Address for the contact person
+    // NICHT NOTWENDIG"gender" : "<code>", // male | female | other | unknown
+    // NICHT NOTWENDIG"organization" : { Reference(Organization) }, // C? Organization that is associated with the contact
+    // NICHT NOTWENDIG"period" : { Period } // The period during which this contact person or organization is valid to be contacted relating to this patient
+  }],
+  // NICHT NOTWENDIG"communication" : [{ // A language which may be used to communicate with the patient about his or her health
+  // NICHT NOTWENDIG  "language" : { CodeableConcept }, // R!  The language which can be used to communicate with the patient about his or her health
+  // NICHT NOTWENDIG  "preferred" : <boolean> // Language preference indicator
+  }],
+  // NICHT NOTWENDIG"generalPractitioner" : [{ Reference(Organization|Practitioner| PractitionerRole) }], // Patient's nominated primary care provider
+  // NICHT NOTWENDIG"managingOrganization" : { Reference(Organization) }, // Organization that is the custodian of the patient record
+  // NICHT NOTWENDIG"link" : [{ // Link to another patient resource that concerns the same actual person
+  // NICHT NOTWENDIG  "other" : { Reference(Patient|RelatedPerson) }, // R!  The other patient or related person resource that the link refers to
+  // NICHT NOTWENDIG  "type" : "<code>" // R!  replaced-by | replaces | refer | seealso
+  }]
+}
+```
+
+### Practitioner
+```json
+{
+  "resourceType" : "Practitioner",
+  // from Resource: id, meta, implicitRules, and language
+  // from DomainResource: text, contained, extension, and modifierExtension
+  "identifier" : [{ Identifier }], // An identifier for the person as this agent
+  "active" : <boolean>, // Whether this practitioner's record is in active use
+  "name" : [{ HumanName }], // The name(s) associated with the practitioner
+  "telecom" : [{ ContactPoint }], // A contact detail for the practitioner (that apply to all roles)
+  "address" : [{ Address }], // Address(es) of the practitioner that are not role specific (typically home address)
+  "gender" : "<code>", // male | female | other | unknown
+  "birthDate" : "<date>", // The date  on which the practitioner was born
+  // NICHT NOTWENDIG"photo" : [{ Attachment }], // Image of the person
+  // NICHT NOTWENDIG"qualification" : [{ // Certification, licenses, or training pertaining to the provision of care
+    // NICHT NOTWENDIG"identifier" : [{ Identifier }], // An identifier for this qualification for the practitioner
+    // NICHT NOTWENDIG"code" : { CodeableConcept }, // R!  Coded representation of the qualification 
+    // NICHT NOTWENDIG"period" : { Period }, // Period during which the qualification is valid
+    // NICHT NOTWENDIG"issuer" : { Reference(Organization) } // Organization that regulates and issues the qualification
+  // NICHT NOTWENDIG}],
+  // NICHT NOTWENDIG"communication" : [{ CodeableConcept }] // A language the practitioner can use in patient communication
+}
+```
+
+
+## Lombok
 
 Tipp: Um nicht immer Getter, Setter etc. in einer Klasse implementieren zu müssen, kann man mit ``lombok``
 (bereits in dem Projekt eingebunden) sich diese im Java-Bytecode automatisch generieren lassen.
