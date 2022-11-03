@@ -1,14 +1,14 @@
-# Setup
+# Oracle Cloud Deployment
 
-Auf cloud.oracle.com einen account machen
+## Setup
 
-man braucht eine bakomantkarte
+Auf [cloud.oracle.com](cloud.oracle.com) einen Account anlegen. Um Fake-Accounts zu verhindern verlangt Oracle eine Kreditkarte zur Identitätsfeststellung. Wir werden nur Services verwenden die nichts kosten. Als zusätzliche Absicherung bekommt man in den ersten 30 Tagen 250€ welche man für alle möglichen Ressorucen aufbrauchen kann. Sollte dieser Wert nach unten gehen ist das ein Indikator das nicht freie Services verwendet wurden. Bleibt der Wert bei 250 kann man bedenkenlos über den Testzeitraum hinaus die `Free-Eligibel Services` verwenden. Jedoch nur diese, alles andere kostet Geld. 
 
-Ein dockerfile so wie hier: https://spring.io/guides/topicals/spring-boot-docker/ erzeugen.
-Sektion multistage build
-mvnw gegen mvn austauschen und beim ersten FROM ein maven image nehmen
+## Deployment vorbereitungen
+Um unserer Software möglichst einfach installierbar zu machen werden wir sie in einen Container packen. Dazu verwenden wir Docker. Das fertige Dockerfile sollte so wie [hier](https://spring.io/guides/topicals/spring-boot-docker/) in der Sektion `Multistage build` aussehen. Allerdings muss man mvnw gegen mvn austauschen und beim ersten FROM ein maven image nehmen. Z.b so `FROM maven:3-openjdk-17-slim as build`.
 
-docker compose erstellen
+Um unsere Docker-Konfiguration noch leichter starbar zu machen können wir mir docker-compose mehrere Services auf einmal Konfigurieren, ihnen Volumes zuweisen, Port-Forwarding einrichten uvm. Unser Dockerfile sieht zunächst so aus: 
+
 ```yaml
 version: "3"
 services:
@@ -18,16 +18,16 @@ services:
             - "8080:8080"
 ```
 
-# Instanz anlegen
+## Instanz anlegen
 
-in cloud.oracle eine neue instanz erstellen
+In [cloud.oracle.com](cloud.oracle.com) einloggen und eine neue instanz erstellen
 ![](2022-10-31-18-08-30.png)
 
 
 Zunächst muss man einen Namen für die Instanz festlegen. Als Basisbetriebssystem ist standardmäßig Oricle Linux ausgewählt. Wir werden mit Ubuntu arbeiten, mit einem klick auf den `Edit` Button kann man das ändern.
 ![](2022-10-31-18-09-45.png)
 
-Andere Betriebssysteme wie CentOS wären auch möglich. Wichtig ist nur dass die Bezeichnung `Always free eligible` für das OS zutrifft.
+Andere Betriebssysteme wie CentOS wären auch möglich. Wichtig ist nur dass die Bezeichnung `Always free eligible` für das OS zutrifft. Ansonsten wird spätestens nach einem 30 Tage zeitraum die Nutzung verrechnet. 
 
 ![](2022-10-31-18-12-06.png)
 
@@ -38,7 +38,7 @@ Als nächstes müssen wir festlegen wie wir uns beim Verbindungsaufbau authentif
 Das wars auch schon mit dem Anlegen der Instanz. Wir können mit einem Klick auf `Create` die Provisionierung beginnen.
 
 
-# SSH Verbindung öffnen
+## SSH Verbindung öffnen
 
 Zum Verbinden brauchen wir einen Usernamen, IP und ein Passwort. Das Passwort ist unser privater SSH-Schlüssel. Username und IP werden von der Oracle Cloud bereitgestellt.
 
@@ -83,7 +83,7 @@ Geht man jetzt wieder mit ssh in die Oracle Instanz und lässt sich mit ls alle 
 
 `sudo apt update -y`
 
-Sudo führt dazu das der nachfolgende Befehl mit Administratorrechten ausgefürt wird. Normalwerweise wird man dann gefragt ob man es wirklich installiern will, mit -y kann man diesen Schritt überspringen. 
+Sudo führt dazu das der nachfolgende Befehl mit Administratorrechten ausgefürt wird. Normalwerweise wird man dann gefragt ob man es wirklich installiern will, mit `-y` kann man diesen Schritt überspringen. 
 
 Ist alles geupdated können wir die für uns notwendigen Programme auf einmal alle mit 
 
@@ -97,7 +97,7 @@ Ist alles installiert kann man nicht sofort unzip verwenden. Das Programm würde
 
 Sobald das Programm gestartet ist, ist es theoretisch von überall aus dem Internet erreichbar. Praktisch hat Oracle aber zu unserer Sicherheit noch eine Firewall eingebaut die wir zunächst locken müssen.
 
-# Firewall konfigurieren
+## Firewall konfigurieren
 
 Unsere Firewall können wir via unserer virtuellen Netzwerkkarte (VNIC) konfigurieren. Dazu müssen wir unser Subnet editieren. Bei mir heisst es `subnetspring`.
 ![](2022-10-31-18-43-29.png)
@@ -110,7 +110,7 @@ In besagten subnet müssen wir bei den Security Lists einstellen welche Port von
 Dazu müssen wir eine neue Regel für eingehende Verbindungen (ingress rule) erstellen.
 ![](2022-10-31-18-46-16.png)
 
-Durch die Quell-IP 0.0.0.0 mit dem Prefix /0 geben wir an das die IP von überall kommen darf. In einer Perfekten Welt gäbe es eine IP-Gruppe für jedes Land. Dann könnten wir mit 43.0.0.0/0 z.B sagen das nur verbindungen aus Österreich erlaubt sind. In der Praxis müsste man das für jeden Provider machen wenn man das einstellen wollen würde. Das Feld für den Quellport lassen wir frei, damit sind alle erlaubt. Als Destination Port wählen wir Port 80. Den Port des HTTP-Protokolls. Spring operiert zwar auf port 8080, jedoch wurde in unserem Docker-compose alles von 8080 auf 80 umgeleitet. 
+Durch die Quell-IP `0.0.0.0` mit dem Prefix `/0` geben wir an das die IP von überall kommen darf. In einer Perfekten Welt gäbe es eine IP-Gruppe für jedes Land. Dann könnten wir mit `43.0.0.0/0` z.B sagen das nur verbindungen aus Österreich erlaubt sind. In der Praxis müsste man das für jeden Provider machen wenn man das einstellen wollen würde. Das Feld für den Quellport lassen wir frei, damit sind alle erlaubt. Als Destination Port wählen wir Port 80. Den Port des HTTP-Protokolls. Spring operiert zwar auf port 8080, jedoch wurde in unserem Docker-compose alles von 8080 auf 80 umgeleitet. 
 
 ![](2022-10-31-18-48-34.png)
 
