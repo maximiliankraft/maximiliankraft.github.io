@@ -1,7 +1,7 @@
 # Spring FHIR
 
 ## Aufgabe
-Implementiere die Entitäten [Patient](https://www.hl7.org/fhir/patient.html) und [Practitioner](https://www.hl7.org/fhir/practitionier.html) auf eine Weise dass sie mit dem FHIR-Standard kompatibel sind. Diese FHIR-Ressoucen haben auch eine vielzahl an Unterressoucen welche ebenfalls implementiert werden müssen. 
+Implementiere die Entitäten [Patient](https://www.hl7.org/fhir/patient.html) und [Practitioner](https://www.hl7.org/fhir/Practitioner.html) auf eine Weise dass sie mit dem FHIR-Standard kompatibel sind. Diese FHIR-Ressoucen haben auch eine vielzahl an Unterressoucen welche ebenfalls implementiert werden müssen. 
 
 ### Lombok
 
