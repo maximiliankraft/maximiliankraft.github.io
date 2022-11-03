@@ -368,7 +368,71 @@ code {
 <h1 id="spring-fhir">Spring FHIR</h1>
 <h2 id="aufgabe">Aufgabe</h2>
 <p>Implementiere die Entitäten <a href="https://www.hl7.org/fhir/patient.html">Patient</a> und <a href="https://www.hl7.org/fhir/Practitioner.html">Practitioner</a> auf eine Weise dass sie mit dem FHIR-Standard kompatibel sind. Diese FHIR-Ressoucen haben auch eine vielzahl an Unterressoucen welche ebenfalls implementiert werden müssen.</p>
-<h3 id="lombok">Lombok</h3>
+<p>Die Entitäten Patient und Practitioner müssen nicht komplett umgesetzt werden. Sollte ein Subtyp noch ein JSON-Objekt als Subtyp haben, kann dieses durch einen einfachen Typen (String, Number, Boolean, Null) ersetzt werden. Wird also z.B auf eine <code>Organization</code> verwiesen - eine eher komplexe Ressource - kann diese z.B durch einen String ersetzt werden in dem der Firmenname eingetragen ist.</p>
+<h3 id="patient">Patient</h3>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"resourceType"</span> : <span class="hljs-string">"Patient"</span>,
+  <span class="hljs-comment">// from Resource: id, meta, implicitRules, and language</span>
+  <span class="hljs-comment">// from DomainResource: text, contained, extension, and modifierExtension</span>
+  <span class="hljs-attr">"identifier"</span> : [{ Identifier }], <span class="hljs-comment">// An identifier for this patient</span>
+  <span class="hljs-attr">"active"</span> : &lt;boolean&gt;, <span class="hljs-comment">// Whether this patient's record is in active use</span>
+  <span class="hljs-attr">"name"</span> : [{ HumanName }], <span class="hljs-comment">// A name associated with the patient</span>
+  <span class="hljs-attr">"telecom"</span> : [{ ContactPoint }], <span class="hljs-comment">// A contact detail for the individual</span>
+  <span class="hljs-attr">"gender"</span> : <span class="hljs-string">"&lt;code&gt;"</span>, <span class="hljs-comment">// male | female | other | unknown</span>
+  <span class="hljs-attr">"birthDate"</span> : <span class="hljs-string">"&lt;date&gt;"</span>, <span class="hljs-comment">// The date of birth for the individual</span>
+  <span class="hljs-comment">// deceased[x]: Indicates if the individual is deceased or not. One of these 2:</span>
+  <span class="hljs-attr">"deceasedBoolean"</span> : &lt;boolean&gt;,
+  <span class="hljs-comment">// NICHT NOTWENDIG"deceasedDateTime" : "&lt;dateTime&gt;",</span>
+  <span class="hljs-attr">"address"</span> : [{ Address }], <span class="hljs-comment">// An address for the individual</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG"maritalStatus" : { CodeableConcept }, // Marital (civil) status of a patient</span>
+  <span class="hljs-comment">// multipleBirth[x]: Whether patient is part of a multiple birth. One of these 2:</span>
+  <span class="hljs-attr">"multipleBirthBoolean"</span> : &lt;boolean&gt;,
+  <span class="hljs-comment">// NICHT NOTWENDIG"multipleBirthInteger" : &lt;integer&gt;,</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG"photo" : [{ Attachment }], // Image of the patient</span>
+  <span class="hljs-attr">"contact"</span> : [{ <span class="hljs-comment">// A contact party (e.g. guardian, partner, friend) for the patient</span>
+    <span class="hljs-attr">"relationship"</span> : [{ CodeableConcept }], <span class="hljs-comment">// The kind of relationship</span>
+    <span class="hljs-attr">"name"</span> : { HumanName }, <span class="hljs-comment">// A name associated with the contact person</span>
+    <span class="hljs-attr">"telecom"</span> : [{ ContactPoint }], <span class="hljs-comment">// A contact detail for the person</span>
+    <span class="hljs-attr">"address"</span> : { Address }, <span class="hljs-comment">// Address for the contact person</span>
+    <span class="hljs-comment">// NICHT NOTWENDIG"gender" : "&lt;code&gt;", // male | female | other | unknown</span>
+    <span class="hljs-comment">// NICHT NOTWENDIG"organization" : { Reference(Organization) }, // C? Organization that is associated with the contact</span>
+    <span class="hljs-comment">// NICHT NOTWENDIG"period" : { Period } // The period during which this contact person or organization is valid to be contacted relating to this patient</span>
+  }],
+  <span class="hljs-comment">// NICHT NOTWENDIG"communication" : [{ // A language which may be used to communicate with the patient about his or her health</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG  "language" : { CodeableConcept }, // R!  The language which can be used to communicate with the patient about his or her health</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG  "preferred" : &lt;boolean&gt; // Language preference indicator</span>
+  }],
+  <span class="hljs-comment">// NICHT NOTWENDIG"generalPractitioner" : [{ Reference(Organization|Practitioner| PractitionerRole) }], // Patient's nominated primary care provider</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG"managingOrganization" : { Reference(Organization) }, // Organization that is the custodian of the patient record</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG"link" : [{ // Link to another patient resource that concerns the same actual person</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG  "other" : { Reference(Patient|RelatedPerson) }, // R!  The other patient or related person resource that the link refers to</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG  "type" : "&lt;code&gt;" // R!  replaced-by | replaces | refer | seealso</span>
+  }]
+}
+</div></code></pre>
+<h3 id="practitioner">Practitioner</h3>
+<pre class="hljs"><code><div>{
+  <span class="hljs-attr">"resourceType"</span> : <span class="hljs-string">"Practitioner"</span>,
+  <span class="hljs-comment">// from Resource: id, meta, implicitRules, and language</span>
+  <span class="hljs-comment">// from DomainResource: text, contained, extension, and modifierExtension</span>
+  <span class="hljs-attr">"identifier"</span> : [{ Identifier }], <span class="hljs-comment">// An identifier for the person as this agent</span>
+  <span class="hljs-attr">"active"</span> : &lt;boolean&gt;, <span class="hljs-comment">// Whether this practitioner's record is in active use</span>
+  <span class="hljs-attr">"name"</span> : [{ HumanName }], <span class="hljs-comment">// The name(s) associated with the practitioner</span>
+  <span class="hljs-attr">"telecom"</span> : [{ ContactPoint }], <span class="hljs-comment">// A contact detail for the practitioner (that apply to all roles)</span>
+  <span class="hljs-attr">"address"</span> : [{ Address }], <span class="hljs-comment">// Address(es) of the practitioner that are not role specific (typically home address)</span>
+  <span class="hljs-attr">"gender"</span> : <span class="hljs-string">"&lt;code&gt;"</span>, <span class="hljs-comment">// male | female | other | unknown</span>
+  <span class="hljs-attr">"birthDate"</span> : <span class="hljs-string">"&lt;date&gt;"</span>, <span class="hljs-comment">// The date  on which the practitioner was born</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG"photo" : [{ Attachment }], // Image of the person</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG"qualification" : [{ // Certification, licenses, or training pertaining to the provision of care</span>
+    <span class="hljs-comment">// NICHT NOTWENDIG"identifier" : [{ Identifier }], // An identifier for this qualification for the practitioner</span>
+    <span class="hljs-comment">// NICHT NOTWENDIG"code" : { CodeableConcept }, // R!  Coded representation of the qualification </span>
+    <span class="hljs-comment">// NICHT NOTWENDIG"period" : { Period }, // Period during which the qualification is valid</span>
+    <span class="hljs-comment">// NICHT NOTWENDIG"issuer" : { Reference(Organization) } // Organization that regulates and issues the qualification</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG}],</span>
+  <span class="hljs-comment">// NICHT NOTWENDIG"communication" : [{ CodeableConcept }] // A language the practitioner can use in patient communication</span>
+}
+</div></code></pre>
+<h2 id="lombok">Lombok</h2>
 <p>Tipp: Um nicht immer Getter, Setter etc. in einer Klasse implementieren zu müssen, kann man mit <code>lombok</code>
 (bereits in dem Projekt eingebunden) sich diese im Java-Bytecode automatisch generieren lassen.</p>
 <h4 id="beispiel-klasse">Beispiel-Klasse</h4>
