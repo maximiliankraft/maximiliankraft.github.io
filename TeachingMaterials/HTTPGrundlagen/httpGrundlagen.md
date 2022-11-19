@@ -354,9 +354,6 @@ type request.txt | .\nc.exe www.spengergasse.at 80
 
 Die Befehle `cat` bzw. `type` geben den Dateiinhalt auf `stdout` aus. Statt das wir ihn auf der Konsole anzeigen übergeben wir ihn jedoch als `stdin` an ein weiteres Programm -natcat. Dies Funktioniert mit dem Pipe-Operator `|`. Dort rufen wir dann netcat mit Host, Port, und bereits bestehenden Eingaben auf. 
 
-### Request auf httpbin.org
-
-
 ## Fragen
 
 > Finde herraus wo du in deinem Browser dir anschauen kannst welche Requests an die HTTP-Server geschickt werden. Tipp: Es ist auch dort wo sich die Entwicklerkonsole befindet.
