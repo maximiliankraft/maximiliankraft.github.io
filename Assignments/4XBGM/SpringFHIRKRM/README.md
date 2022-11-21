@@ -253,6 +253,10 @@ Kurz zusammengefasst, wann man was nimmt:
 Auch gibt es einen schönen Blogartikel von Stackoverflow in dem gutes API-Design erklärt wird. 
 [Blogartikel: Best practises for REST API Design](https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/)
 
+## Controller
+
+Die Controller sollen es ermöglichen die Daten mit `GET` auszulesen. Mit `PUT` hinzuzufügen. Mit `DELETE` zu löschen und mit `PATCH` zu verändern. Also alle `CRUD`-Methoden (Create, Read, Update, Delete). Microsoft hat das [hier](https://learn.microsoft.com/en-us/iis-administration/api/crud) etwas genauer erklärt. Jedoch mit anderen Request-Methoden. 
+
 ## Native Queries
 
 Um komplexere Abfragen jeglicher Art durchführen kann man direkt SQL einsetzen. In Spring gibt es die Möglichkeit 
