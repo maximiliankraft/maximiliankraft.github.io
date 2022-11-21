@@ -530,8 +530,8 @@ im Gesundheitswesen entwickelt. Durch diesen Standard können alle möglichen Ge
 untereinander austauschen.</p>
 <h2 id="tests">Tests</h2>
 <p>Implementiere deinen eigenen Test der die Daten auf FHIR-Kompatibilität prüft.</p>
-<p>Du kannst prüfen, ob die von dir generierten JSON-Daten für einen Patienten passen, indem du sie mit dem Beispiel von <a href="https://www.hl7.org/fhir/patient.html">hier</a> vergleichst.</p>
-<p>Erstelle dazu JSON-Daten anhand der Dokumentation und vergleiche mittels Soll- und Ist-Wert (Expected and Actual Value).</p>
+<p>Du kannst prüfen, ob die von dir generierten JSON-Daten für einen Patienten passen, indem du sie mit der Struktur von <a href="https://www.hl7.org/fhir/patient.html">hier</a> vergleichst.</p>
+<p>Testdaten im JSON-Format gibt es für den <a href="https://www.hl7.org/fhir/R4/patient-example.json.html">Patienten</a> und den <a href="https://www.hl7.org/fhir/R4/practitioner-example.json.html">Practitioner</a> bereits von FHIR. Vergleiche mittels Soll- und Ist-Wert (Expected and Actual Value) ob die von Spring generierten Daten den FHIR-Referenzdaten gleichen. Mehr dazu im folgenden Beispiel:</p>
 <h4 id="beispiel-test">Beispiel-Test</h4>
 <pre class="hljs"><code><div><span class="hljs-meta">@Test</span>
 <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">testCompareReturnedPatientJSONtoFHIRCompliantJSON</span><span class="hljs-params">()</span> <span class="hljs-keyword">throws</span> Exception </span>{

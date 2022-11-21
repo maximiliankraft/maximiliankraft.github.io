@@ -5,7 +5,6 @@ Implementiere die Entitäten [Patient](https://www.hl7.org/fhir/patient.html) un
 
 Die Entitäten Patient und Practitioner müssen nicht komplett umgesetzt werden. Sollte ein Subtyp noch ein JSON-Objekt als Subtyp haben, kann dieses durch einen einfachen Typen (String, Number, Boolean, Null) ersetzt werden. Wird also z.B auf eine `Organization` verwiesen - eine eher komplexe Ressource - kann diese z.B durch einen String ersetzt werden in dem der Firmenname eingetragen ist. 
 
-
 ### Patient
 ```json
 {
@@ -192,9 +191,11 @@ untereinander austauschen.
 
 Implementiere deinen eigenen Test der die Daten auf FHIR-Kompatibilität prüft. 
 
-Du kannst prüfen, ob die von dir generierten JSON-Daten für einen Patienten passen, indem du sie mit dem Beispiel von [hier](https://www.hl7.org/fhir/patient.html) vergleichst. 
+Du kannst prüfen, ob die von dir generierten JSON-Daten für einen Patienten passen, indem du sie mit der Struktur von [hier](https://www.hl7.org/fhir/patient.html) vergleichst. 
 
-Erstelle dazu JSON-Daten anhand der Dokumentation und vergleiche mittels Soll- und Ist-Wert (Expected and Actual Value).
+
+Testdaten im JSON-Format gibt es für den [Patienten](https://www.hl7.org/fhir/R4/patient-example.json.html) und den [Practitioner](https://www.hl7.org/fhir/R4/practitioner-example.json.html) bereits von FHIR. Vergleiche mittels Soll- und Ist-Wert (Expected and Actual Value) ob die von Spring generierten Daten den FHIR-Referenzdaten gleichen. Mehr dazu im folgenden Beispiel:
+
 
 #### Beispiel-Test
 
