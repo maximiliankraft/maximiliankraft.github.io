@@ -579,13 +579,17 @@ Diese erreichst du unter: http://localhost:8080/h2-console</p>
 <a href="https://stackoverflow.blog/2020/03/02/best-practices-for-rest-api-design/">Blogartikel: Best practises for REST API Design</a></p>
 <h2 id="controller">Controller</h2>
 <p>Die Controller sollen es ermöglichen die Daten mit <code>GET</code> auszulesen. Mit <code>PUT</code> hinzuzufügen. Mit <code>DELETE</code> zu löschen und mit <code>PATCH</code> zu verändern. Also alle <code>CRUD</code>-Methoden (Create, Read, Update, Delete). Microsoft hat das <a href="https://learn.microsoft.com/en-us/iis-administration/api/crud">hier</a> etwas genauer erklärt. Jedoch mit anderen Request-Methoden.</p>
-<h2 id="native-queries">Native Queries</h2>
-<p>Um komplexere Abfragen jeglicher Art durchführen kann man direkt SQL einsetzen. In Spring gibt es die Möglichkeit
-mit der <a href="https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query">@Query Annotation</a>
-Abfragen direkt zu definieren.
-Prüfe vor der Query-Verwendung in der H2-Console ob die Abfragen auch richtig sind.</p>
-<p>Gib jeder Funktion in einem Repository diese Annotation mit der entsprechenden Abfrage. Eine Anleitung wie man diese
-Aufbaut findest du <a href="https://www.baeldung.com/spring-data-jpa-query">hier</a>.</p>
+<!--
+## Native Queries
+
+Um komplexere Abfragen jeglicher Art durchführen kann man direkt SQL einsetzen. In Spring gibt es die Möglichkeit 
+mit der [@Query Annotation](https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods.at-query) 
+Abfragen direkt zu definieren. 
+Prüfe vor der Query-Verwendung in der H2-Console ob die Abfragen auch richtig sind. 
+
+Gib jeder Funktion in einem Repository diese Annotation mit der entsprechenden Abfrage. Eine Anleitung wie man diese 
+Aufbaut findest du [hier](https://www.baeldung.com/spring-data-jpa-query).
+-->
 
 </body>
 </html>

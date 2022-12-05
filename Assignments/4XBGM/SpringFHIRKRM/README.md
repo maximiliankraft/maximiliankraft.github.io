@@ -257,6 +257,7 @@ Auch gibt es einen schönen Blogartikel von Stackoverflow in dem gutes API-Desig
 
 Die Controller sollen es ermöglichen die Daten mit `GET` auszulesen. Mit `PUT` hinzuzufügen. Mit `DELETE` zu löschen und mit `PATCH` zu verändern. Also alle `CRUD`-Methoden (Create, Read, Update, Delete). Microsoft hat das [hier](https://learn.microsoft.com/en-us/iis-administration/api/crud) etwas genauer erklärt. Jedoch mit anderen Request-Methoden. 
 
+<!--
 ## Native Queries
 
 Um komplexere Abfragen jeglicher Art durchführen kann man direkt SQL einsetzen. In Spring gibt es die Möglichkeit 
@@ -266,4 +267,6 @@ Prüfe vor der Query-Verwendung in der H2-Console ob die Abfragen auch richtig s
 
 Gib jeder Funktion in einem Repository diese Annotation mit der entsprechenden Abfrage. Eine Anleitung wie man diese 
 Aufbaut findest du [hier](https://www.baeldung.com/spring-data-jpa-query).
+-->
+
 
