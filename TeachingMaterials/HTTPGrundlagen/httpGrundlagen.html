@@ -700,6 +700,16 @@ Host</span>: www.spengergasse.at\r\n
 <pre class="hljs"><code><div>type request.txt | .\nc.exe www.spengergasse.at <span class="hljs-number">80</span>
 </div></code></pre>
 <p>Die Befehle <code>cat</code> bzw. <code>type</code> geben den Dateiinhalt auf <code>stdout</code> aus. Statt das wir ihn auf der Konsole anzeigen übergeben wir ihn jedoch als <code>stdin</code> an ein weiteres Programm -natcat. Dies Funktioniert mit dem Pipe-Operator <code>|</code>. Dort rufen wir dann netcat mit Host, Port, und bereits bestehenden Eingaben auf.</p>
+<h2 id="besonderheiten-bei-https">Besonderheiten bei HTTPS</h2>
+<p>HTTPS (offizieller Name: HTTP Over TLS) hat zwischen TCP und HTTP noch TLS dazwischen. Das ermöglicht es zum einen dass die Daten verschlüsselt übertragen werden, jedoch kann man so nicht mehr ohne weiteres rein textbasierte Daten an einen HTTPS Server schicken. Man muss sich mit dem darunterliegenden TLS-Protokoll einen Schlüssel ausmachen mit dem alle weiteren Daten verschlüsselt werden.</p>
+<p>Eine TLS-Verbindung mit einem beliebigen Port kann man mit folgendem Befehl aufmachen:</p>
+<pre class="hljs"><code><div>openssl s_client -connect &lt;someserver&gt;:443
+</div></code></pre>
+<p>Nach dem Austausch der Zertifikaten und dem Schlüsselaufbau wartet das Programm auf rein textbasierte Eingaben. Gibt man nun <code>GET /</code> ein während man mit den Google-Servern verbunden ist bekommt man (über TLS) HTTP-Daten zurück.</p>
+<p>Auf Ubuntu (bzw. Linux generell) kann man auch mit <code>sudo apt install ncat -y</code> einen Nachfolger von <code>nc</code> installieren welcher <code>TLS</code> unterstützt.</p>
+<p>Einen einfachen HTTPS/1.1 Request kann man dann ausführen mit:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">printf</span> <span class="hljs-string">'GET / HTTP/1.1\r\nHost: google.com\r\n\r\n'</span> | ncat --ssl google.com 443
+</div></code></pre>
 <h2 id="fragen">Fragen</h2>
 <blockquote>
 <p>Finde herraus wo du in deinem Browser dir anschauen kannst welche Requests an die HTTP-Server geschickt werden. Tipp: Es ist auch dort wo sich die Entwicklerkonsole befindet.</p>
@@ -726,7 +736,10 @@ Host</span>: www.spengergasse.at\r\n
 <p><a href="https://unix.stackexchange.com/a/398188">Carriage Return</a></p>
 </blockquote>
 <blockquote>
-<p><a href="https://www.rfc-editor.org/rfc/rfc2616">HTTP RFC</a></p>
+<p><a href="https://www.rfc-editor.org/rfc/rfc2616">HTTP RFC2616</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.rfc-editor.org/rfc/rfc2818">HTTPS RFC2818</a></p>
 </blockquote>
 
 </body>
