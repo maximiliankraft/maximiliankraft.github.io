@@ -354,6 +354,27 @@ type request.txt | .\nc.exe www.spengergasse.at 80
 
 Die Befehle `cat` bzw. `type` geben den Dateiinhalt auf `stdout` aus. Statt das wir ihn auf der Konsole anzeigen übergeben wir ihn jedoch als `stdin` an ein weiteres Programm -natcat. Dies Funktioniert mit dem Pipe-Operator `|`. Dort rufen wir dann netcat mit Host, Port, und bereits bestehenden Eingaben auf. 
 
+## Besonderheiten bei HTTPS
+
+HTTPS (offizieller Name: HTTP Over TLS) hat zwischen TCP und HTTP noch TLS dazwischen. Das ermöglicht es zum einen dass die Daten verschlüsselt übertragen werden, jedoch kann man so nicht mehr ohne weiteres rein textbasierte Daten an einen HTTPS Server schicken. Man muss sich mit dem darunterliegenden TLS-Protokoll einen Schlüssel ausmachen mit dem alle weiteren Daten verschlüsselt werden. 
+
+Eine TLS-Verbindung mit einem beliebigen Port kann man mit folgendem Befehl aufmachen:
+
+```sh
+openssl s_client -connect <someserver>:443
+```
+
+Nach dem Austausch der Zertifikaten und dem Schlüsselaufbau wartet das Programm auf rein textbasierte Eingaben. Gibt man nun `GET /` ein während man mit den Google-Servern verbunden ist bekommt man (über TLS) HTTP-Daten zurück.
+
+
+Auf Ubuntu (bzw. Linux generell) kann man auch mit `sudo apt install ncat -y` einen Nachfolger von `nc` installieren welcher `TLS` unterstützt. 
+
+Einen einfachen HTTPS/1.1 Request kann man dann ausführen mit: 
+```sh
+printf 'GET / HTTP/1.1\r\nHost: google.com\r\n\r\n' | ncat --ssl google.com 443
+```
+
+
 ## Fragen
 
 > Finde herraus wo du in deinem Browser dir anschauen kannst welche Requests an die HTTP-Server geschickt werden. Tipp: Es ist auch dort wo sich die Entwicklerkonsole befindet.
@@ -378,7 +399,8 @@ Die Befehle `cat` bzw. `type` geben den Dateiinhalt auf `stdout` aus. Statt das 
 Quellen:
 > [Carriage Return](https://unix.stackexchange.com/a/398188)
 
-> [HTTP RFC](https://www.rfc-editor.org/rfc/rfc2616)
+> [HTTP RFC2616](https://www.rfc-editor.org/rfc/rfc2616)
 
+> [HTTPS RFC2818](https://www.rfc-editor.org/rfc/rfc2818)
 
 
