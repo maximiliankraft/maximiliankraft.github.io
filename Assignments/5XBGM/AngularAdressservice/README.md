@@ -15,6 +15,8 @@ Erstelle einen AddressForm Komponenten aus einer Schematic:
 
 > Beispiel wie man eine Tabellen-Komponente aus einem Schema erstellt: [hier](https://angular.io/guide/schematics#generation-schematics)
 
+> Beispiel wie man eine AdressForm-Komponente aus einem Schema erstellt: [hier](https://material.angular.io/guide/schematics#address-form-schematic)
+
 
 Die fertige Schematic-Komponente sieht dann ungefähr so aus:
 
