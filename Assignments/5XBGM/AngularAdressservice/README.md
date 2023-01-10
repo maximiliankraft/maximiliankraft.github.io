@@ -22,7 +22,7 @@ Die fertige Schematic-Komponente sieht dann ungefähr so aus:
 
 ## Adressservice der Stadt Wien
 
-Auf [data.gv.at](https://www.data.gv.at/katalog/dataset/c223b93a-2634-4f06-ac73-8709b9e16888) stellt die Stadt Wien eine API zur Verfügung welche es ermöglicht weitere Infos zu einer Adresse zu bekommen. Damit ist es möglich Autovervollständigungen für alle Adressen in Wien vorzuschlagen. 
+Auf [data.gv.at](https://www.data.gv.at/katalog/dataset/c223b93a-2634-4f06-ac73-8709b9e16888) stellt die Stadt Wien eine API zur Verfügung welche es ermöglicht weitere Infos zu einer Adresse zu bekommen. Damit ist es möglich Autovervollständigungen für alle Adressen in Wien vorzuschlagen. Hier die [API_URL](http://data.wien.gv.at/daten/OGDAddressService.svc/GetAddressInfo?Address=). 
 
 Um diese API nutzen zu können bietet sich ein Service an. Beachte dass Angular bei der Erstellung eines Services das Wort `Service` als Postfix anhängt. 
 
@@ -33,7 +33,7 @@ Der Service braucht auch Zugriff auf das HTTP-Modul, um mit der API kommuniziere
 > Anleitung zur Kommunikation via HTTPModule [hier](https://angular.io/guide/http)
 
 
-Schreibe nun im AddressService eine Funktion welche eine Adresse an die API von Wien schickt und das Ergebnis davon asynchron retourniert. Das Ergebnis - ein JSOn-String - sollte dann noch in einen Typ umgewandelt werden. Man kann mit [json2ts](http://json2ts.com/) aus einem JSON-String sich Typescript-Interfaces generieren lassen. 
+Schreibe nun im AddressService eine Funktion welche eine Adresse an die API von Wien schickt und das Ergebnis davon asynchron retourniert. Das Ergebnis - ein JSON-String - sollte dann noch in einen Typ umgewandelt werden. Man kann mit [json2ts](http://json2ts.com/) aus einem JSON-String sich Typescript-Interfaces generieren lassen. 
 
 Füge im Adressformular einen Button hinzu (wie im obigen Screenshot) welcher die Daten die sich in der Adresszeile befinden an den Adressservice schickt. Wenn sinnvolle Daten zurückkommen sollen diese in die restlichen Felder wie PLZ, Ort etc. eingefügt werden. 
 
