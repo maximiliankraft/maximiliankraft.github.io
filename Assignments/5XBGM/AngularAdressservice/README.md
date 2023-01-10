@@ -36,6 +36,11 @@ Der Service braucht auch Zugriff auf das HTTP-Modul, um mit der API kommuniziere
 Schreibe nun im AddressService eine Funktion welche eine Adresse an die API von Wien schickt und das Ergebnis davon asynchron retourniert. Das Ergebnis - ein JSOn-String - sollte dann noch in einen Typ umgewandelt werden. Man kann mit [json2ts](http://json2ts.com/) aus einem JSON-String sich Typescript-Interfaces generieren lassen. 
 
 Füge im Adressformular einen Button hinzu (wie im obigen Screenshot) welcher die Daten die sich in der Adresszeile befinden an den Adressservice schickt. Wenn sinnvolle Daten zurückkommen sollen diese in die restlichen Felder wie PLZ, Ort etc. eingefügt werden. 
+
+## Alternativer Adressservice
+
+Das Land Oberösterreich betreibt mit *Doris* einen Service der Österreichweit Adressen findet: [hier](https://www.geoland.at/site/geoservices.html)
+
  
 ## Test- & Bewertungsgrundlagen
 
@@ -46,3 +51,5 @@ Füge im Adressformular einen Button hinzu (wie im obigen Screenshot) welcher di
 - Response typisiert und auf Validität überprüft (10%)
 
 - Eingabe einer beliebigen Wiener Adresse, die restlichen Daten wie Bezirk, PLZ etc. sollen dann ausgefüllt werden. (50%)
+
+- Zusatzaufgabe: Doris API verwendet (+10%)
