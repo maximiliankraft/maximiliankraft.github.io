@@ -6,6 +6,7 @@ Um nicht selbst ein Formular von Grund auf bauen und stylen zu müssen eignet si
 
 Erstelle ein neues Angular-Projekt:
 
+> Anleitung [hier](https://angular.io/guide/setup-local#create-a-workspace-and-initial-application)
 
 Füge Material als Dependency in deinem Projekt hinzu:
 
@@ -15,7 +16,7 @@ Erstelle einen AddressForm Komponenten aus einer Schematic:
 
 > Beispiel wie man eine Tabellen-Komponente aus einem Schema erstellt: [hier](https://angular.io/guide/schematics#generation-schematics)
 
-> Beispiel wie man eine AdressForm-Komponente aus einem Schema erstellt: [hier](https://material.angular.io/guide/schematics#address-form-schematic)
+> Beispiel wie man eine AddressForm-Komponente aus einem Schema erstellt: [hier](https://material.angular.io/guide/schematics#address-form-schematic)
 
 
 Die fertige Schematic-Komponente sieht dann ungefähr so aus:
