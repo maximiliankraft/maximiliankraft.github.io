@@ -6,6 +6,7 @@ stattfinden.
 
 Als Projektgrundlage kannst du ein bereits bestehendes Projekt verwenden, falls du ein neues anlegen möchtest/musst 
 beachte bitte folgendes: 
+
 Erstelle auf https://start.spring.io/ ein Spring-Projekt mit den folgenden Dependencies:
 - H2 Database
 - Spring Security
@@ -78,5 +79,5 @@ Die folgenden Aufgaben sollen über das Aufrufen von Endpoints geschehen (via mo
 - Versuch ein Objekt mit fehlenden Berechtigungen aufzurufen (10P)
 
 ## Anleitungen
-Beispielrepository+Anleitung: https://github.com/maximiliankraft/spring-security-guid/blob/master/anleitung.md
+> [Beispielrepository + Anleitung](https://github.com/maximiliankraft/spring-security-guid/blob/master/anleitung.md) 
 
