@@ -1,4 +1,4 @@
-# Sicher Spring-Anwendung mit ChatGPT erstellen
+# Sichere Spring-Anwendung mit ChatGPT erstellen
 
 Im folgenden habe ich versucht die aktuelle Übung von GPT lösen zu lassen. Es sind ein paar gute Codeteile rausgekommen. Jedoch hört die KI bei längeren Antworten nach einer bestimmten Zeit einfach auf. Mit Folgefragen lässt sich das Problem aber bestimmt lösen. Auch merkt man dass der Code nicht auf dem neuesten Stand ist. 
 
