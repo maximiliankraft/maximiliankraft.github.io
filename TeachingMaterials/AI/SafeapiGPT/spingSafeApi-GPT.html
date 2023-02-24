@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>spingSafeApi-GPT.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>Im folgenden habe ich versucht die aktuelle Übung von GPT lösen zu lassen. Es sind ein paar gute Codeteile rausgekommen. Jedoch hört die KI bei längeren Antworten nach einer bestimmten Zeit einfach auf. Mit Folgefragen lässt sich das Problem aber bestimmt lösen. Auch merkt man dass der Code nicht auf dem neuesten Stand ist.</p>
+<Hr>
+Create a spring boot application that statifies the following requirements:
+- Has a controller for user authentication that returns a token
+- Stores user data utilizing the UserDetails interface
+- Has an article enity with title and description that each user can own
+- With an endpoint the user is able to grant the permissions read, write, delete of the article entiy to any other user. this user is then able to read, update or delete the article with appropiate controller endpoints
+<hr>
+<p>To satisfy the given requirements, you can create a Spring Boot application with the following steps:</p>
+<p>Set up a new Spring Boot project with the necessary dependencies by using a build tool like Maven or Gradle. For example, you can use Spring Initializr to create a new project with Spring Web, Spring Data JPA, and Spring Security dependencies.</p>
+<p>Create a User entity that implements the UserDetails interface. The User entity should have fields for username, password, and authorities (i.e., roles).</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@Entity</span>
+<span class="hljs-meta">@Table</span>(name = <span class="hljs-string">"users"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserDetails</span> </span>{
+    <span class="hljs-meta">@Id</span>
+    <span class="hljs-meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)
+    <span class="hljs-keyword">private</span> Long id;
+    <span class="hljs-keyword">private</span> String username;
+    <span class="hljs-keyword">private</span> String password;
+
+    <span class="hljs-meta">@ElementCollection</span>(fetch = FetchType.EAGER)
+    <span class="hljs-keyword">private</span> List&lt;String&gt; authorities;
+
+    <span class="hljs-comment">// constructors, getters and setters, and UserDetails methods</span>
+}
+
+</div></code></pre>
+<p>Create a UserRepository interface that extends the JpaRepository interface to handle CRUD operations for User entities.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@Repository</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">JpaRepository</span>&lt;<span class="hljs-title">User</span>, <span class="hljs-title">Long</span>&gt; </span>{
+    <span class="hljs-function">User <span class="hljs-title">findByUsername</span><span class="hljs-params">(String username)</span></span>;
+}
+</div></code></pre>
+<p>Configure Spring Security to use the UserRepository to authenticate users.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@Configuration</span>
+<span class="hljs-meta">@EnableWebSecurity</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">SecurityConfig</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebSecurityConfigurerAdapter</span> </span>{
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> UserRepository userRepository;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">configure</span><span class="hljs-params">(AuthenticationManagerBuilder auth)</span> <span class="hljs-keyword">throws</span> Exception </span>{
+        auth.userDetailsService(username -&gt; userRepository.findByUsername(username));
+    }
+
+    <span class="hljs-comment">// other security configurations</span>
+}
+</div></code></pre>
+<p>Create a JWT authentication endpoint that returns a token when a user logs in. You can use the jjwt library to generate and verify JWT tokens.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/auth"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AuthController</span> </span>{
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> AuthenticationManager authenticationManager;
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> UserRepository userRepository;
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> JwtTokenUtil jwtTokenUtil;
+
+    <span class="hljs-meta">@PostMapping</span>(<span class="hljs-string">"/login"</span>)
+    <span class="hljs-keyword">public</span> ResponseEntity&lt;?&gt; login(<span class="hljs-meta">@RequestBody</span> JwtRequest jwtRequest) <span class="hljs-keyword">throws</span> Exception {
+        authenticationManager.authenticate(<span class="hljs-keyword">new</span> UsernamePasswordAuthenticationToken(jwtRequest.getUsername(), jwtRequest.getPassword()));
+        <span class="hljs-keyword">final</span> UserDetails userDetails = userRepository.findByUsername(jwtRequest.getUsername());
+        <span class="hljs-keyword">final</span> String token = jwtTokenUtil.generateToken(userDetails);
+        <span class="hljs-keyword">return</span> ResponseEntity.ok(<span class="hljs-keyword">new</span> JwtResponse(token));
+    }
+}
+</div></code></pre>
+<p>Create an Article entity with fields for title, description, and owner. You can use a ManyToOne relationship to link the Article entity to the User entity.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">@Entity</span>
+<span class="hljs-meta">@Table</span>(name = <span class="hljs-string">"articles"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Article</span> </span>{
+    <span class="hljs-meta">@Id</span>
+    <span class="hljs-meta">@GeneratedValue</span>(strategy = GenerationType.IDENTITY)
+    <span class="hljs-keyword">private</span> Long id;
+    <span class="hljs-keyword">private</span> String title;
+    <span class="hljs-keyword">private</span> String description;
+
+    <span class="hljs-meta">@ManyToOne</span>
+    <span class="hljs-meta">@JoinColumn</span>(name = <span class="hljs-string">"user_id"</span>, referencedColumnName = <span class="hljs-string">"id"</span>)
+    <span class="hljs-keyword">private</span> User owner;
+
+    <span class="hljs-comment">// constructors, getters and setters</span>
+}
+</div></code></pre>
+<p>Create an ArticleRepository interface that extends the JpaRepository interface to handle CRUD operations for Article entities.</p>
+<pre class="hljs"><code><div><span class="hljs-meta">@Repository</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">ArticleRepository</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">JpaRepository</span>&lt;<span class="hljs-title">Article</span>, <span class="hljs-title">Long</span>&gt; </span>{
+}
+</div></code></pre>
+<p>Create a Controller for managing articles. This Controller should have endpoints for creating, reading, updating, and deleting articles. The endpoints should be secured with Spring Security.</p>
+<pre class="hljs"><code><div>
+<span class="hljs-meta">@RestController</span>
+<span class="hljs-meta">@RequestMapping</span>(<span class="hljs-string">"/articles"</span>)
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ArticleController</span> </span>{
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> ArticleRepository articleRepository;
+
+    <span class="hljs-meta">@Autowired</span>
+    <span class="hljs-keyword">private</span> UserRepository userRepository;
+
+    <span class="hljs-meta">@GetMapping</span>(<span class="hljs-string">"/{id}"</span>)
+    <span class="hljs-function"><span class="hljs-keyword">public</span> ResponseEntity&lt;Article&gt; <span class="hljs-title">getArticle</span><span class="hljs-params">(@PathVariable Long id, Authentication authentication)</span> </span>{
+        Article article = articleRepository.findById(id).orElseThrow(() -&gt; <span class="hljs-keyword">new</span> ResourceNotFoundException(<span class="hljs-string">"Article"</span>, <span class="hljs-string">"id"</span>, id));
+        User currentUser = userRepository.findByUsername(authentication.getName());
+        <span class="hljs-keyword">if</span> (article.getOwner().getId().equals(currentUser.getId()) || currentUser.getAuthorities().contains(<span class="hljs-string">"ROLE_ADMIN"</span>)) {
+            <span class="hljs-keyword">return</span> ResponseEntity.ok(article);
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span>
+</div></code></pre>
+
+</body>
+</html>
