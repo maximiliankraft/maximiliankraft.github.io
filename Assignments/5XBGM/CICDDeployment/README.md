@@ -46,6 +46,8 @@ Dazu braucht es folgende Voraussetzungen:
 
 Zum Vergleich: Ein Image weit verbreiteter Software sieht oft so aus `mysql`. Dabei wurden für einige der obigen Felder Standardannahmen getroffen. In voller Länge würde es so aussehen: `docker.io/libraries/mysql:latest`. Alles bis auf `mysql` sind Standardparameter. 
 
+> Siehe: [Official Docker Images](https://docs.docker.com/docker-hub/official_images/)
+
 
 ## Einrichten der CI/CD
 
@@ -87,7 +89,9 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-> Anleitung zum Containerimages bauen mit Kaniko: https://cloud.google.com/build/docs/optimize-builds/kaniko-cache?hl=de
+> [Anleitung zum Containerimages bauen mit Kaniko](https://cloud.google.com/build/docs/optimize-builds/kaniko-cache?hl=de)
+
+> [Einführung in Container Registries in Github](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
 
 
 ## Bewertungsgrundlagen bei der Abgabe
@@ -104,4 +108,9 @@ Füge jene docker-compose.yml Datei in das Repository der aktuellen Abgabe hinzu
 - Die Images können ausgeführt werden ohne sofort abzustürzen 25P
 - Bei den Tags gibt es sowohl eine aktuelle Version vX.Y als auch einen `latest`-Tag für die neueste Version 25P
 - Beim Build eines neuen Images gibt es eine Schritt (Step) für das Ausführen von Unittests 25P
+
+## Weitere Unterlagen
+> [Docker Images manuell pushen](https://stackoverflow.com/questions/28349392/how-to-push-a-docker-image-to-a-private-repository)
+
+> [Container Registries in Gitlab](https://docs.gitlab.com/ee/user/packages/container_registry/)
 
