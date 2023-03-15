@@ -366,15 +366,47 @@ code {
     });
   </script>
 <h1 id="deployment">Deployment</h1>
-<p>Ziel dieser Aufgabe ist des das CRUD-Assignment in eine einizge Docker-Compose Datei zu packen um diese von überall aus ausführbar zu machen (deployment). Damit wäre es im weiteren auch möglich diese Datei auf einer Azure-Instanz o.ä hochzuladen und von dort aus auszuführen. Auch Interessant ist diese Art des Deployments für IT-Abteilungen von Firmen mit denen man zusammenarbeitet. Die freuen sich meistens wenn man Ihnen durch so etwas die Arbeit etwas abnimmt und man ist bei Updates nicht auf sie angewiesen, vorausgesetzt es wird immerwieder die neueste Version aus dem Registry gepullt (<code>docker pull &lt;imagename&gt;</code>).</p>
+<p>Ziel dieser Aufgabe ist des das CRUD-Assignment in eine einizge Docker-Compose Datei zu packen um diese von überall aus ausführbar zu machen (deployment). Damit wäre es im weiteren auch möglich diese Datei auf einer Azure-Instanz o.ä hochzuladen und von dort aus auszuführen. Auch Interessant ist diese Art des Deployments für IT-Abteilungen von Firmen mit denen man zusammenarbeitet. Die freuen sich meistens wenn man Ihnen durch so etwas die Arbeit etwas abnimmt und man ist bei (kritischen) Updates nicht auf sie angewiesen, vorausgesetzt es wird immerwieder die neueste Version aus dem Registry gepullt (<code>docker pull &lt;imagename&gt;</code>).</p>
 <p>Dazu braucht es folgende Voraussetzungen:</p>
 <ul>
 <li>Dockerfiles</li>
 <li>Images</li>
 <li>Container-Registry</li>
 <li>CI/CD Pipelines</li>
-<li>Je ein Repository für Frontend und Backend (bereits exisiterende können ggf. weiterverwendet werden)</li>
+<li>Je ein Workflow für Frontend und Backend</li>
+<li>Da Frontend und Backend üblicherweise in 2 Repos aufgeteilt ist kann man einfach in jeden Repo einen neuen Workflow hinzufügen (bereits exisiterende Repos können ggf. weiterverwendet werden)</li>
 </ul>
+<p>Das Dockerfile fürs Frontend könnte z.B so aussehen:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Use a Node.js base image</span>
+<span class="hljs-keyword">FROM</span> node:<span class="hljs-number">16</span>-alpine AS builder
+
+<span class="hljs-comment"># Set the working directory to /app</span>
+<span class="hljs-keyword">WORKDIR</span><span class="bash"> /app</span>
+
+<span class="hljs-comment"># Copy package.json and package-lock.json files to the container</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> package*.json ./</span>
+
+<span class="hljs-comment"># Install dependencies via ci</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> npm ci</span>
+
+<span class="hljs-comment"># Copy the rest of the application code to the container</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> . .</span>
+
+<span class="hljs-comment"># Build the application and output the files to /dist</span>
+<span class="hljs-keyword">RUN</span><span class="bash"> npm run build --prod</span>
+
+<span class="hljs-comment"># Use a Nginx base image for the final container</span>
+<span class="hljs-keyword">FROM</span> nginx:<span class="hljs-number">1.23</span>-alpine
+
+<span class="hljs-comment"># Copy the /dist directory from the builder container to the final container</span>
+<span class="hljs-keyword">COPY</span><span class="bash"> --from=builder /app/dist/angular-request-assignment /usr/share/nginx/html</span>
+
+<span class="hljs-comment"># Expose port 80 for the web server</span>
+<span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span>
+
+<span class="hljs-comment"># Start the Nginx web server</span>
+<span class="hljs-keyword">ENTRYPOINT</span><span class="bash"> [<span class="hljs-string">"nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]</span>
+</div></code></pre>
 <p>Füge (falls nicht schon vorhanden) sowohl im Frontend als auch im Backend ein Dockerfile hinzu. Im übergeordneten Ordner kann sobald beide Dateien Images builden ein docker-compose mit folgender Struktur angelegt werden:</p>
 <pre class="hljs"><code><div><span class="hljs-attr">version:</span> <span class="hljs-string">"xy"</span>
 
@@ -384,17 +416,30 @@ code {
    <span class="hljs-attr">backend:</span>
        <span class="hljs-attr">build:</span> <span class="hljs-string">./backend</span>
 </div></code></pre>
-<p>Das ist schon ein guter Start, jedoch setzt dieses Dockerfile voraus das der Programmcode in den Unterordnern vorliegt. Für einen Entwickler ist das kein Problem, aber wenn man das Programm dann beim Auftraggeber installieren möchte, möchte man dem im Normalfall nicht den Code geben. Deswegen ist es besser wenn man die Images in einer <code>Container-Registry</code> hochlädt um von überall aus auf diese zugreifen zu können. Dann schaut das Compose ca. so aus:</p>
-<pre class="hljs"><code><div><span class="hljs-attr">version:</span> <span class="hljs-string">"xy"</span>
+<p>Wenn das funktioniert ist schon ein guter Teil erledigt, jedoch setzt dieses Dockerfile voraus das der Programmcode in den Unterordnern vorliegt. Für einen Entwickler ist das kein Problem, aber wenn man das Programm dann beim Auftraggeber installieren möchte, möchte man dem im Normalfall nicht den Code geben. Deswegen ist es besser wenn man die Images in einer <code>Container-Registry</code> hochlädt um von überall aus auf diese zugreifen zu können. Dann schaut das Compose ca. so aus:</p>
+<pre class="hljs"><code><div><span class="hljs-attr">version:</span> <span class="hljs-string">'3'</span>
 
 <span class="hljs-attr">services:</span>
-   <span class="hljs-attr">frontend:</span>
-       <span class="hljs-attr">image:</span> <span class="hljs-string">ghcr.io/&lt;username&gt;/&lt;CRUD_frontend_imagename&gt;</span>
-   
-   <span class="hljs-attr">backend:</span>
-       <span class="hljs-attr">image:</span> <span class="hljs-string">ghcr.io/&lt;username&gt;/&lt;CRUD_backend_imagename&gt;</span>
-
+  <span class="hljs-attr">frontend:</span>
+    <span class="hljs-attr">image:</span> <span class="hljs-string">ghcr.io/&lt;your-username&gt;/&lt;your-reponame&gt;:latest</span>
+    <span class="hljs-attr">ports:</span>
+      <span class="hljs-bullet">-</span> <span class="hljs-string">"80:80"</span>
 </div></code></pre>
+<p>Um dieses Repository nutzen zu können muss man sich jedoch mit Docker bei ghcr (Github Container Registry) anmelden. Das funktioniert folgendermaßen:</p>
+<ul>
+<li>Lege dir einen Personal Access Token an, dieser Braucht nur die Berechtigung <code>read_package</code></li>
+</ul>
+<blockquote>
+<p>Siehe <a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">working with container registries</a> und <a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">create a personal access token</a></p>
+</blockquote>
+<ul>
+<li>Wenn du einen PAT hast kannst du dich mit dem Befehl <code>docker login</code> anmelden
+<ul>
+<li>Username: Dein Github-Username</li>
+<li>Passwort: Dein PAT (Personal Access Token)</li>
+</ul>
+</li>
+</ul>
 <h2 id="aufbau-des-image-feldes">Aufbau des Image-Feldes</h2>
 <ul>
 <li>ghcr.io Github container registry</li>
@@ -410,38 +455,39 @@ code {
 <p>Um die Github Server anzuweisen ist folgende Ordnerstruktur im Repository zu erstellen: <code>.github/workflows/&lt;docker_build_actionname.yml&gt;</code></p>
 <p>Die Datei könnte ca. so aussehen:</p>
 <pre class="hljs"><code><div>
-<span class="hljs-attr">name:</span> <span class="hljs-string">Create</span> <span class="hljs-string">and</span> <span class="hljs-string">Push</span> <span class="hljs-string">a</span> <span class="hljs-string">Dockerfile</span> <span class="hljs-string">inte</span> <span class="hljs-string">the</span> <span class="hljs-string">registry</span>
-
+<span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">Push</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Image</span>
 <span class="hljs-attr">on:</span>
+  <span class="hljs-comment"># trigger execution on every push</span>
   <span class="hljs-attr">push:</span>
-    <span class="hljs-attr">tags:</span>
-      <span class="hljs-bullet">-</span> <span class="hljs-string">'*'</span> <span class="hljs-comment"># jobs ausführen wenn ein git tag gepusht wird</span>
-      <span class="hljs-comment"># branches: [ main ] # jobs ausführen wenn etwas auf den main branch gepusht wird</span>
-
-<span class="hljs-attr">permissions:</span>
-  <span class="hljs-attr">contents:</span> <span class="hljs-string">write</span>
+    <span class="hljs-attr">branches:</span> <span class="hljs-string">[</span> <span class="hljs-string">main</span> <span class="hljs-string">]</span>
+  <span class="hljs-comment"># trigger execution on every tag</span>
+  <span class="hljs-comment">#tag:</span>
 
 <span class="hljs-attr">jobs:</span>
-  <span class="hljs-attr">build:</span>
+  <span class="hljs-attr">build-and-push:</span>
     <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span>
-
     <span class="hljs-attr">steps:</span>
-    <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span> <span class="hljs-comment"># schritt eins repo am server klonen</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">repository</span>
+      <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v2</span>
 
-    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">with</span> <span class="hljs-string">kaniko</span>
-    <span class="hljs-bullet">-</span> <span class="hljs-attr">uses:</span> <span class="hljs-string">...</span> <span class="hljs-comment"># mit kaniko (o.ä) das dockerfile bauen und dann ins repository hochladen</span>
-
-
-    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Release</span> <span class="hljs-string">with</span> <span class="hljs-string">Notes</span> <span class="hljs-comment"># freiwilliges extra, release im repo erzeugen</span>
-      <span class="hljs-attr">uses:</span> <span class="hljs-string">softprops/action-gh-release@v1</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Set</span> <span class="hljs-string">up</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Buildx</span>
+      <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/setup-buildx-action@v1</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Login</span> <span class="hljs-string">to</span> <span class="hljs-string">GitHub</span> <span class="hljs-string">Container</span> <span class="hljs-string">Registry</span>
+      <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/login-action@v1</span>
       <span class="hljs-attr">with:</span>
-        <span class="hljs-comment"># todo .. pfad zur jar-datei gezippter dist ordner etc. </span>
+        <span class="hljs-attr">registry:</span> <span class="hljs-string">ghcr.io</span>
+        <span class="hljs-attr">username:</span> <span class="hljs-string">${{</span> <span class="hljs-string">github.actor</span> <span class="hljs-string">}}</span>
+        <span class="hljs-attr">password:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">}}</span>
+    <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">push</span> <span class="hljs-string">Docker</span> <span class="hljs-string">image</span>
       <span class="hljs-attr">env:</span>
-        <span class="hljs-attr">GITHUB_TOKEN:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.GITHUB_TOKEN</span> <span class="hljs-string">}}</span>
+        <span class="hljs-attr">DOCKER_BUILDKIT:</span> <span class="hljs-number">1</span>
+      <span class="hljs-attr">run:</span> <span class="hljs-string">|
+        docker buildx build \
+          --progress plain \
+          --tag ghcr.io/&lt;your-username/orgname&gt;/&lt;your_reponame&gt;:latest (or ${{github.tag}} when pushed on tag ) \
+          --push .
+</span>
 </div></code></pre>
-<blockquote>
-<p><a href="https://cloud.google.com/build/docs/optimize-builds/kaniko-cache?hl=de">Anleitung zum Containerimages bauen mit Kaniko</a></p>
-</blockquote>
 <blockquote>
 <p><a href="https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry">Einführung in Container Registries in Github</a></p>
 </blockquote>
@@ -458,10 +504,10 @@ code {
 </ul>
 <p><em>Punkteverteilung</em></p>
 <ul>
-<li>Nach einem Docker-Login von meiner Seite mit eurem Token kann ich die Images pullen 25P</li>
-<li>Die Images können ausgeführt werden ohne sofort abzustürzen 25P</li>
+<li>Nach einem Docker-Login von meiner Seite mit eurem Token kann ich die Images pullen 33P</li>
+<li>Die Images können ausgeführt werden ohne sofort abzustürzen 33P</li>
 <li>Bei den Tags gibt es sowohl eine aktuelle Version vX.Y als auch einen <code>latest</code>-Tag für die neueste Version 25P</li>
-<li>Beim Build eines neuen Images gibt es eine Schritt (Step) für das Ausführen von Unittests 25P</li>
+<li>Beim Build eines neuen Images gibt es eine Schritt (Step) für das Ausführen von Unittests 33P</li>
 </ul>
 <h2 id="weitere-unterlagen">Weitere Unterlagen</h2>
 <blockquote>
