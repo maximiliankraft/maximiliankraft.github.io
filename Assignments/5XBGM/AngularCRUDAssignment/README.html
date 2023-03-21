@@ -416,13 +416,38 @@ code {
 <p>Das Frontend werde ich mit <code>ng serve</code> starten. Auch hier bitte darauf achten dass <code>node_modules</code>, <code>.angular</code> etc. nicht commited werden.</p>
 <h3 id="bewertungsgrundlagen">Bewertungsgrundlagen</h3>
 <ul>
-<li>Backend ausführbar 10P</li>
-<li>Frontend ausführbar 10P</li>
-<li>Patientenliste wird angezeigt 20P</li>
-<li>Patient kann bearbeitet werden 20P</li>
-<li>Patient kann gelöscht werden 20P</li>
-<li>Einzelner Patient wird angezeigt 20P</li>
+<li>Backend ausführbar 10P
+<ul>
+<li>Der Befehl <code>mvn spring-boot:run</code> stürzt nicht ab</li>
 </ul>
+</li>
+<li>Frontend ausführbar 10P
+<ul>
+<li>Der Befehl <code>ng serve</code> stürzt nicht ab</li>
+</ul>
+</li>
+<li>Patientenliste wird angezeigt 20P
+<ul>
+<li>Ein HTTP-Request mit den Patienten kommt an und ausgewählte Spalten können in der Übersicht angezeigt werden.</li>
+</ul>
+</li>
+<li>Patient kann bearbeitet werden 20P
+<ul>
+<li>Klickt man in der Übersicht auf <code>Edit</code> kommt man auf <code>/patient/:id</code>. Dort sind ganz viele bearbeitbare Textfelder</li>
+</ul>
+</li>
+<li>Patient kann gelöscht werden 20P
+<ul>
+<li>Durch einen klick auf <code>Delete</code> wird ein HTTP Request ausgeführt um den Patienten mit gegebener Id aus der DB zu entfernen</li>
+</ul>
+</li>
+<li>Einzelner Patient wird angezeigt 20P
+<ul>
+<li>Gleich wie Edit nur das die Felder nicht bearbeitbar sein sollten</li>
+</ul>
+</li>
+</ul>
+<p>Lade in deinem Repository eine Datei <code>bewertung.md</code> hoch in der du jedem der obigen Anforderungen (Teil)Punkte gibst. Begründe deine Punkteanzahl.</p>
 <h3 id="tutorials-zum-nachlesen">Tutorials zum Nachlesen</h3>
 <blockquote>
 <p><a href="https://angular.io/guide/routing-overview">Routing</a></p>

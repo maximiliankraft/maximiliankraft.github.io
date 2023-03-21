@@ -53,12 +53,19 @@ Das Frontend werde ich mit `ng serve` starten. Auch hier bitte darauf achten das
 ### Bewertungsgrundlagen
 
 - Backend ausführbar 10P
+    - Der Befehl `mvn spring-boot:run` stürzt nicht ab
 - Frontend ausführbar 10P
+    - Der Befehl `ng serve` stürzt nicht ab
 - Patientenliste wird angezeigt 20P
+    - Ein HTTP-Request mit den Patienten kommt an und ausgewählte Spalten können in der Übersicht angezeigt werden.
 - Patient kann bearbeitet werden 20P
+    - Klickt man in der Übersicht auf `Edit` kommt man auf `/patient/:id`. Dort sind ganz viele bearbeitbare Textfelder
 - Patient kann gelöscht werden 20P
+    - Durch einen klick auf `Delete` wird ein HTTP Request ausgeführt um den Patienten mit gegebener Id aus der DB zu entfernen
 - Einzelner Patient wird angezeigt 20P
+    - Gleich wie Edit nur das die Felder nicht bearbeitbar sein sollten
 
+Lade in deinem Repository eine Datei `bewertung.md` hoch in der du jedem der obigen Anforderungen (Teil)Punkte gibst. Begründe deine Punkteanzahl. 
 
 ### Tutorials zum Nachlesen
 
