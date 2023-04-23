@@ -71,13 +71,22 @@ GrantedAuthority sollten folgende Daten enthalten sein:
 
 Die folgenden Aufgaben sollen über das Aufrufen von Endpoints geschehen (via mockMvc):
 
-- Ein Benutzer wird neu angelegt (20P)
-- Ein Administrator teilt dem neuen Benutzer Berechtigungen zu (20P)
-- Anlegen eines neuen Objekts (z.B Patient) (20P)
+- ~~Ein Benutzer wird neu angelegt (20P)~~
+- ~~Ein Administrator teilt dem neuen Benutzer Berechtigungen zu (20P)~~
+- Anlegen eines neuen Objekts (z.B Patient, oder eine kleinere FHIR Ressource) (20P)
 - Freigeben eines Objekts von einem Benutzer zu einem anderen (20P)
 - Aufrufen eines Objekts mit Berechtigungen (10P)
 - Versuch ein Objekt mit fehlenden Berechtigungen aufzurufen (10P)
 
+## Checkliste vor der Abgabe
+
+- Sind alle Änderungen comitted?
+- Sind alle Änderungen gepusht und hat jeder den gleichen Stand?
+- Stürzt das Programm ab wenn man es startet oder die neuen Endpunkte (mit Fehlerhaften Daten) aufruft?
+- Werden alle Tests erfolgreich ausgeführt in der Konsole mit den Befehlen `gradle test` oder `mvn test`?
+- Hat jeder ungefähr gleich viel comitted?
+
 ## Anleitungen
 > [Beispielrepository + Anleitung](https://github.com/maximiliankraft/spring-security-guid/blob/master/anleitung.md) 
 
+> [Aktuelles Spring Security Tutorial](https://www.youtube.com/watch?v=b9O9NI-RJ3o)

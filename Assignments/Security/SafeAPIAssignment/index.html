@@ -421,16 +421,27 @@ GrantedAuthority sollten folgende Daten enthalten sein:</p>
 <h2 id="zu-testende-situationen">Zu testende Situationen</h2>
 <p>Die folgenden Aufgaben sollen über das Aufrufen von Endpoints geschehen (via mockMvc):</p>
 <ul>
-<li>Ein Benutzer wird neu angelegt (20P)</li>
-<li>Ein Administrator teilt dem neuen Benutzer Berechtigungen zu (20P)</li>
-<li>Anlegen eines neuen Objekts (z.B Patient) (20P)</li>
+<li><s>Ein Benutzer wird neu angelegt (20P)</s></li>
+<li><s>Ein Administrator teilt dem neuen Benutzer Berechtigungen zu (20P)</s></li>
+<li>Anlegen eines neuen Objekts (z.B Patient, oder eine kleinere FHIR Ressource) (20P)</li>
 <li>Freigeben eines Objekts von einem Benutzer zu einem anderen (20P)</li>
 <li>Aufrufen eines Objekts mit Berechtigungen (10P)</li>
 <li>Versuch ein Objekt mit fehlenden Berechtigungen aufzurufen (10P)</li>
 </ul>
+<h2 id="checkliste-vor-der-abgabe">Checkliste vor der Abgabe</h2>
+<ul>
+<li>Sind alle Änderungen comitted?</li>
+<li>Sind alle Änderungen gepusht und hat jeder den gleichen Stand?</li>
+<li>Stürzt das Programm ab wenn man es startet oder die neuen Endpunkte (mit Fehlerhaften Daten) aufruft?</li>
+<li>Werden alle Tests erfolgreich ausgeführt in der Konsole mit den Befehlen <code>gradle test</code> oder <code>mvn test</code>?</li>
+<li>Hat jeder ungefähr gleich viel comitted?</li>
+</ul>
 <h2 id="anleitungen">Anleitungen</h2>
 <blockquote>
 <p><a href="https://github.com/maximiliankraft/spring-security-guid/blob/master/anleitung.md">Beispielrepository + Anleitung</a></p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.youtube.com/watch?v=b9O9NI-RJ3o">Aktuelles Spring Security Tutorial</a></p>
 </blockquote>
 
 </body>
