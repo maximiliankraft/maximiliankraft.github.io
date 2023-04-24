@@ -90,3 +90,4 @@ Die folgenden Aufgaben sollen über das Aufrufen von Endpoints geschehen (via mo
 > [Beispielrepository + Anleitung](https://github.com/maximiliankraft/spring-security-guid/blob/master/anleitung.md) 
 
 > [Aktuelles Spring Security Tutorial](https://www.youtube.com/watch?v=b9O9NI-RJ3o)
+> - Die Basic Authentication Kapitel sind wichtig
