@@ -73,9 +73,9 @@ Die folgenden Aufgaben sollen über das Aufrufen von Endpoints geschehen (via mo
 
 - ~~Ein Benutzer wird neu angelegt (20P)~~
 - ~~Ein Administrator teilt dem neuen Benutzer Berechtigungen zu (20P)~~
-- Anlegen eines neuen Objekts (z.B Patient, oder eine kleinere FHIR Ressource) (20P)
-- Freigeben eines Objekts von einem Benutzer zu einem anderen (20P)
-- Aufrufen eines Objekts mit Berechtigungen (10P)
+- Anlegen eines neuen FHIR-Objekts (z.B Patient, oder eine kleinere FHIR Ressource) (20P)
+- Freigeben des neuen FHIR-Objekts von einem Benutzer zu einem anderen (20P)
+- Aufrufen eines neuen FHIR-Objekts mit Berechtigungen (10P)
 - Versuch ein Objekt mit fehlenden Berechtigungen aufzurufen (10P)
 
 ## Checkliste vor der Abgabe
