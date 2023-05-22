@@ -14,6 +14,6 @@ Erstellt ein Protokoll darüber wie ihr vorgegangen seid. Ihr könnt alleine ode
 In dem Protokoll soll enthalten sein:
  - Eine Anleitung wie man das safeapi-Projekt auf postgres umstellt
  - Wie man die Postgres-Version in einen Container packt
- - Wie man den loaklen Container mit einem externen Postgres Container zusammenarbeiten lässt
+ - Wie man den lokalen Container mit einem externen Postgres Container zusammenarbeiten lässt
  - Aufgekommene Probleme und Lösungsstrategien
  - Mit Quellenangaben zu den Lösungen bzw. verwendeten Anleitungen
