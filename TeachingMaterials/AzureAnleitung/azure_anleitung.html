@@ -400,13 +400,8 @@ code {
 <p>Ist das Update fertig können wir diverse Programme installieren. Wir benötigen docker und compose fürs Ausführen sowie unzip um die zip-Datei zu entpacken. Als kleines Hilfsprogramm noch dos2unix.</p>
 <p><code>sudo apt install docker docker-compose unzip dos2unix -y</code></p>
 <p>Nun können wir mit <code>unzip &lt;dateiname&gt;.zip</code> unser Projekt auspacken. Um in den darin erstellen Ordner zu wechseln gibt es das Kommando <code>cd &lt;dein-projektordner&gt;</code>.</p>
-<h2 id="jar-datei-bauen">jar-Datei bauen</h2>
-<p>Die jar-Datei kann man mit dem gewrappten maven <code>mvnw</code> bauen. Der Befehl dafür lautet:</p>
-<p><code>./mvnw clean package -DskipTests</code></p>
-<p>Falls die Datei nicht als ausführbare Datei deklariert ist kann man dies unter Linux mit</p>
-<p><code>chmod +x mvnw</code> ändern.</p>
 <h2 id="compose-ausf%C3%BChren">compose ausführen</h2>
-<p>Sobald eine unter Linux paketierte jar-Datei vorliegt können die Container gestartet werden. Das funktioniert - wie unter Windows auch - mit <code>docker-compose up</code></p>
+<p>Das funktioniert - wie unter Windows auch - mit <code>docker-compose up</code>. Innerhalb des containers wird dann das <code>Dockerfile</code> aufgebaut und ausgeführt.</p>
 <h3 id="port-8080-in-compose-ummappen">Port 8080 in compose ummappen</h3>
 <p>Wie in einem oberen Screenshot ersichtlich werden in Azure nur die Ports 22, 80 und 443 veröffentlicht. Da unsere Spring-Anwendung jedoch auf dem Port 8080 arbeitet müssen wir den Netzwerkverkehr umleiten.</p>
 <p>Durch verändern der docker-compose.yml-Datei ist das ganz einfach möglich. Wie der innere auf den äußeren Port umgeleitet wird, wird immer foldendermaßen angegeben: <code>&lt;aussenport&gt;:&lt;innenport&gt;</code>. Statt <code>8080:8080</code> müssen wir also <code>80:8080</code> schreiben.</p>

@@ -1,5 +1,6 @@
 # Azure Deployment
 
+
 ## VM Anlegen
 
 1. Auf [portal.azure.com](https://portal.azure.com) mit der Spengergasse-Email anmelden
@@ -63,19 +64,8 @@ Ist das Update fertig können wir diverse Programme installieren. Wir benötigen
 
 Nun können wir mit `unzip <dateiname>.zip` unser Projekt auspacken. Um in den darin erstellen Ordner zu wechseln gibt es das Kommando `cd <dein-projektordner>`.
 
-## jar-Datei bauen
-
-Die jar-Datei kann man mit dem gewrappten maven `mvnw` bauen. Der Befehl dafür lautet:
-
-`./mvnw clean package -DskipTests`
-
-Falls die Datei nicht als ausführbare Datei deklariert ist kann man dies unter Linux mit
-
-`chmod +x mvnw` ändern.
-
 ## compose ausführen
-
-Sobald eine unter Linux paketierte jar-Datei vorliegt können die Container gestartet werden. Das funktioniert - wie unter Windows auch - mit `docker-compose up`
+ Das funktioniert - wie unter Windows auch - mit `docker-compose up`. Innerhalb des containers wird dann das `Dockerfile` aufgebaut und ausgeführt. 
 
 ### Port 8080 in compose ummappen
 
