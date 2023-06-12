@@ -4,6 +4,9 @@
 ## VM Anlegen
 
 1. Auf [portal.azure.com](https://portal.azure.com) mit der Spengergasse-Email anmelden
+
+> WICHTIG: Während der Anmeldung niemals Kreditkartendaten angeben. Falls Azure das verlangt nochmal prüfen ob ihr ein Studentenkonto erstellt habt. 
+
 2. Zum `Virtuelle Computer` Menü gehen
 
 ![](2022-03-21-09-25-37.png)
