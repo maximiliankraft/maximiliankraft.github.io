@@ -182,12 +182,28 @@ Um einer KI eine Frage stellen zu können muss man zunächst Zugriff auf ein KI 
 
 Aufgrund der aktuell noch hohen technischen Anforderungen konzentriert sich dieser Ratgeber auf KI-Angebote welche man über das Internet verwenden kann. Es ist jedoch davon auszugehen dass in den nächsten Jahren eine Offline-KI immer leistbarer wird.
 
-### [ChatGPT](chat.openai.com)
+<!-- ### [ChatGPT](chat.openai.com) -->
+
+### [Github Copilot](https://copilot.github.com)
+
+Github Copilot ist ein Plugin für VS Code und Visual Studio welches auf dem GPT-3 Modell von OpenAI basiert. Es kann Code-Vervollständigungen und ganze Funktionen generieren. 
+Um als Schüler Github Copilot verwenden zu können muss man sich mit einer E-Mail-Adresse registrieren 
+welche auf einer Schule endet. Mehr infos dazu gibt es [hier - Quickstart](https://docs.github.com/en/copilot/quickstart).
+Und [hier - Registrierungsprozess Anleitung](https://docs.github.com/de/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-global-campus-for-students/apply-to-github-global-campus-as-a-student#bewerben-bei-github-global-campus).
+
+[VS Code Plugin](https://marketplace.visualstudio.com/items?itemName=GitHub.copilot)
+
+[Visual Studio Plugin](https://marketplace.visualstudio.com/items?itemName=GitHub.copilotvs)
+
 
 
 ### [Jetbrains AI Assistant](https://blog.jetbrains.com/de/idea/2023/07/ai-assistant-in-jetbrains-ides/)
 
-Enthalten in einer Schülerlizent von Jetbrains-Produkten basiert auf ChatGPT. Aktuell nur in den Early Access Versionen von deren Programmen verfügbar. 
+Enthalten in einer Schülerlizen von Jetbrains-Produkten basiert auf ChatGPT. Aktuell nur in den Early Access Versionen von deren Programmen verfügbar. Das Plugin muss manuell installiert werden. 
+
+[AI Assistant Plugin](https://plugins.jetbrains.com/plugin/22282-ai-assistant)
+
+[weitere Informationen](https://blog.jetbrains.com/de/idea/2023/07/ai-assistant-in-jetbrains-ides/)
 
 ### [Chatsonic](https://writesonic.com/chat)
 
