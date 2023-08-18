@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>promptingBook.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="programmieren-lernen-mit-hilfe-von-k%C3%BCnstlicher-intelligenz">Programmieren lernen mit Hilfe von Künstlicher Intelligenz</h1>
+<!--## Einleitung
+
+Dieser Artikel soll Schülern im Alter von 14 bis 19 ein Ratgeber sein wie man sich selbst programmieren beibringen kann. Dabei liegt der Fokus auf dem Einsatz generativer künstlicher Intelligenz. Es wird beschrieben wie man das Potential dieser Technologie nuten kann. Programmieren ist neben einem wissenschaftlichen Fachgebiet auch ein Handwerk. Neben den theoretischen Grundlagen muss man auch wirklich programmieren um zu verstehen wie es funktioniert.
+
+Dabei stoßt man gerade am Anfang auf Probleme auf die man keine Antwort hat. In solchen Fällen ist es Ratsam sich an einen Lehrer oder Mitschüler zu wenden. Durch die rasanten Fortschritte in der künstlichen Intelligenz ist es aber aber nun auch möglich einer KI fragen zu stellen.
+
+Eine KI kann Fragen 24 Stunden am Tag, 7 Tage pro Wochen beantworten, so detailiert werden wie Nötig und kann sich für Fragen so viel Zeit nehmen wie nötig. Ein Lehrer kann dafür auch schlecht gestellte Fragen beantworten und eine Richtung vorgeben was der Schüler zu lernen hat. Die beiden können sich also wenn richtig eingesetzt ergänzen statt ersetzen.
+-->
+<h2 id="der-aufbau-gro%C3%9Fer-sprachmodelle-llms">Der Aufbau großer Sprachmodelle (LLMs)</h2>
+<p>Bevor wir uns die Vorgehensweise ansehen müssen erst einmal ein paar Begriffe erklärt werden. Die Zusammenhänge von Wörtern bzw. Wortteilen werden in einem <code>Tensor</code> gespeichert. Ein Tensor ist eine höherdimensionale Form eines Vektor. Ein Vektor ist eine Liste von Zahlen worin jeder Zahl ein Index zugewiesen werden kann. So befindet sich im Vektor
+$$\begin{pmatrix}
+1 \
+2 \
+3
+\end{pmatrix}$$
+am Index $4$ die Zahl bzw. der Skalar $7$. Man kann also mit einem 1-Dimensionalen Index (Fachbegriff wäre Tupel) genau beschreiben wie die Werte im Vektor verteilt sind. Bei der Matrix</p>
+<p>$$
+\begin{bmatrix}
+1 &amp; 2 &amp; 3 \
+a &amp; b &amp; c
+\end{bmatrix}
+$$</p>
+<p>braucht man schon zwei Werte um eine Position innerhalb der Matrix zu beschreiben. An der Position $(1,1)$ befindet sich die Zahl $1$. Tensoren sind nun die Erweiterung von Vektoren und Matrizen in höhrere Dimensionen. So könnte man mit dem Tupel $(1,1,1)$ einen Wert in einer &quot;3D-Matrix&quot; beschreiben. Der Fachbegriff dafür wäre Tensor. Wie eine &quot;3D-Matrix&quot; aussehen könnte kann man sich noch vorstellen. Jedoch gibt es keine Grenzen wie viele Dimensionen ein Tensor haben kann.</p>
+<p>Aktuelle große Sprachmodelle (engl. Large Language Models) verfügen über einen 12.000-Dimensionalen Tensor in welchem in verschiedenen Indices Tokens abgespeichert werden. Damit ist es möglich innerhalb eines Systems Kontext zu simulieren.</p>
+<p>In einem 12000-Tensor (bei ChatGPT sind es 12288) sind die Möglichkeiten Verbindungen darzustellen reichhaltig genug um die des Gehirns genau genug zu simulieren um menschliche Sprache numerisch abzubilden.</p>
+<p>Aber was sind jetzt diese <code>Token</code>? Token sind Textbausteine welche die KI während dem Training so oft gesehen hat dass sie es für Sinnvoll erachtet hat diese zusammenzufassen. Kurze und häufige Wörter haben nur einen Token. So hat laut dem <a href="https://platform.openai.com/tokenizer">ChatGPT Tokenizer</a> das englische Wort <code>The</code> dem Token 494. Längere Wörter bestehen aus mehreren Tokens. <code>Spengergasse</code> besteht z.B aus den 5 Token S/pen/ger/g/asse. Für die KI im Rahmen ihres Kontext-Tensors bedeutet Spengergasse [50, 3617, 1362, 70, 21612].</p>
+<p>Ein <code>Transformer</code> (das T in GPT) versucht nun diese Tokens in den Kontext-Tensor zu geben um vorherzusagen welcher Token am wahrscheinlichsten der nächste ist. Ganz wichtig:</p>
+<blockquote>
+<p>Ein Sprachmodell versucht immer einen Token nach dem anderen vorherzusagen.</p>
+</blockquote>
+<p>Beim Umgang mit Sprachmodellen ist diese Vorgehensweise der KI immer zu beachten. Mit der Fragestellung an die KI sollte der nächste Token so einfach wie möglich vorherzusagen sein. Stell dir vor du startest einen Satz und ein Freund von dir soll diesen beenden. Sowohl Menschen als auch KIs werden es schwer finden den Satzteil <code>Ich habe</code> zu vervollständigen. Es fehlt der Kontext.</p>
+<blockquote>
+<p>Durch eine genauere Ausformulierung kann man jedoch genug Kontext erzeugen um eine vorhersage der nächsten Wörter/Tokens zu vereinfachen.</p>
+</blockquote>
+<p>Der Satzteil <code>Ich habe Hunger und würde gerne etwas</code> ist schon wesentlich leichter vervollständigbar.</p>
+<h2 id="prompting">Prompting</h2>
+<p>Mit einem Prompt gibt man einer generativen KI einen Text den sie versucht - Token für Token - zu vervollständigen. Bei einem Chatbot ist die Vervollständigung meist die Antwort auf eine Frage. Es kann aber auch eine Anweisung enthalten welche dann ausgeführt wird.</p>
+<h3 id="zero-shot-prompting"><a href="https://www.promptingguide.ai/techniques/zeroshot">Zero Shot Prompting</a></h3>
+<p>Nachdem eine KI schon auf vielen Daten vortrainiert ist kann es möglich sein dass man auch ohne ein Beispiel eine brauchbare Antwort bekommt. Der Kontext wurde also schon antrainiert.</p>
+<p>Beispielhaft z.B folgender Prompt an ChatGPT:</p>
+<p>Anweisung:
+Programmiere mir in C# eine Funktion welche die Fibonacci-Folge auf der Konsole ausgibt.</p>
+<p>Code:</p>
+<blockquote>
+<p>ChatGPT</p>
+</blockquote>
+<p>Hier ist eine C#-Funktion, die die Fibonacci-Folge auf der Konsole ausgibt:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">using</span> System;
+
+<span class="hljs-keyword">class</span> <span class="hljs-title">Program</span>
+{
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"></span>)</span>
+    {
+        <span class="hljs-keyword">int</span> count = <span class="hljs-number">10</span>; <span class="hljs-comment">// Anzahl der Fibonacci-Zahlen, die ausgegeben werden sollen</span>
+
+        Console.WriteLine(<span class="hljs-string">"Fibonacci-Folge:"</span>);
+        PrintFibonacciSequence(count);
+
+        Console.ReadLine();
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">PrintFibonacciSequence</span>(<span class="hljs-params"><span class="hljs-keyword">int</span> count</span>)</span>
+    {
+        <span class="hljs-keyword">int</span> first = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">int</span> second = <span class="hljs-number">1</span>;
+
+        Console.Write(<span class="hljs-string">$"<span class="hljs-subst">{first}</span>, <span class="hljs-subst">{second}</span>"</span>);
+
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; count; i++)
+        {
+            <span class="hljs-keyword">int</span> next = first + second;
+            Console.Write(<span class="hljs-string">$", <span class="hljs-subst">{next}</span>"</span>);
+            first = second;
+            second = next;
+        }
+
+        Console.WriteLine();
+    }
+}
+</div></code></pre>
+<p>Dieses Programm gibt die ersten 10 Fibonacci-Zahlen auf der Konsole aus. Du kannst die Variable <code>count</code> anpassen, um eine beliebige Anzahl von Fibonacci-Zahlen auszugeben.</p>
+<hr>
+<p>Mit vermindertdem Kontext ist des der KI (und auch Menschen) schwerer möglich eine gute Antwort &quot;vorherzusagen&quot;. Eine weitere bekannte Folge neben der Fibonacci-Reihe ist die Lukas-Folge. Möchte man diese von einem Programm generieren lassen wird das mit folgendem Prompt schwierig.</p>
+<p>Prompt an ChatGPT:</p>
+<p>Lukas-Folge.</p>
+<blockquote>
+<p>ChatGPT</p>
+</blockquote>
+<p>Es tut mir leid, aber ich kann keine Informationen über eine &quot;Lukas-Folge&quot; finden. Könnten Sie bitte weitere Informationen bereitstellen oder Ihre Frage genauer formulieren?</p>
+<h3 id="few-shot-prompting"><a href="https://www.promptingguide.ai/techniques/fewshot">Few Shot Prompting</a></h3>
+<p>Zero-Shots funktionieren gut bei einfachen Beispielen. Um komplexe Aufgaben von einer KI erledigen zu lassen kann es helfen ein paar Beispiele zu geben als Kontext. Z.b folgendes:</p>
+<p>Anweisung</p>
+<pre class="hljs"><code><div><span class="hljs-comment">// get keys from first row only</span>
+<span class="hljs-keyword">const</span> firstRowKeys = <span class="hljs-built_in">Object</span>.keys(sheetData[<span class="hljs-number">0</span>]);
+
+<span class="hljs-comment">// get keys from each row and remove duplicates by using a set</span>
+</div></code></pre>
+<blockquote>
+<p>ChatGPT</p>
+</blockquote>
+<pre class="hljs"><code><div><span class="hljs-keyword">const</span> allKeys = <span class="hljs-keyword">new</span> Set&lt;<span class="hljs-built_in">string</span>&gt;();
+sheetData.forEach(<span class="hljs-function">(<span class="hljs-params">row</span>) =&gt;</span> {
+   <span class="hljs-built_in">Object</span>.keys(row).forEach(<span class="hljs-function">(<span class="hljs-params">key</span>) =&gt;</span> {
+       allKeys.add(key);
+   });
+
+});
+</div></code></pre>
+<p>Auch ist es möglich beim Programmieren den Prompt sich Iterativ durch Erweiterungen wie `Github Copilot` zu generieren.</p>
+<h3 id="chain-of-thought-prompting"><a href="https://www.promptingguide.ai/techniques/cot">Chain of thought Prompting</a></h3>
+<blockquote>
+<p><a href="https://arxiv.org/abs/2201.11903">Original Paper auf arXiv</a></p>
+</blockquote>
+<p>Was passiert wenn man jemanden die Frage stellt: <code>Wie viel ist 2734 x 5?</code>. Und man muss wie eine KI Wort für Wort eine Antwort produzieren? Die nächsten Wörter werden wahrscheinlich nicht die Antwort auf die Frage sein. Sondern eher &quot;Ich weiß es nicht.&quot; oder &quot;Lass mich das kurz ausrechnen.&quot; Was wäre wenn man die Frage umformuliert: <code>Was ist das Ergebnis der Multiplikation 2734 x 5? Als kleine Hilfestellung: 4x5x1=20 an der Einerstelle. 3x5x10 ist 150 an der Zehnerstelle. An der Hunderterstele ist es 7x5x100 und an der Tausenderstelle 2x5x1000. Du musst also die Zahlen 20,150,3500 und 10000 addieren. Das Ergebnis davon ist</code>. Dann wäre es dadurch das man den eigenen Denkprozess dargelegt hat sowohl für einen Menschen als auch eine KI einfacher die nächsten Token vorherzusagen bzw. sich in die Denkweise &quot;hineinzuversetzen&quot;.</p>
+<blockquote>
+<p>Achte beim Umgang mit einem LLM also immer darauf deine Denkprozesse so genau wie möglich zu beschreiben damit diese von der KI weiter gesponnen werden können.</p>
+</blockquote>
+<h3 id="self-consistency"><a href="https://www.promptingguide.ai/techniques/consistency">Self Consistency</a></h3>
+<blockquote>
+<p><a href="https://arxiv.org/abs/2203.11171">Original arXiv Paper</a></p>
+</blockquote>
+<p>Bei der Self-Consistency werden Few-Shot Prompting und Cot (Chain of Thought) Promting kombiniert. Es werden in einem Prompt mehrere Denkprozesse detailiert beschrieben. Es ist dann die Aufgabe der KI auszuwählen welcher Denkprozess am besten passt.</p>
+<h2 id="weitere-stragegien">Weitere Stragegien</h2>
+<p>Im <a href="https://www.promptingguide.ai/techniques">Prompt Engineering Guide</a> sind noch einige weitere Techniken aufgelistet. Z.b eine Fragestellung mit Allgemeinwissen als Kontext zu erweitern, Bei RAG wird das Allgemeinwissen (bzw. Speazialwissen) automatisch hinzugefügt. Es können Dinge wie Rechenaufgaben und die Validierung logischer Ausdrücke an externe Programme weitergegeben werden uvm.</p>
+<h2 id="genauigkeit-erh%C3%B6hen">Genauigkeit erhöhen:</h2>
+<!-- https://github.com/openai/openai-cookbook/blob/main/techniques_to_improve_reliability.md -->
+<h3 id="teilaufgaben">Teilaufgaben</h3>
+<h2 id="l%C3%B6sungsstrategien">Lösungsstrategien</h2>
+<h3 id="program-aided-language-models">Program Aided Language Models</h3>
+<!-- % https://www.promptingguide.ai/applications/pal -->
+<h2 id="verf%C3%BCgbare-ressorucen">Verfügbare Ressorucen</h2>
+<p>Um einer KI eine Frage stellen zu können muss man zunächst Zugriff auf ein KI System haben. In diesem Abschnitt wird beschrieben welche Möglichkeiten man 2023 hat um ein KI System nutzen zu können. Aufgrund der hohen Ressourcennutzung ist es aktuell noch einfacher einen Prompt an einen Server zu senden und die Antwort dann zurückgesendet zu bekommen.</p>
+<h3 id="ben%C3%B6tigte-rechenleistung">Benötigte Rechenleistung</h3>
+<p>OpenAI, der Ersteller von ChatGPT hat keine offiziellen Zahlen veröffentlicht wie hoch die Systemressourcen sind um deren KI auszuführen. Man kann allerdings abschätzen dass ca. 6 Nvidia A100 Tensor GPUs, 16-Kern CPUs, 64+ GB RAM und mehrere 100GB Festplattenspeicher rein für die Ausführung benötigt werden.</p>
+<p>Damit kommt man auf ein Computersystem welches Kosten von mehreren 100.000€ besitzt. Auch ist die Nachfolge-GPU H100 nicht gerade billiger, das Potential für die Fähigkeiten von KIs wird dadurch aber erhöht.</p>
+<p>Für das Trainieren einer KI wird ein vielfaches der Ressourcen benötigt, also mehrere Millionen Euro. Es ist aber davon auszugehen dass bei einer Optimierung der KI-Systeme diese weniger Rechenleistung benötigen werden, und gleichzeitig Hardwareherstleller Chips entwickelen werden die optimiert darauf sind KI-Systeme auszuführen. Also sehr große Matrix bzw. Tensormultiplikationen durchführen zu können. Vielleicht kann dein Computer schon in ein paar Jahren eine KI lokal ausführen die auf dem Niveau des heutigen ChatGPT ist.</p>
+<h2 id="online-angebote">Online Angebote</h2>
+<p>Aufgrund der aktuell noch hohen technischen Anforderungen konzentriert sich dieser Ratgeber auf KI-Angebote welche man über das Internet verwenden kann. Es ist jedoch davon auszugehen dass in den nächsten Jahren eine Offline-KI immer leistbarer wird.</p>
+<h3 id="chatgpt">ChatGPT</h3>
+<blockquote>
+<p>chat.openai.com</p>
+</blockquote>
+<h3 id="jetbrains-ai-assistant">Jetbrains AI Assistant</h3>
+<blockquote>
+<p>Enthalten in einer Schülerlizent von Jetbrains-Produkten basiert auf ChatGPT</p>
+</blockquote>
+<h3 id="chatsonic">Chatsonic</h3>
+<blockquote>
+<p>Basiert auf ChatGPT, kann jedoch zusätzlich recherchen im Internet anstellen.</p>
+</blockquote>
+<h2 id="offline-angebote">Offline Angebote</h2>
+<h3 id="llama">LLaMa</h3>
+<blockquote>
+<p>KI-Modell trainiert von Meta und der Öffentlichkeit frei zur Verfügung gestellt.</p>
+</blockquote>
+<h3 id="alpaca">Alpaca</h3>
+<blockquote>
+<p>LLaMa so umgefort dass es auch auf heute verfügbarer Hardware einigermaßen schnell läuft. Kann hier heruntergeladen und lokal ausgeführt werden: https://github.com/antimatter15/alpaca.cpp</p>
+</blockquote>
+<h2 id="funktionsweisen">Funktionsweisen</h2>
+<h3 id="natural-language-processing">Natural language processing</h3>
+<p>Beim <code>Natural Language Processing</code> (NLP) wird zunächst die natürliche Sprache analysiert und um bestimmte Informationen erweitert (<code>Data Augmentation</code>). So wird zu jedem Wort bzw. Wortteil gespeichert welche Art von Wort (Subjekt, Prädikat etc.) es ist. Diese Information wird dann an einen Transformer oder an andere Systeme weitergegeben welche eine Folge von Wörter vorhersagen können. Aktueller Stand der Technik sind Transformer. Primitivere Techniken wären LSTM oder Markov Ketten.</p>
+<h3 id="pre-tokenizer">Pre-Tokenizer</h3>
+<h3 id="tokenizer">Tokenizer</h3>
+<p>Abbildung: &lt;|endoftext|&gt; wird zum Textende tokenisiert <img src="2023-07-08-14-18-11.png" alt=""></p>
+<h3 id="transformatoren">Transformatoren</h3>
+<p>Temperature</p>
+<p>Grad der zufälligkeit.</p>
+<h2 id="weitere-unterlagen">Weitere Unterlagen</h2>
+<blockquote>
+<p><a href="https://github.com/openai/openai-cookbook">Open AI Cookbook</a> eine Sammlung von Unterlagen wie man mit LLMs von OpenAI am besten umgeht</p>
+</blockquote>
+<blockquote>
+<p><a href="https://www.promptingguide.ai">promptingguide.ai</a> eine Sammlung von Wissenschaftlichen Artikeln und beschreibungen wie man eine Anweisung an eine KI formuliert</p>
+</blockquote>
+
+</body>
+</html>
