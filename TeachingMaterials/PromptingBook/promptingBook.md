@@ -1,6 +1,7 @@
 ---
 geometry: margin=1in
 linkcolor: blue
+# fontfamily: qag
 ---
 
 # Programmieren lernen mit Hilfe von Künstlicher Intelligenz
@@ -23,7 +24,7 @@ $$\begin{pmatrix}
 2 \\
 0
 \end{pmatrix}$$
- am Index $3$ die Zahl bzw. der Skalar $0$. Man kann also mit einem 1-Dimensionalen Index (Fachbegriff wäre Tupel) genau beschreiben wie die Werte im Vektor verteilt sind. Bei der Matrix 
+ am Index $3$ die Zahl bzw. der Skalar $0$. Man kann also mit einem 1-Dimensionalen Index genau beschreiben wie die Werte im Vektor verteilt sind. Bei der Matrix 
 
 $$
 \begin{bmatrix}
@@ -69,7 +70,7 @@ Programmiere mir in C# eine Funktion welche die Fibonacci-Folge auf der Konsole 
 
 Code:
 
-> ChatGPT
+*ChatGPT*
 
 Hier ist eine C#-Funktion, die die Fibonacci-Folge auf der Konsole ausgibt:
 
@@ -112,7 +113,7 @@ class Program
 
 Dieses Programm gibt die ersten 10 Fibonacci-Zahlen auf der Konsole aus. Du kannst die Variable `count` anpassen, um eine beliebige Anzahl von Fibonacci-Zahlen auszugeben.
 
-> Ende ChatGPT
+*Ende ChatGPT*
 
 Mit vermindertdem Kontext ist es der KI (und auch Menschen) schwerer möglich eine gute Antwort "vorherzusagen". Eine weitere bekannte Folge neben der Fibonacci-Reihe ist die Lukas-Folge. Möchte man diese von einem Programm generieren lassen wird das mit folgendem Prompt schwierig.
 
@@ -120,11 +121,11 @@ Prompt an ChatGPT:
 
 Lukas-Folge.
 
-> ChatGPT
+*ChatGPT*
 
 Es tut mir leid, aber ich kann keine Informationen über eine "Lukas-Folge" finden. Könnten Sie bitte weitere Informationen bereitstellen oder Ihre Frage genauer formulieren?
 
-
+*Ende ChatGPT*
 
 ### [Few Shot Prompting](https://www.promptingguide.ai/techniques/fewshot)
 
@@ -138,7 +139,8 @@ const firstRowKeys = Object.keys(excelSheetData[0]);
 // get keys from each row and remove duplicates by using a set
 ```
 
-> ChatGPT
+*ChatGPT*
+
 ```ts
 const allKeys = new Set<string>();
 excelSheetData.forEach((row) => {
@@ -149,10 +151,12 @@ excelSheetData.forEach((row) => {
 });
 ```
 
+*Ende ChatGPT*
+
 Auch ist es möglich beim Programmieren den Prompt sich Iterativ durch Erweiterungen wie \`Github Copilot\` zu generieren. 
 
 ### [Chain of thought Prompting](https://www.promptingguide.ai/techniques/cot)
-> [Original Paper auf arXiv](https://arxiv.org/abs/2201.11903)
+ [Original Paper auf arXiv](https://arxiv.org/abs/2201.11903)
 
 Was passiert wenn man jemanden die Frage stellt: `Wie viel ist 2734 x 5?`. Und man muss wie eine KI Wort für Wort eine Antwort produzieren? Die nächsten Wörter werden wahrscheinlich nicht die Antwort auf die Frage sein. Sondern eher "Ich weiß es nicht." oder "Lass mich das kurz ausrechnen." Was wäre wenn man die Frage umformuliert: `Was ist das Ergebnis der Multiplikation 2734 x 5? Als kleine Hilfestellung: 4x5x1=20 an der Einerstelle. 3x5x10 ist 150 an der Zehnerstelle. An der Hunderterstele ist es 7x5x100 und an der Tausenderstelle 2x5x1000. Du musst also die Zahlen 20,150,3500 und 10000 addieren. Das Ergebnis davon ist`. Dann wäre es dadurch das man den eigenen Denkprozess dargelegt hat sowohl für einen Menschen als auch eine KI einfacher die nächsten Token vorherzusagen bzw. sich in die Denkweise "hineinzuversetzen". 
 
@@ -161,7 +165,7 @@ Was passiert wenn man jemanden die Frage stellt: `Wie viel ist 2734 x 5?`. Und m
 
 ### [Self Consistency](https://www.promptingguide.ai/techniques/consistency)
 
-> [Original arXiv Paper](https://arxiv.org/abs/2203.11171)
+ [Original arXiv Paper](https://arxiv.org/abs/2203.11171)
 
 Bei der Self-Consistency werden Few-Shot Prompting und Cot (Chain of Thought) Promting kombiniert. Es werden in einem Prompt mehrere Denkprozesse detailiert beschrieben. Es ist dann die Aufgabe der KI auszuwählen welcher Denkprozess am besten passt. 
 
@@ -187,7 +191,7 @@ Enthalten in einer Schülerlizent von Jetbrains-Produkten basiert auf ChatGPT. A
 
 ### [Chatsonic](https://writesonic.com/chat)
 
-> Basiert auf ChatGPT, kann jedoch zusätzlich recherchen im Internet anstellen.
+Basiert auf ChatGPT, kann jedoch zusätzlich recherchen im Internet anstellen.
 
 ## Offline & frei Verfügbare Angebote
 
@@ -197,7 +201,7 @@ KI-Modell trainiert von Facebook und der Öffentlichkeit frei zur Verfügung ges
 
 ### Alpaca
 
-> LLaMa so umgefort dass es auch auf heute verfügbarer Hardware einigermaßen schnell läuft. Kann hier heruntergeladen und lokal ausgeführt werden: [https://github.com/antimatter15/alpaca.cpp](https://github.com/antimatter15/alpaca.cpp)
+LLaMa so umgefort dass es auch auf heute verfügbarer Hardware einigermaßen schnell läuft. Kann hier heruntergeladen und lokal ausgeführt werden: [https://github.com/antimatter15/alpaca.cpp](https://github.com/antimatter15/alpaca.cpp)
 
 
 
