@@ -21,10 +21,10 @@ class TodoItem
 
 
 class CSVService {
-  - List<TodoItem> loadItems()
-  - bool storeNewItem(TodoItem item)
-  - bool deleteOneItem(int id)
-  - bool updateOneItem(TodoItem item)
+  - List<TodoItem> LoadItems()
+  - bool StoreNewItem(TodoItem item)
+  - bool DeleteOneItem(int id)
+  - bool UpdateOneItem(TodoItem item)
 }
 
 @enduml
@@ -32,4 +32,12 @@ class CSVService {
 
 Lesen einer CSV-Datei kannst du von einer bestehenden Abgabe ableiten [hier](https://github.com/maximiliankraft/WienerLinienEchtzeitdaten/blob/main/WienerLinienEchtzeitdaten/Program.cs#L12). Zum schreiben von CSV-Dateien gibt es auf Stackoverflow schöne [Einträge](https://stackoverflow.com/a/18757340). Um Daten aus der CSV Datei zu ändern oder zu löschen kannst du die komplette CSV-Datei in eine Liste lesen die Änderung bei der entsprechenden Id anwenden und die neue Liste wieder in die CSV-Datei speichern.
 
+
+## Schritt 2
+
+Um den fertig programmierten Service verwenden zu können musst du in der Datei `Program.cs` ein Singelton hinzufügen mit `builder.Services.AddSingleton<servicename>();`. 
+
+## Schritt 3
+
+In der `ToDo.razor` um den Singelton verwenden zu können musst du den Service Injecten. Das geht mit `@inject servicename variablenname`. Im Code-Behind `@code`. Kannst du dann mit z.B `variablenname.LoadItems()` auf den Service zugreifen.
 
