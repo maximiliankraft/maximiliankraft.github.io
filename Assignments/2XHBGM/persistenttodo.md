@@ -10,6 +10,8 @@ Im Beispielcode ist bereits ein Service enthalten. Der `WeatherForecastService`.
 
 Lege im Ordner `/Data` eine neue Klasse an mit dem Namen `CSVService`. Diese Klasse wird Daten laden, speichern, ändern und löschen können. Das UML Diagramm dafür könnte z.B so aussehen:
 
+![](https://www.planttext.com/api/plantuml/svg/TO-n2eD038RtUugCTkWJjBI5kWZI3jhkwWK9d1UvY-qWldllB58HcY44lY_XZsfCvJsKh3aJxDIe85G_r8OQ82kGQHYXHJc0ZsrQSo-ER7k6aiJWVwrcDf3vbErMcfHItm3NubcWUr4JbB2xXvoy79TO9yYvqd7ooMx6yyr2sE4Dtn4aYmiKsafAqQ3WtU9inPT8h_2ZrzKFRuw4V1UqUkZC1m00)
+
 <!--
 
 class TodoItem
