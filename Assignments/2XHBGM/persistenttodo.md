@@ -35,7 +35,7 @@ class CSVService {
 Lesen einer CSV-Datei kannst du von einer bestehenden Abgabe ableiten [hier](https://github.com/maximiliankraft/WienerLinienEchtzeitdaten/blob/main/WienerLinienEchtzeitdaten/Program.cs#L12).  Zum schreiben von CSV-Dateien gibt es auf StackOverflow schöne [Einträge](https://stackoverflow.com/a/18757340). Um Daten aus der CSV Datei zu ändern oder zu löschen kannst du die komplette CSV-Datei in eine Liste lesen die Änderung bei der entsprechenden Id anwenden und die neue Liste wieder in die CSV-Datei speichern.
 
 
-## Schritt 2: Service zugägnlich machen
+## Schritt 2: Service zugänglich machen
 
 Um den fertig programmierten Service verwenden zu können musst du in der Datei `Program.cs` ein Singelton hinzufügen mit `builder.Services.AddSingleton<servicename>();`. In deinem Fall lautet der Servicename wahrscheinlich CSVService. Wenn du die Klasse anders genannt hast musst du das entsprechend anpassen. 
 

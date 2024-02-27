@@ -392,7 +392,7 @@ class CSVService {
 @enduml
 -->
 <p>Lesen einer CSV-Datei kannst du von einer bestehenden Abgabe ableiten <a href="https://github.com/maximiliankraft/WienerLinienEchtzeitdaten/blob/main/WienerLinienEchtzeitdaten/Program.cs#L12">hier</a>.  Zum schreiben von CSV-Dateien gibt es auf StackOverflow schöne <a href="https://stackoverflow.com/a/18757340">Einträge</a>. Um Daten aus der CSV Datei zu ändern oder zu löschen kannst du die komplette CSV-Datei in eine Liste lesen die Änderung bei der entsprechenden Id anwenden und die neue Liste wieder in die CSV-Datei speichern.</p>
-<h2 id="schritt-2-service-zug%C3%A4gnlich-machen">Schritt 2: Service zugägnlich machen</h2>
+<h2 id="schritt-2-service-zug%C3%A4nglich-machen">Schritt 2: Service zugänglich machen</h2>
 <p>Um den fertig programmierten Service verwenden zu können musst du in der Datei <code>Program.cs</code> ein Singelton hinzufügen mit <code>builder.Services.AddSingleton&lt;servicename&gt;();</code>. In deinem Fall lautet der Servicename wahrscheinlich CSVService. Wenn du die Klasse anders genannt hast musst du das entsprechend anpassen.</p>
 <h2 id="schritt-3-service-in-razorpages-aufrufen">Schritt 3: Service in Razorpages aufrufen</h2>
 <p>In der <code>ToDo.razor</code> um den Singleton verwenden zu können musst du den Service injecten. Das geht mit <code>@inject servicename variablenname</code>. Im Code-Behind <code>@code{...}</code>. Kannst du dann mit z.B <code>variablenname.LoadItems()</code> auf den Service zugreifen. Die von <code>LoadItems()</code> zurückgegebene Liste kan dann verwendet werden um sie in einer foreach-Schleife wie in der vorherigen abgabe anzuzeigen.</p>
