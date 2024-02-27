@@ -41,5 +41,5 @@ Um den fertig programmierten Service verwenden zu können musst du in der Datei 
 
 ## Schritt 3
 
-In der `ToDo.razor` um den Singelton verwenden zu können musst du den Service Injecten. Das geht mit `@inject servicename variablenname`. Im Code-Behind `@code`. Kannst du dann mit z.B `variablenname.LoadItems()` auf den Service zugreifen.
+In der `ToDo.razor` um den Singelton verwenden zu können musst du den Service injecten. Das geht mit `@inject servicename variablenname`. Im Code-Behind `@code`. Kannst du dann mit z.B `variablenname.LoadItems()` auf den Service zugreifen.
 
