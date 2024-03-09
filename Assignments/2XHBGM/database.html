@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>database.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<p>Link zu Beispielprojekt: <!-- todo hochladen --></p>
+<h1 id="datenbankanbindung-an-asp">Datenbankanbindung an ASP</h1>
+<h2 id="einf%C3%BChrung-datenbanken">Einführung Datenbanken</h2>
+<p>Um verschiedene Arten von Daten zu speichern könnte man mehrere
+CSV-Dateien verwenden. Jedoch ist es in diesem Ansatz schwer
+effizient mit den Daten umzugehen. Man kann eigentlich nur alle
+Daten auf einmal anzeigen. Möchte man die Daten filtern muss man
+die komplette Datei in den RAM laden (teilweise laden gänge auch,
+wäre aber noch umständlicher). Dann jedes Element in einer for(each)-Schleife
+durchgehen und prüfen ob die Bedingung erfüllt ist.</p>
+<p><strong>Datenbanken</strong> nehmen einem diese Arbeit zu einem großen Teil ab.
+Man kann Abfragen schreiben in denen man spezifiziert welche Art
+von Daten man haben möchte und die Datenbank erledigt das Filtern
+von selbst. Kurz erklärt wie diese Optimierungen funktionieren:</p>
+<p>Stell dir vor wir haben folgende Klasse:</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">class</span> <span class="hljs-title">Person</span>{
+    <span class="hljs-keyword">int</span> Id;
+    <span class="hljs-keyword">string</span> FirstName;
+    <span class="hljs-keyword">string</span> LastName;
+}
+</div></code></pre>
+<p>Aus einer CSV-Datei wurden Instanzen dieser Klasse gelesen und in der Liste</p>
+<pre class="hljs"><code><div>List&lt;Person&gt; people;
+</div></code></pre>
+<p>gespeichert. Möchte man nun eine Liste haben in der - gefiltert - alle
+Personen stehen die den Vornamen Peter haben kann man so vorgehen:</p>
+<pre class="hljs"><code><div>
+List&lt;Person&gt; filtered = <span class="hljs-keyword">new</span> List&lt;Person&gt;();
+
+<span class="hljs-keyword">foreach</span>(<span class="hljs-keyword">var</span> person: people){
+    <span class="hljs-keyword">if</span>(person.FirstName == <span class="hljs-string">"Peter"</span>){
+        filtered.Add(person);
+    }
+}
+</div></code></pre>
+<p>Bei ein paar tausend Datensätzen dauert das nicht all zu lange auf modernen
+Prozessoren. Jedoch stößt man mit diesem einfachen Ansatz an seine Grenzen
+wenn man mehrere Millionen oder noch mehr Datensätze verarbeitet. Die Suche</p>
+<ul>
+<li>muss jedes mal neu ausgeführt werden</li>
+<li>ist nicht parallel</li>
+</ul>
+<p>Datenbanken bauen sich intern Strukturen auf um beim Einfügen der Daten
+später schneller zu wissen wo diese liegen. Ähnlich wie ein Inhaltsverzeichnis
+in einem Buch. Solche Strukturen nennt man B-Trees bzw. balanced Trees.
+Deren genaue Arbeitsweise ist für die Erfüllung dieser Aufgabe nicht
+relevant, falls es dich aber interessiert kannst du hier mehr darüber
+lesen: <a href="https://www.geeksforgeeks.org/introduction-of-b-tree-2/">Introduction of B-Tree</a>.</p>
+<h2 id="vorbereitung">Vorbereitung</h2>
+<p>Um mit Datenbanken in ASP.NET Core arbeiten zu können benötigt man
+zusätzliche Bibliotheken die in der Standard-Installation nicht dabei sind.</p>
+<p>Diese kann man über den NuGet-Paketmanager installieren. Dazu muss man in
+Rider in der Sidebar zunächst in die NuGet-Sektion gehen. In dem
+Suchfeld dann bitte nach folgenden Paketen suchen:</p>
+<ul>
+<li>Microsoft.EntityFrameworkCore</li>
+<li>Microsoft.EntityFrameworkCore.Sqlite</li>
+</ul>
+<p>Funktioniert in Visual Studio ähnlich, siehe folgende <a href="https://learn.microsoft.com/de-de/nuget/consume-packages/install-use-packages-visual-studio">Anleitung</a></p>
+<p><img src="2024-03-09-07-27-47.png" alt=""></p>
+<p>Damit wird zunächst das Entity Framework installiert. Achte auf eine für dich kompatible Version. Wenn du das .NET Core SDK 8 nimmst muss die EF (Entity Framework) Major Version ebenfalls 8 sein. In meinem Fall in dem Screenshot habe ich für alles Version 6 genommen, die rennt stabiler in Rider. EF ist eine
+Bibliothek welche ein einheitliches Interface bietet zum Zugriff
+auf verschiedene Datenbanken. Das Paket <code>Microsoft.EntityFrameworkCore.Sqlite</code> beinhaltet Treiber damit EF weis wie
+es mit SQLite-Datenbanken umgehen kann. Es gibt auch Treiber für
+MySQL, MSSQL uvm.</p>
+<h2 id="integration">Integration</h2>
+<p>Lege eine neue Klasse an die von <code>DbContext</code> erbt. Darin kannst
+du den Pfad angeben an dem die Datenbank-Datei gespeichert wird.
+Bei anderen Datenbanken muss man dort die URL zum Server angeben,
+Username, Passwort etc.</p>
+<p>Zudem muss man durch überschreiben der Methode <code>OnConfiguring</code>
+festlegen was passiert wenn der Datenbank-Kontext konfiguriert
+wird. Das noch leere übergebene <code>options</code>-Objekt muss man
+konfigurieren. Durch Aufruf der <code>UseSQlite</code>-Methode mit einem
+Connection-String gibt man dem SQLite-Treiber alle Informationen
+die er benötigt um eine Datenbank anzulegen.</p>
+<p>Die <code>DbSet&lt;T&gt;</code>-Variablen muss man für jede Klasse anlegen die
+in der Datenbank gespeichert werden soll. In deinem Fall dann
+die Klasse <code>ToDoItem</code>. Hier habe ich den Beispielcode mit den
+WeatherForecasts erweitert dass diese in der Datenbank gespeichert
+werden können.</p>
+<pre class="hljs"><code><div><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title">DataContext</span> : <span class="hljs-title">DbContext</span>
+{
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">string</span> _dbPath = <span class="hljs-string">"data.db"</span>;
+
+    <span class="hljs-comment">// The following configures EF to create a Sqlite database file</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">override</span> <span class="hljs-keyword">void</span> <span class="hljs-title">OnConfiguring</span>(<span class="hljs-params">DbContextOptionsBuilder options</span>)</span>
+    {
+        options.UseSqlite(<span class="hljs-string">$"Data Source=<span class="hljs-subst">{_dbPath}</span>"</span>);
+    }
+
+    
+    <span class="hljs-comment">// A DbSet is a collection that can store and retrieve data</span>
+    <span class="hljs-comment">// from the Database</span>
+    <span class="hljs-keyword">public</span> DbSet&lt;WeatherForecast&gt; WeatherForecasts { <span class="hljs-keyword">get</span>; <span class="hljs-keyword">set</span>; }
+    
+}
+</div></code></pre>
+<p>Im <code>WeatherForecastService</code> kann man dann folgendermaßen Daten
+aus der Datenbank lesen und schreiben:</p>
+<pre class="hljs"><code><div>
+    <span class="hljs-comment">// ctor (kurzform für Konstruktor)</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-title">WeatherForecastService</span>(<span class="hljs-params"></span>)</span>
+    {
+        <span class="hljs-comment">// Neuen Datenbankkontext anlegen</span>
+        db = <span class="hljs-keyword">new</span> DataContext();
+
+        <span class="hljs-comment">// Sicherstellen dass die Datei erstellt wurde</span>
+        db.Database.EnsureCreated();
+    }
+
+    <span class="hljs-keyword">public</span> Task&lt;WeatherForecast[]&gt; GetForecastAsync(DateTime startDate)
+    {
+        <span class="hljs-comment">// generiere zufällige daten</span>
+        <span class="hljs-keyword">var</span> weatherData = Enumerable.Range(<span class="hljs-number">1</span>, <span class="hljs-number">5</span>).Select(index =&gt; <span class="hljs-keyword">new</span> WeatherForecast
+        {
+            Date = startDate.AddDays(index),
+            TemperatureC = Random.Shared.Next(<span class="hljs-number">-20</span>, <span class="hljs-number">55</span>),
+            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
+        });
+
+        <span class="hljs-comment">// füge mehrere Elemente auf einmal in die Datenbank ein</span>
+        db.WeatherForecasts.AddRange(weatherData);
+
+        <span class="hljs-comment">// Schreibe alle zwischengespeicherten Daten </span>
+        <span class="hljs-comment">// in die Datenbank</span>
+        db.SaveChanges();
+
+        
+        
+        <span class="hljs-comment">// hole alle Daten aus der Datenbank und konvertiere</span>
+        <span class="hljs-comment">// das Ergebnis in ein Array</span>
+        <span class="hljs-keyword">return</span> Task.FromResult(db.WeatherForecasts.ToArray());
+    }
+</div></code></pre>
+<h2 id="aufgabenstellung">Aufgabenstellung</h2>
+<ul>
+<li>Installieren der NuGet-Pakete (wenn nicht bereits installiert)</li>
+<li>Datenbank-Kontext erstellen</li>
+<li>Daten in Datenbank schreiben</li>
+<li>Daten aus Datenbank lesen</li>
+<li>Daten nach Benutzer filtern</li>
+</ul>
+<blockquote>
+<p>Beispiel wie man im WeatherForecast filtern kann nach positiven Temperaturen:</p>
+</blockquote>
+<pre class="hljs"><code><div>db.WeatherForecasts.Select(forecast =&gt; forecast.TemperatureC &gt; <span class="hljs-number">0</span>);
+</div></code></pre>
+
+</body>
+</html>
