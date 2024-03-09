@@ -1,6 +1,6 @@
-Link zu Beispielprojekt: <!-- todo hochladen -->
-
 # Datenbankanbindung an ASP
+
+Link zu Beispielprojekt: [github.com](https://github.com/maximiliankraft/minimal-ef-example)
 
 ## Einführung Datenbanken
 
