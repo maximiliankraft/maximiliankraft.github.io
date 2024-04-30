@@ -2,6 +2,8 @@
 
 Link zu Beispielprojekt: [github.com](https://github.com/maximiliankraft/minimal-ef-example)
 
+Link zu Tutorials: [youtube.com](https://www.youtube.com/results?search_query=c%23+asp+v6+entity+framework+sqlite+tutorial)
+
 ## Einführung Datenbanken
 
 Um verschiedene Arten von Daten zu speichern könnte man mehrere
