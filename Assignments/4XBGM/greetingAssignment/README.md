@@ -1,4 +1,12 @@
-# Greeting Assignment
+---
+layout: page
+title: Greeting Assignment
+permalink: /Assignments/4XHBGM/Greeting
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
     
 Implement a basic request-response mechanism in Spring to communicate via HTTP.
 

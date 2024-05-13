@@ -1,4 +1,12 @@
-# Spring in Verbindung mit weiteren Services nutzen
+---
+layout: page
+title: Spring in Verbindung mit weiteren Services nutzen
+permalink: /Assignments/4XHBGM/AssignmentMultiService
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
 
 Aktuell läuft unser Spring-Projekt komplett eigenständig. Das macht das Entwickeln leichter, während der Ausführung kann das aber zu Schwierigkeiten führen. 
 Z.b löscht die H2-Datenbank alle Daten wenn sich das Programm beendet. Es gibt keine Backups der Daten und der Server kann nur lokal erreicht werden, zudem ohne TLS-Verschlüsselung.

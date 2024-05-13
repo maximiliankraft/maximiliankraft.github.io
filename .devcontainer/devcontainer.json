@@ -1,0 +1,16 @@
+{
+    "name": "jekylldevc",
+    "portsAttributes": {
+        "4000": {
+            "label": "Application",
+            "onAutoForward": "notify"
+        }
+    },
+    "privileged": true,
+    "image": "mcr.microsoft.com/devcontainers/jekyll:dev-3.3-bookworm",
+    "features": {
+        "ghcr.io/devcontainers/features/node:1": {
+            "version": "latest"
+        }
+    }
+}

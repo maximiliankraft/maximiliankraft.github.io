@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung
+permalink: /TeachingMaterials/AzureAnleitung
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 # Azure Deployment
 
 

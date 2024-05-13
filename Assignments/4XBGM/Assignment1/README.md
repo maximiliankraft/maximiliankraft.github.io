@@ -1,3 +1,13 @@
+---
+layout: page
+title: 1. Hausübung
+permalink: /Assignments/4XHBGM/Assignment1
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 ### 1. Hausübung
 
 Erstelle ein neues Spring-Basisprojekt auf [start.spring.io](http://start.spring.io). Verwende als Javaversion die Nummer 18.

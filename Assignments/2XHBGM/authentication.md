@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung ASP
+permalink: /Assignments/2XHBGM/Authentication
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 # Authentication
 
 Aktuell können die ToDos von jedem

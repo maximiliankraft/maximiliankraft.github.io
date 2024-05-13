@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung ASP
+permalink: /TeachingMaterials/DockerTheoriefragen
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 ## Fragen zu Docker
 
  - Wann ist es deiner Meinung nach sinnvoll Docker einzusetzen? Begründe deine Antworten.

@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung ASP
+permalink: /Assignments/2XHBGM/Database
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 # Datenbankanbindung an ASP
 
 Link zu Beispielprojekt: [github.com](https://github.com/maximiliankraft/minimal-ef-example)

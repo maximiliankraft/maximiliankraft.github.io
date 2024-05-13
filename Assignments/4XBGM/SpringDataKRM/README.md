@@ -1,4 +1,12 @@
-# Spring Data Assignment
+---
+layout: page
+title: Spring Data Assignment
+permalink: /Assignments/4XHBGM/JPA
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
 
 Im Ordner `src/test/.../` befindet sich die Datei `SpengermedApplicationTests.java`. Führe diese Tests mit dem Kommando `mvn test` aus um 
 zu prüfen ob dein Code die Anforderungen für eine Abgabe erfüllt. 

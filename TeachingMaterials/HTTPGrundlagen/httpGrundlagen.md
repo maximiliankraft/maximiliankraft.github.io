@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung ASP
+permalink: /TeachingMaterials/HTTPGrundlagen
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 # Manuelles durchführen von HTTP-Requests
 
 Ein HTTP-Request besteht aus `Header` sowie `Body`. Im Header werden Daten übertragen die das Protokoll zum arbeiten braucht. 

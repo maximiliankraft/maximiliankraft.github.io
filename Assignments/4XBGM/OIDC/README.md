@@ -1,4 +1,12 @@
-# Spring OIDC & OAuth
+---
+layout: page
+title: Spring OIDC & OAuth
+permalink: /Assignments/4XHBGM/OIDC
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
 
 ## https - eine Verschlüsselte Verbindung zum Server einrichten
 Für https brauchen wir Zertifikate. Diese können wir während der Entwicklung selbst erstellen über das java keytool. 

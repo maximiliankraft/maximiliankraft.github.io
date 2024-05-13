@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung ASP
+permalink: /Assignments/2XHBGM/CSV
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 # ToDo Liste mit CSV persisitieren
 
 Unter "persistieren" versteht man das dauerhafte Speichern von Daten. Aktuell ist es so dass wenn man die Seite mit der ToDo Liste neu lädt alle Daten verloren gegangen sind. Nicht sehr Sinnvoll wenn man eigentlich später daran erinnert werden möchte. Werden die Daten länger gespeichert kommen wir dem Funktionsumfang einer normalen Webseite immer näher. 

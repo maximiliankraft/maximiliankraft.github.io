@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung ASP
+permalink: /TeachingMaterials/OracleCloud
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 # Oracle Cloud Deployment
 
 ## Setup
