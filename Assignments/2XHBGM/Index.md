@@ -13,13 +13,13 @@ Aufgabensammlung für den 2. Jahrgang HBGM
 
 > Nicht alle hier aufgelisteten Aufgaben müssen auch erledigt werden. Die zu erfüllenden Aufgaben und deren Abgabedaten sind auf Moodle einsehbar.
 
-- [ASP Einrichten]()
-- [Einfache ToDo Listen Webseite]()
-- [Daten als CSV speichern]()
-- [Authentication]()
-- [Datenbank]()
-- [Eigenes Projekt]()
-- [Deployment]()
+- [ASP Einrichten](/Assignments/2XHBGM/FirstProject)
+- [Einfache ToDo Listen Webseite](/404.html)
+- [Daten als CSV speichern](/Assignments/2XHBGM/CSV)
+- [Authentication](/Assignments/2XHBGM/Authentication)
+- [Datenbank](/Assignments/2XHBGM/Database)
+- [Eigenes Projekt](/404.html)
+- [Deployment](/404.html)
 
 <hr>
 

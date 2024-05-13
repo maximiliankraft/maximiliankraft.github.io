@@ -1,3 +1,13 @@
+---
+layout: page
+title: Azure Anleitung ASP
+permalink: /Assignments/2XHBGM/FirstProject
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 ## Erstes Projekt in ASP
 
 ### Checkliste
