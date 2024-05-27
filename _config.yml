@@ -3,7 +3,7 @@ description: "Diese Webseite stellt Unterrichtsmaterialien zur Verfügung"
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://maximiliankraft.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  maximiliankraft
-
+markdown: CommonMarkGhPages
 # Build settings
 theme: minima
 # plugins:

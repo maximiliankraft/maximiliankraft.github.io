@@ -6,6 +6,9 @@ menubar: false
 nav_exclude: true
 exclude: true
 nav: false
+markdown: kramdown
+kramdown:
+  parse_block_html: true
 ---
 
 
