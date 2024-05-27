@@ -99,6 +99,9 @@ Ist das Update fertig können wir diverse Programme installieren. Wir benötigen
 
 Nun können wir mit `unzip <dateiname>.zip` unser Projekt auspacken. Um in den darin erstellen Ordner zu wechseln gibt es das Kommando `cd <dein-projektordner>`.
 
+<details><summary><strong>Installation mit Docker</strong></summary>
+
+
 ## compose ausführen
 Das funktioniert - wie unter Windows auch - mit `docker-compose up`. Innerhalb des Containers wird dann das `Dockerfile` aufgebaut und ausgeführt. 
 
@@ -119,6 +122,22 @@ services:
       - "80:8080"
       
 ```
+
+</details>
+
+<details><summary><strong>Installation mit dotnet</strong></summary>
+
+So wie man unter Windows mit dem Kommando `dotnet` eine ASP-Anwendung ohne IDE ausführen kann, geht das auch unter Linux. Wenn man nur einen Konsolen-Zugriff hat geht es auch garnicht anders. Das Programm `dotnet` muss aber erst mit dem Paketmanager installiert werden. Dazu gibt es das Kommando:
+
+```console
+sudo apt-get install -y dotnet-sdk-6.0
+```
+
+> [Quelle](https://learn.microsoft.com/de-de/dotnet/core/install/linux-ubuntu-install?pivots=os-linux-ubuntu-2404&tabs=dotnet6) mit weiterführenden Anleitungen z.B für andere OS-Versionen bzw. für .NET 8
+
+
+</details>
+
 
 ## Webservice aufrufen
 
