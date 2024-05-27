@@ -102,13 +102,13 @@ Ist das Update fertig können wir diverse Programme installieren. Wir benötigen
 
 Nun können wir mit `unzip <dateiname>.zip` unser Projekt auspacken. Um in den darin erstellen Ordner zu wechseln gibt es das Kommando `cd <dein-projektordner>`.
 
-<details><summary><strong>Installation mit Docker</strong></summary>
+## Installation mit Docker
+> Nachdem wir mit Docker noch nicht gearbeitet haben ist dieser Schritt freiwillig. Du kannst auch nur mit `dotnet` die Installation vornehmen. Es ist jedoch in der IT eine moderne und übliche Vorgehensweise Docker zu verwenden. Für ein Praktikum im Sommer o.ä wäre das ein großer Pluspunkt hier schon erste Erfahrungen zu haben.  
 
-
-## compose ausführen
+### compose ausführen
 Das funktioniert - wie unter Windows auch - mit `docker-compose up`. Innerhalb des Containers wird dann das `Dockerfile` aufgebaut und ausgeführt. 
 
-### Port 8080 in compose ummappen
+#### Port 8080 in compose ummappen
 
 Wie in einem oberen Screenshot ersichtlich werden in Azure nur die Ports 22, 80 und 443 veröffentlicht. Da unsere Anwendung jedoch auf dem Port 8080 arbeitet müssen wir den Netzwerkverkehr umleiten.
 
@@ -126,9 +126,7 @@ services:
       
 ```
 
-</details>
-
-<details><summary><strong>Installation mit dotnet</strong></summary>
+## Installation mit dotnet
 
 So wie man unter Windows mit dem Kommando `dotnet` eine ASP-Anwendung ohne IDE ausführen kann, geht das auch unter Linux. Wenn man nur einen Konsolen-Zugriff hat geht es auch garnicht anders. Das Programm `dotnet` muss aber erst mit dem Paketmanager installiert werden. Dazu gibt es das Kommando:
 
