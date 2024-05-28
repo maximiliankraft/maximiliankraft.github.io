@@ -136,6 +136,14 @@ sudo apt-get install -y dotnet-sdk-6.0
 
 > [Quelle](https://learn.microsoft.com/de-de/dotnet/core/install/linux-ubuntu-install?pivots=os-linux-ubuntu-2404&tabs=dotnet6) mit weiterführenden Anleitungen z.B für andere OS-Versionen bzw. für .NET 8
 
+Mit dem Kommando:
+
+```console
+sudo dotnet run --urls=http://*:80/
+```
+
+kann man dann den Webserver starten. Dabei ist wichtig dass in dem Ordner in dem der Befehl ausgeführt wird sich die `.csproj`-Datei befindet. Was genau macht dieser Befehl? Mit `sudo` (superuser do) wird der nachfolgende Befehl als Administrator ausgeführt. `dotnet run` startet das ASP-Projekt. Genau der Befehl wird ausgeführt wenn man in einer IDE auf den Play-Button klickt. Mit dem Parameter `--urls` wird festgelegt wie der Server erreichbar sein soll. `http://*:80/` ist ein etwas komplizierterer Ausdruck. Mit `http` wird das Übertragungsprotokoll festgelegt. Der Stern `*` bedeutet dass der Name der Seite egal ist. Standardmäßig werden nur Anfragen beantwortet die an `localhost` gerichtet sind. Der Port 80 ist der Standardport von HTTP. Man könnte jede Seite mit :80 dahinter aufrufen. Standardmäßig kann man ihn aber auch weglassen. 
+
 
 </details>
 
