@@ -17,3 +17,7 @@ nav: false
 - [Docker Virtualisierung]()
 - [Multi Service]()
 - [OpenID Connect]()
+
+## MGIN
+
+- [KI-Integration in eine Webapplikation](/Assignments/4XHBGM/WhisperIntegration)
