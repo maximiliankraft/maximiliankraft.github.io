@@ -11,11 +11,7 @@ kramdown:
   parse_block_html: true
 ---
 
-
-# Azure Deployment
-
-
-## VM Anlegen
+## Virtuellen Computer anlegen
 
 1. Auf [portal.azure.com](https://portal.azure.com) mit der Spengergasse-Email anmelden
 
@@ -78,7 +74,7 @@ Are you sure you want to continue connecting (yes/no/[fingerprint])?
 Hier muss man `yes` eingeben bevor eine Verbindung aufgebaut wird. Für den am Anfang häufigen Fehler `Unprotected Key file` gibt es hier: [https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open](https://superuser.com/questions/1296024/windows-ssh-permissions-for-private-key-are-too-open) Lösungsansätze.
 
 
-Erscheint dann eine Konsole mit grünem Text, hat der Login funktioniert.
+Erscheint dann eine Konsole mit grünem Text, hat der Login funktioniert. Für den nächsten Schritt müssen wir kurz zurück auf den eigenen Rechner wechseln. Das geht mit dem Befehl `exit`.
 
 ##### Daten übertragen in die VM
 
@@ -88,9 +84,9 @@ Im nächsten Schritt müssen wir user Projekt in die VM übertragen. Dazu eignet
 
 `sftp -i <dein-schlüsselname>.pem azureuser@<ip-deiner-vm>`
 
-Dannach erschreint der Prompt `sftp>` welcher FTP-Befehle entgegen nimmt. Mit `put <dateiname>.zip` können wir eine Datei von einem lokalen Ordner in die VM verschieben.
+Dannach erschreint der Prompt `sftp>` welcher FTP-Befehle entgegen nimmt. Mit `put <dateiname>.zip` können wir eine Datei von einem lokalen Ordner in die VM verschieben. Sobald alles verschoben wurde kann man auch hier mit `exit` wieder das Programm verlassen.
 
-Nachdem die Projektdateien verschoben sind können wir uns wieder mit SSH auf der VM einloggen und mit der Installation beginnen. Zunächst sollte man wie bei jeder neuen Linux-Installation ein update durchführen. Das funktioniert unter Ubuntu mit
+Nachdem die Projektdateien verschoben sind können wir uns wieder mit SSH auf der VM einloggen (`ssh -i ...`) und mit der Installation beginnen. Zunächst sollte man wie bei jeder neuen Linux-Installation ein update durchführen. Das funktioniert unter Ubuntu mit
 
 `sudo apt-get update -y`
 
