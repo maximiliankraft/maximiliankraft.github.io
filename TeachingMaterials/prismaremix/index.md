@@ -63,6 +63,38 @@ Zunächst ist es wichtig React zu installieren. Dazu gibt es [hier](https://reac
 
 > Damit mein System nicht mir zu vielen Programmen zugemüllt wird, entwickle ich gerne in [Dev-Containern](https://containers.dev/). Eine Vorlage für Javascript und Node gibt es [hier](https://github.com/devcontainers/templates/tree/main/src/javascript-node), Infos aus der Registry [hier](https://mcr.microsoft.com/en-us/product/devcontainers/javascript-node/about). 
 
+Mein devcontainer.json:
+
+```json
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+	"name": "Node.js",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
+	"forwardPorts": [
+		5173, 	// vite
+		5555 	// prisma studio
+	],
+	"privileged": true,
+	"customizations": {
+		"vscode": {
+		  "extensions": [
+			"bradlc.vscode-tailwindcss", 	// tailwind suggestions
+			"Prisma.prisma", 				// prisma schema support
+			"dbaeumer.vscode-eslint", 		// esling
+			"esbenp.prettier-vscode", 		// preety print
+			"formulahendry.auto-rename-tag",// rename start and closing tag at the same time
+			"graphql.vscode-graphql", 		// graphql support
+			"miguelsolorio.symbols", 		// fancy symbols
+		  ]
+		}
+	  },
+	"remoteUser": "root"
+}
+
+```
+
 Für die ersten Schritte mir React gibt es [hier](https://react.dev/learn/tutorial-tic-tac-toe) ein Tutorial in dem eine kleine Tic-Tac-Toe App erstellt wird. 
 
 ### Grundlagen Remix
