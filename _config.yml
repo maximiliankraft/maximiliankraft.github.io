@@ -24,3 +24,21 @@ minima:
 #  GoogleAnalytics:
 #    id: G-4X0SVGFBJC  # Required - replace with your tracking id
 #    anonymizeIp: true # Optional - Default: false - set to true for anonymized tracking
+
+# Collections
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+# Permalink structure
+permalink: /:title/
+
+# Default front matter
+defaults:
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
