@@ -65,7 +65,7 @@ Zunächst ist es wichtig React zu installieren. Dazu gibt es [hier](https://reac
 
 Mein devcontainer.json:
 
-```json
+```js
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
 {
