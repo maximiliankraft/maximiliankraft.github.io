@@ -18,6 +18,80 @@ Diesen fünfteiligen Blogartikel bitte ich euch durchzugehen. Jedoch ist der Art
 
 Als Datenbank wird in dieser Tutorialreihe MongoDB verwendet. Da MongoDB einen eigenen Service zum laufen braucht und es auch kein relationales Datenbanksystem ist, bitte ich euch stattdessen SqLte (siehe [prisma.io/docs](https://www.prisma.io/docs/getting-started/quickstart)) zu verwenden. Auch andere Datenbanken die ohne Service auskommen wären in Ordnung. Du kannst auch eine Datenbank wie Postgres (oder auch MongoDB) verwenden. Jedoch ist es wichtig dass die Datenbank bei dir lokal funktioniert und auch bei einem Deployment auf einem Server zuverlässig funktioniert. Wir werden uns alles selbst hosten. 
 
+In Punkt 4. beim Hochladen von Profilbildern wird in der Tutorialreihe ein Amazon AWS S3 Bucket verwendet. Kann man verwenden, aber viel einfacher ist es, die Daten lokal zu speichern und bereitzustellen. Auch wird das als deprecated markierte Paket `cuid` verwendet. Es wird stattdessen empfohlen dass sicherere `@paralleldrive/cuid2` zu verwenden. Nachdem S3 nicht verwendet werden soll muss man sich einen anderen Weg überlegen wie man die Bilder speichern kann. Hierbei kann es helfen einen Schritt zurück zu gehen und sich zu überlegen welche Technologien einem zur Verfügung stehen. Da wäre zum einen Remix, welches auf React basiert. Remix hat zwar Werkzeuge zum Dateiupload (siehe [remix.run/docs](https://remix.run/docs/en/main/guides/file-uploads)). Jedoch sind die noch nicht sehr ausgereift. Da React nur ein Komponentenbasiertes Framework ist und nur Clientseitig läuft, hat es keine Möglichkeit zum Upload von Bildern auf einen Server. Remix läuft mittels nodejs. Einer Laufzeitumgebung welche **serverseitig** Javascript Code ausführt. Hier kann man ansetzen um den Upload und das Speichern der Bilder vorzunehmen. und mittles des `fs` Pakets gibt es auch eine Möglichkeit dies direkt durchzuführen (siehe [nodejs.org/learn](https://nodejs.org/en/learn/manipulating-files/writing-files-with-nodejs)). In dem Tutorial wurde eine eigene Komponente erstellt zum Anzeigen und Hochladen des Profilbildes. 
+
+Als vereinfachte Variante habe ich es mit einem File-Input umgesetzt:
+
+``html
+<form method="POST" encType="multipart/form-data">
+	<!-- firstName, lastName.... -->
+	<input type="file" name="profilePicture" />
+	<!-- submit -->
+</form>
+```
+
+Das File-Objekt bekommt man aus dem Formular dann folgendermaßen:
+
+```typescript
+export const action: ActionFunction = async (args: ActionFunctionArgs) => {
+
+    const formData = await args.request.formData();
+
+    const profilePicture = formData.get("profilePicture"); 
+	await uploadProfilePicture(profilePicture);
+```
+
+Ebenfalls serverseitig kann man das Profilbild dann auf dem Server mit folgender Funktion speichern:
+
+```typescript
+
+import fs from "fs"
+import path from 'path';
+
+// needs `npm i @paralleldrive/cuid2`
+import { createId } from "@paralleldrive/cuid2";
+
+/***
+ * @returns path of the uploaded file
+ */
+export async function uploadProfilePicture(file: File): Promise<string | undefined> {
+
+	// check if a new file was uploaded
+    if(file.size === 0 || file.name === ""){
+        return undefined;
+    }
+    
+    // go up two folders from the current script location
+    const __dirname = path.dirname("~")
+    
+    // Define the directory where the file will be saved
+    const uploadDir = path.join(__dirname, 'public', 'pps');
+
+    // Ensure the directory exists
+    if (!fs.existsSync(uploadDir)) {
+        fs.mkdirSync(uploadDir, { recursive: true });
+    }
+
+    // Define the full path for the new file
+    const fileName = createId()+'.jpg'
+    const filePath = path.join(uploadDir, fileName);
+
+    try {
+        // Convert the file to a Buffer
+        const buffer = Buffer.from(await file.arrayBuffer());
+
+        // Write the file to the specified path
+        fs.writeFileSync(filePath, buffer);
+
+        // Return the file path or URL as needed
+        return fileName; // Or return a URL if serving via a web server
+    } catch (error) {
+        console.error('Error saving file:', error);
+        throw new Error('Failed to upload profile picture');
+    }
+}
+```
+
 Den 5. Punkt bezüglich Deployment lasst ihr bitte ganz weg. Vercel ist keine eigenständige Technologie, sondern ein Produkt. Es nimmt einem zwar viel ab, jedoch hat man auch weniger Kontrolle wie das eigene Deployment arbeitet. Wir werden stattdessen mit Azure arbeiten. Dort bekommt man als Schüler ein Kontingent von 100$ um auf deren Platform alle möglichen Ressourcen zu verwenden. 
 
 Eine eigene Anleitung dazu findest du [hier]().
