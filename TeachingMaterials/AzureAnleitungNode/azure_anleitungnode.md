@@ -98,52 +98,30 @@ Ist das Update fertig können wir diverse Programme installieren. Wir benötigen
 
 Nun können wir mit `unzip <dateiname>.zip` unser Projekt auspacken. Um in den darin erstellen Ordner zu wechseln gibt es das Kommando `cd <dein-projektordner>`.
 
-## Installation mit Docker
-> Nachdem wir mit Docker noch nicht gearbeitet haben ist dieser Schritt freiwillig. Du kannst auch nur mit `dotnet` die Installation vornehmen. Es ist jedoch in der IT eine moderne und übliche Vorgehensweise Docker zu verwenden. Für ein Praktikum im Sommer o.ä wäre das ein großer Pluspunkt hier schon erste Erfahrungen zu haben.  
 
-### compose ausführen
-Das funktioniert - wie unter Windows auch - mit `docker-compose up`. Innerhalb des Containers wird dann das `Dockerfile` aufgebaut und ausgeführt. 
+## Installation mit nodejs
 
-#### Port 8080 in compose ummappen
+So wie man unter Windows mit dem Kommando `npm run ...` bzw. `npm start` eine nodejs-Anwendung ohne IDE ausführen kann, geht das auch unter Linux. Wenn man nur einen Konsolen-Zugriff hat geht es auch garnicht anders. Das Programm `npm` bzw. `node` muss aber erst installiert werden. Weil nodejs etwas langsam darin ist deren Pakete in den Paketmanager zu aktualisieren ist es besser man schaut sich an wie man von nodejs bereitgestellte Paketrepositories verwendet in denen immer die aktuelle Version enthalten ist. Eine Anleitung dazu gibt es [hier (github.com/nodesource/distributions)](https://github.com/nodesource/distributions?tab=readme-ov-file#installation-instructions-deb). 
 
-Wie in einem oberen Screenshot ersichtlich werden in Azure nur die Ports 22, 80 und 443 veröffentlicht. Da unsere Anwendung jedoch auf dem Port 8080 arbeitet müssen wir den Netzwerkverkehr umleiten.
-
-Durch verändern der docker-compose.yml-Datei ist das ganz einfach möglich. Wie der innere auf den äußeren Port umgeleitet wird, wird immer foldendermaßen angegeben: `<aussenport>:<innenport>`. Statt `8080:8080` müssen wir also `80:8080` schreiben.
-
-So könnte in deinem Projektordner die Datei docker-compose.yml aussehen: 
-
-```yml
-version: "3"
-services: 
-  dotnet:
-    build: .
-    ports:
-      - "80:8080"
-      
-```
-
-## Installation mit dotnet
-
-So wie man unter Windows mit dem Kommando `dotnet` eine ASP-Anwendung ohne IDE ausführen kann, geht das auch unter Linux. Wenn man nur einen Konsolen-Zugriff hat geht es auch garnicht anders. Das Programm `dotnet` muss aber erst mit dem Paketmanager installiert werden. Dazu gibt es das Kommando:
-
-```console
-sudo apt install -y dotnet-sdk-6.0
-```
-
-> [Quelle](https://learn.microsoft.com/de-de/dotnet/core/install/linux-ubuntu-install?pivots=os-linux-ubuntu-2404&tabs=dotnet6) mit weiterführenden Anleitungen z.B für andere OS-Versionen bzw. für .NET 8
 
 Mit dem Kommando:
 
 ```console
-sudo dotnet run --urls=http://*:80/
+npm run dev
 ```
 
-kann man dann den Webserver starten. Dabei ist wichtig dass in dem Ordner in dem der Befehl ausgeführt wird sich die `.csproj`-Datei befindet. Was genau macht dieser Befehl? Mit `sudo` (superuser do) wird der nachfolgende Befehl als Administrator ausgeführt. `dotnet run` startet das ASP-Projekt. Genau der Befehl wird ausgeführt wenn man in einer IDE auf den Play-Button klickt. Mit dem Parameter `--urls` wird festgelegt wie der Server erreichbar sein soll. `http://*:80/` ist ein etwas komplizierterer Ausdruck. Mit `http` wird das Übertragungsprotokoll festgelegt. Der Stern `*` bedeutet dass der Name der Seite egal ist. Standardmäßig werden nur Anfragen beantwortet die an `localhost` gerichtet sind. Der Port 80 ist der Standardport von HTTP. Man könnte jede Seite mit :80 dahinter aufrufen. Standardmäßig kann man ihn aber auch weglassen. 
+kann man dann den Webserver starten. Dabei ist wichtig dass in dem Ordner in dem der Befehl ausgeführt wird sich die `package.json` Datei befindet. Was genau macht dieser Befehl? Mit `sudo` (superuser do) wird der nachfolgende Befehl als Administrator ausgeführt. `npm run dev` startet das Remix-Projekt. Genau der Befehl wird ausgeführt wenn man in einer IDE auf den Play-Button klickt. Wichtig ist noch die Zone an zulässigen IPs und den Port zu konfigurieren. Diese Einstellungen müssen in Vite vorgenommen werden. Ein Anleitung dazu gibt es [hier (vitejs.dev/config)](https://v3.vitejs.dev/config/server-options.html). Wichtig ist die Postion des `server`-Objekts:
 
+```js
+export default defineConfig({
+  // ... other config
 
+  server: {
+    host: "0.0.0.0",
+    port: 80
+  }
+});
+```
 
-## Webservice aufrufen
+ Der Port 80 ist der Standardport von HTTP. Man könnte jede Seite mit :80 dahinter aufrufen. Standardmäßig kann man ihn aber auch weglassen. Mit 0.0.0.0 erlaubt man jeder IP Adresse auf den Webserver zugreifen zu dürfen. Hätte man 10.0.0.0 dürften z.B nur IPs aus dem internen Netz Daten abfragen. Um zu prüfen ob eine eingehende Verbindung erlaubt ist, wird der AND Operator auf die Maske (`0.0.0.0`) und die eingehende IP z.B `80.167.22.58` angewandt. Wenn das Ergebnis mit der Maske übereinstimmt ist die Verbindung erlaubt. Nachdem jede Zahl kombiniert mit dem AND-Operator und einer 0 wieder 0 ergibt sind alle Verbindungen erlaubt. Manchmal sieht man auch die Schreibweise `0.0.0.0/0`. Die wird [hier](https://networkengineering.stackexchange.com/a/77604/60739) erklärt. 
 
-Rufe die aktuelle IP (oder in meinem Fall habe ich eine Domain hinterlegt) auf und sieh nach ob eine Antwort zurückkommt. Bei mir wird folgendes JSON retourniert:
-
-![](2024-04-15-20-59-22.png)
