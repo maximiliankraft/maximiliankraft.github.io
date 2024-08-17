@@ -24,7 +24,7 @@ Beim Hochladen von Profilbildern wird in der Tutorialreihe ein Amazon AWS S3 Buc
 
 Als vereinfachte Variante habe ich es mit einem File-Input umgesetzt. es würde sich aber zum Üben anbieten diesen File-Input in eine Komponente zu verfrachten. 
 
-``html
+```html
 <form method="POST" encType="multipart/form-data">
 	<!-- firstName, lastName.... -->
 	<input type="file" name="profilePicture" />
