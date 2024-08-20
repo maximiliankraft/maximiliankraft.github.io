@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Azure Anleitung ASP
+title: HTTP Grundlagen
 permalink: /TeachingMaterials/HTTPGrundlagen
 menubar: false
 nav_exclude: true
