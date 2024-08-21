@@ -15,7 +15,7 @@ nav: false
 
 To use the CI/CD pipeline, a GitLab Runner has to be set up. It is a daemon that waits for build jobs. Whenever a CI pipeline job gets triggered on the GitLab project, the runner gets the command to first clone the repository in its current state. Within the `.gitlab-ci.yml` file, which has to be in the root of the cloned repository, all further instructions are specified.
 
-At first, in the `.gitlab-ci.yml` file (see Listing 1), an image is specified. Within that container, all further commands, such as building, testing, linting, etc., get executed. The image has to provide all the commands necessary to perform these steps.
+At first, in the `.gitlab-ci.yml` file (see <a href="#Listing1">Listing 1</a>), an image is specified. Within that container, all further commands, such as building, testing, linting, etc., get executed. The image has to provide all the commands necessary to perform these steps.
 
 ```yaml
 image: gradle:8.5.0-jdk21
@@ -40,7 +40,7 @@ deploy:
   only:
     - tags
 ```
-**Listing 1: A sample gitlab-ci configuration file that uploads the generated container to the GitLab container registry, based on the official documentation from GitLab**
+<a id="Listing1">**Listing 1: A sample gitlab-ci configuration file that uploads the generated container to the GitLab container registry, based on the official documentation from GitLab**</a>
 
 In the [GitLab documentation](https://docs.gitlab.com/runner/install/linux-repository.html), there is a well-documented explanation of how to install a runner on a machine. Since Oracle Linux is based on CentOS, the command from Listing 2 has to be issued. This script adds the official GitLab repository. Once it is added, the command from Listing 3 installs the GitLab runner on the Oracle Cloud VPS instance.
 

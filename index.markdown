@@ -27,10 +27,12 @@ layout: home
 
 
 **5. Jahrgang**
+- [Docker Basics](/TeachingMaterials/DockerBasics)
 - [Spring-Anwendung in Azure deployen](/TeachingMaterials/AzureAnleitung)
 - [Anleitung Oracle Cloud](/TeachingMaterials/OracleCloud)
 - [Container Registries erklärt](/TeachingMaterials/DockerRegistry)
 - [Devcontainer](/TeachingMaterials/DevContainers)
+- [CI/CD mit Kaniko](/TeachingMaterials/KanikoCI)
 
 
 ## Angaben für Übungen
