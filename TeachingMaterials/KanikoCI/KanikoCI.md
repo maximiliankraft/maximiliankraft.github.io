@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Continouos Integration with Kaniko
+title: Building and providing container images automatically using Kaniko
 permalink: /TeachingMaterials/KanikoCI
 menubar: false
 nav_exclude: true
@@ -8,7 +8,6 @@ exclude: true
 nav: false
 ---
 
-### Building and providing container images automatically using Kaniko
 *Kaniko* is a tool that is able to build containers within a CI-Pipeline, a Kubernetes cluster, a compose deployment, or any other kind of microservice setup [source](https://github.com/GoogleContainerTools/kaniko). Gitlab suggests in their documentation to use Kaniko to build Docker images [source](https://docs.gitlab.com/ee/ci/docker/using_kaniko.html). If the containers shall be built automatically in a CI-Pipeline, it is important to enable pipelines in the project settings, as shown in Figure 1.
 
 ![Project settings, on the very bottom, CI/CD has to be enabled](PICs/2024-03-14-13-45-42.png)
@@ -83,7 +82,7 @@ version: "3"
 
 services:
   coapserver:
-    image: registry.gitlab.com/kraftmasterthesis/coapserver:latest
+    image: registry.gitlab.com/<username>/<imagename>:latest
     depends_on:
       - mysql
     ports:
@@ -105,7 +104,7 @@ According to the specification [source](https://docs.docker.com/compose/compose-
 
 In the example configuration of Listing 6, the Docker Compose file defines two services: a web server (NGINX) and a database (MySQL). The web service exposes port 80 and mounts a local directory (`./html`) to serve static content. Meanwhile, the database service is initialized with predefined environmental variables for the root password, database name, username, and password. Both services are connected to separate networks (`frontend` and `backend`), facilitating communication while maintaining isolation.
 
-With *Kaniko*, it is possible to automatically build a new container whenever a new tag gets pushed to the upstream Git repository on gitlab.com. When this container gets deployed with Docker Compose (as seen in Listing 5), a new version has to be pulled manually. The URL for the built container from the Kaniko Section is available at `registry.gitlab.com/kraftmasterthesis/coapserver:latest`. Using Kubernetes, this can be deployed automatically.
+With *Kaniko*, it is possible to automatically build a new container whenever a new tag gets pushed to the upstream Git repository on gitlab.com. When this container gets deployed with Docker Compose (as seen in Listing 5), a new version has to be pulled manually. The URL for the built container from the Kaniko Section is available at `registry.gitlab.com/<username>/<imagename>:latest`. Using Kubernetes, this can be deployed automatically.
 
 ```yaml
 version: '3.8'
@@ -126,7 +125,7 @@ services:
       MYSQL_ROOT_PASSWORD: example
       MYSQL_DATABASE
 
-: exampledb
+  exampledb:
       MYSQL_USER: exampleuser
       MYSQL_PASSWORD: examplepass
     volumes:
