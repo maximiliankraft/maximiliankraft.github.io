@@ -8,10 +8,13 @@ exclude: true
 nav: false
 ---
 
-*Kaniko* is a tool that is able to build containers within a CI-Pipeline, a Kubernetes cluster, a compose deployment, or any other kind of microservice setup [source](https://github.com/GoogleContainerTools/kaniko). Gitlab suggests in their documentation to use Kaniko to build Docker images [source](https://docs.gitlab.com/ee/ci/docker/using_kaniko.html). If the containers shall be built automatically in a CI-Pipeline, it is important to enable pipelines in the project settings, as shown in Figure 1.
+*Kaniko* is a tool that is able to build containers within a CI-Pipeline, a Kubernetes cluster, a compose deployment, or any other kind of microservice setup [source](https://github.com/GoogleContainerTools/kaniko). Gitlab suggests in their documentation to use Kaniko to build Docker images [source](https://docs.gitlab.com/ee/ci/docker/using_kaniko.html). If the containers shall be built automatically in a CI-Pipeline, it is important to enable pipelines in the project settings, as shown in [Figure 1](#figure-1).
 
 ![Project settings, on the very bottom, CI/CD has to be enabled](PICs/2024-03-14-13-45-42.png)
-**Figure 1: Project settings, on the very bottom, CI/CD has to be enabled**
+
+#### Figure 1
+> Project settings, on the very bottom, CI/CD has to be enabled
+
 
 To use the CI/CD pipeline, a GitLab Runner has to be set up. It is a daemon that waits for build jobs. Whenever a CI pipeline job gets triggered on the GitLab project, the runner gets the command to first clone the repository in its current state. Within the `.gitlab-ci.yml` file, which has to be in the root of the cloned repository, all further instructions are specified.
 
