@@ -124,3 +124,8 @@ To transition from `docker run` to compose, the website [composerize](https://ww
 
 The specification of docker compose files can be seen [here](https://docs.docker.com/reference/compose-file/).
 
+## Creating new container images with Dockerfiles
+
+> See specification [here](https://docs.docker.com/reference/dockerfile/)
+
+Answer the Questions [here](/TeachingMaterials/DockerTheoriefragen)

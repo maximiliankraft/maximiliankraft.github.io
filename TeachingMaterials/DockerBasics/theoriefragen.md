@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Docker Theoriefragen
+title: Fragen zu Docker
 permalink: /TeachingMaterials/DockerTheoriefragen
 menubar: false
 nav_exclude: true
@@ -8,11 +8,8 @@ exclude: true
 nav: false
 ---
 
-## Fragen zu Docker
-
  - Wann ist es deiner Meinung nach sinnvoll Docker einzusetzen? Begründe deine Antworten.
     - beim Entwicklen (developement)
-
     - im aktiven Einsatz (production)
     - beim manuellen Testen neuer Features (beta-tests)
     - für automatisches Testen (unit & integration tests)
