@@ -8,6 +8,8 @@ exclude: true
 nav: false
 ---
 
+> Beispielhafte Implementierung [hier (github.com)](https://github.com/maximiliankraft/spring-prometheus-example)
+
 Wenn eine Anwendung fertig ist und diese auf einem Server deployed wurde ist es weiterhin wichtig den Überblick zu behalten. Hacker könnten versuchen sich Zutritt zu verschaffen. Benutzer einen Fehler auslösen etc. Bedient man sich des Begriffs DevOps geht es jetzt hauptsächlich um die Operations (Ops). Die Entwicklung (dev) ist so gut wie abgeschlossen. Um den Status der Server überwachen zu können kann man [Prometheus](http://prometheus.io/) verwenden. 
 
 Prometheus verwendet einerseits *exporter* um Daten zu sammeln. Exporter sind Container, welche andere Container überwachen. Dabei muss man für jeden Service einen eigenen Exporter nehmen. Für weit verbreitete Services wie MySQL, nginx, redis etc. gibt es bereits vordefinierte Exporter ([siehe Liste](https://prometheus.io/docs/instrumenting/exporters/)). Den Host kann man über den [node exporter](https://prometheus.io/docs/guides/node-exporter/) überwachen. Man kann aber auch für seinen eigenen Service einen schreiben. Die Leistungsdaten der Exporter werden dann von einem Prometheus Container zentral gesammelt. Mittels *service discovery* erkennt prometheus welche Exporter sich im aktuellen virtuellen Netzwerk befinden. 
