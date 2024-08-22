@@ -33,6 +33,7 @@ layout: home
 - [Container Registries erklärt](/TeachingMaterials/DockerRegistry)
 - [Devcontainer](/TeachingMaterials/DevContainers)
 - [CI/CD mit Kaniko](/TeachingMaterials/KanikoCI)
+- [Incident response mit Prometheus](/prometheus/index)
 
 
 ## Angaben für Übungen
