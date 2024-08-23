@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Azure Anleitung ASP
+title: Verteilung von Containern
 permalink: /TeachingMaterials/DockerRegistry
 menubar: false
 nav_exclude: true
@@ -8,9 +8,11 @@ exclude: true
 nav: false
 ---
 
-# Register in Docker
+In *Registries* (de: Register) kann man Images hochladen um sie öffenlich mit anderen Personen zu teilen oder privat mit verschiedenen Geräten.
 
-In Docker-Registries (dt: Register) kann man Images hochladen um sie öffenlich mit anderen Personen zu teilen oder privat mit verschiedenen Geräten. Ein Beispiel für ein bereits bekanntes Image aus einem Register wäre `mysql`. Dabei fügt Docker jedoch implizit noch einiges an Zusatzinformation hinzu. Eine längere Schreibweise wäre: ``docker.io/library/mysql:latest``. <a href="http://docker.io">docker.io</a> ist das Standardregister welches verwendet wird wenn kein anderes angegeben ist. Häufige Alternativen wären <a href="http://registy.gitlab.com">registy.gitlab.com</a> oder <a href="http://ghcr.io">ghcr.io</a> von Github. ``library`` ist der Username welcher das Image veröffentlicht hat. Auch dieser ist der Standardname wenn kein anderer angegeben wurde. Alle Container von diesem Usernamen wurden von der Docker Foundation veröffentlicht und geprüft. Auch tragen sie immer das Abzeichen `Docker official image`. Am Schluss wenn kein anderer tag spezifiziert wurde, nimmt Docker immer den tag `latest`. Dieser ist per Definition immer der neueste Tag und wird bei jedem build neu herunterlgeladen, unabhängig davon ob er sich geändert hat oder nicht seit dem letzten Build. 
+Ursprünglich wurden die Registries von Docker [erfunden](https://docs.docker.com/registry/). Mittlerweile wurde deren API und Implementierung aber als Open-Source Projekt an die CNCF übergeben und hat nun den Namen [distribution](https://distribution.github.io/distribution/), Man kann also nun aus mehreren Quellen Container herunterladen. 
+
+Ein Beispiel für ein bereits bekanntes Image aus einem Register wäre `mysql`. Dabei fügt Docker jedoch implizit noch einiges an Zusatzinformation hinzu. Eine längere Schreibweise wäre: ``docker.io/library/mysql:latest``. <a href="http://docker.io">docker.io</a> ist das Standardregister welches verwendet wird wenn kein anderes angegeben ist. Häufige Alternativen wären <a href="http://registy.gitlab.com">registy.gitlab.com</a> oder <a href="http://ghcr.io">ghcr.io</a> von Github. ``library`` ist der Username welcher das Image veröffentlicht hat. Auch dieser ist der Standardname wenn kein anderer angegeben wurde. Alle Container von diesem Usernamen wurden von der Docker Foundation veröffentlicht und geprüft. Auch tragen sie immer das Abzeichen `Docker official image`. Am Schluss wenn kein anderer tag spezifiziert wurde, nimmt Docker immer den tag `latest`. Dieser ist per Definition immer der neueste Tag und wird bei jedem build neu herunterlgeladen, unabhängig davon ob er sich geändert hat oder nicht seit dem letzten Build. 
 
 ## Selbst Images veröffentlichen
 
