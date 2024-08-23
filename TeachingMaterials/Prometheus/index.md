@@ -123,7 +123,7 @@ Diese sind in der Datei `rules.yml` zu definieren. In compose kann man diese Dat
 - "./rules.yml:/etc/prometheus/rules.yml"
 ```
 
-Der Aufbau innerhalb der YML-Datei wird in den [docs](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) beschrieben. Auch wird hier darauf hingewiesen dass die Alarme alleine nur auf dem Prometheus-Dashboard angezeigt werden, es kein Rate-Limiting gibt etc. Wenn man ein Werkzeug braucht dass einem den richtigen Alarm **sofort** anzeigt muss man sich einen [AlertManager](https://prometheus.io/docs/alerting/latest/alertmanager/) einrichten.
+Der Aufbau innerhalb der YML-Datei wird in den [docs](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) beschrieben. Auch wird hier darauf hingewiesen dass die Alarme alleine nur auf dem Prometheus-Dashboard angezeigt werden, es kein Rate-Limiting gibt etc. Wenn man ein Werkzeug braucht dass einem den richtigen Alarm **sofort** anzeigt muss man sich einen **AlertManager** ([docs](https://prometheus.io/docs/alerting/latest/alertmanager/), [container](https://quay.io/repository/prometheus/alertmanager?tab=info)) einrichten. 
 
 ## Schnelle Logging-Lösung
 
@@ -139,3 +139,7 @@ services:
     ports:
       - 8888:8080
 ```
+
+## Weiterführende Literatur
+
+> [IT Ops Times - Log Management: A guide for buyers](https://www.itopstimes.com/itops/log-management-a-guide-for-buyers-2/)
