@@ -13,3 +13,4 @@ nav: false
 - [CI/CD einrichten](/404.html)
 - [Docker registry](/404.html)
 - [Safe API assignment](/404.html)
+- [Graylog](/Assignments/5XBGM/Graylog)
