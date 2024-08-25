@@ -1,9 +1,8 @@
 ---
 layout: home
+title: Liste aller Unterrichtsmaterialien
 ---
 
-
-## Liste aller Unterrichtsmaterialien
 
 **1. Jahrgang**
 
