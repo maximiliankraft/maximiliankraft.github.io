@@ -44,5 +44,9 @@ layout: home
 - [4. Jahrgang HBGM](/Assignments/4XHBGM/Index)
 - [5. Jahrgang HBGM](/Assignments/5XHBGM/Index)
 
+## Allgemeines
+
+- [Protokollvorlage](/TeachingMaterials/General/Protokoll%20Vorlage.docx)
+
 
 > Einige Links funktionieren noch nicht. Solltest du auf eine Aufgabe nicht zugreifen können, schicke mir einfach eine E-Mail
