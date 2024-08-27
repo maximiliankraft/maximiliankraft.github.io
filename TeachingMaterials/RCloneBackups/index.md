@@ -31,7 +31,7 @@ Dort dann auf `Create a New Config` klicken:
 ![button to create a new config](createnewconfig.png)
 
 - Anleitungen für jeden *storage provider* gibt es [hier](https://rclone.org/docs/). 
-- Eine Anleitung zum Verschlüsselten hochladen [hier](https://rclone.org/crypt/)
+- Eine Anleitung zum verschlüsselten hochladen [hier](https://rclone.org/crypt/)
 
 
 ## Aufgabe:
