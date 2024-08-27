@@ -33,6 +33,7 @@ title: Liste aller Unterrichtsmaterialien
 - [Devcontainer](/TeachingMaterials/DevContainers)
 - [CI/CD mit Kaniko](/TeachingMaterials/KanikoCI)
 - [Incident response mit Prometheus](/prometheus/index)
+- [Backups mit rclone erstellen](/TeachingMaterials/Backup)
 
 
 ## Angaben für Übungen
