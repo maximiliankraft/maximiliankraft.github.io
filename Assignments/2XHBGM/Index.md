@@ -14,12 +14,12 @@ Aufgabensammlung für den 2. Jahrgang HBGM
 > Nicht alle hier aufgelisteten Aufgaben müssen auch erledigt werden. Die zu erfüllenden Aufgaben und deren Abgabedaten sind auf Moodle einsehbar.
 
 - [ASP Einrichten](/Assignments/2XHBGM/FirstProject)
-- [Einfache ToDo Listen Webseite](/404.html)
+- [Einfache ToDo Listen Webseite](https://learn.microsoft.com/en-us/aspnet/core/blazor/tutorials/build-a-blazor-app?view=aspnetcore-8.0)
 - [Daten als CSV speichern](/Assignments/2XHBGM/CSV)
 - [Authentication](/Assignments/2XHBGM/Authentication)
 - [Datenbank](/Assignments/2XHBGM/Database)
 - [Eigenes Projekt](/404.html)
-- [Deployment](/404.html)
+- [Deployment](/TeachingMaterials/AzureAnleitungASP)
 
 <hr>
 
