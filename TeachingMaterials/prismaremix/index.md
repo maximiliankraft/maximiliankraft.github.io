@@ -16,7 +16,71 @@ Von Prisma gibt es auch einen schönen mehrteiligen Blogartikel wie man Remix, R
 
 Diesen fünfteiligen Blogartikel bitte ich euch durchzugehen. Jedoch ist der Artikel aus 2022, seit dem haben sich in Prisam und den anderen Technologien einige Kleinigkeiten geändert. Ich versuche hier alle aufzulisten die mir aufgefallen sind. Auch werden in dem Tutorial viele Proeritäre Cloud-Angebote verwendet. Ich habe weiter unten beschrieben welche offeneren Ansätze man stattdessen verwenden kann. Wenn der Code von deren Webseite mit den aktuellen Versionen nicht funktioniert, einfach in den Prisma Docs nachsehen wie es heute umgesetzt wird. Oder Lehrer oder eine KI fragen. 
 
+## Änderungen zu Punkt 1
+
 Als Datenbank wird in dieser Tutorialreihe MongoDB verwendet. Da MongoDB einen eigenen Service zum laufen braucht und es auch kein relationales Datenbanksystem ist, bitte ich euch stattdessen SqLite (siehe [prisma.io/docs](https://www.prisma.io/docs/getting-started/quickstart)) zu verwenden. Auch andere Datenbanken die ohne Service auskommen wären in Ordnung. Du kannst auch eine Datenbank mit Serivce, wie Postgres (oder auch MongoDB) verwenden. Jedoch ist es wichtig dass die Datenbank bei dir lokal funktioniert und auch bei einem Deployment auf einem Server zuverlässig funktioniert. Wir werden uns alles selbst hosten. 
+
+Um zu gewährleisten dass alles funktioniert im Zweifel bitte nicht aus dem Tutorial alles 1:1 in eure Anwendung kopieren. Ein Beispiel ist z.B Tailwind CSS. 
+
+In dem Tutorial wird folgende Dateistruktur abgebildet:
+
+```js
+│── app
+│   ├── entry.client.tsx
+│   ├── entry.server.tsx
+│   ├── root.tsx
+│   └── routes
+│       ├── README.md
+│       └── index.tsx
+├── node_modules
+├── package-lock.json
+├── package.json
+├── public
+├── remix.config.js
+├── remix.env.d.ts
+├── server.js
+├── tsconfig.json
+├── README.md
+└── vercel.json
+```
+
+
+Im aktuellen Stand (2024) sieht diese aber so aus:
+
+```js
+├── app
+├── node_modules
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── public
+├── README.md
+├── tailwind.config.ts // tailwind config bereits vorhanden
+├── tsconfig.json
+└── vite.config.ts
+```
+
+Achtet genau darauf welche Dinge es schon gibt und was sich geändert hat. So kann man z.B in der aktuellen Version (2024) die komplette Tailwind-Konfiguration weglassen. Diese ist mittlerweile im Start-Projekt bereits enthalten. Auch das `package.json` hat sich verändert. Früher wurde noch das Kommando `remix dev` genutzt um die Webanwendung zu starten. MIttlerweile wird in der `package.json` Konfiguration [vite](https://vitejs.dev/) verwendet. Das kommando lautet jetzt `remix vite:dev`. 
+
+Für den Punkt `Set up prisma` gibt es für SQLite ein eignees Tutorial [hier](https://www.prisma.io/docs/getting-started/quickstart).
+
+Im Punkt `Model the Data` muss man sich an den geänderten Datenbank-Treiber anpassen. Die Konfiguration
+
+```ts
+id String @id @default(auto()) @map("_id") @db.ObjectId
+```
+
+macht Sinn für MongoDb. Jedoch kann man diese nicht 1:1 mit SQLite verwenden. `@db.ObjectId` unterstützt dieser Treiber z.B nicht. Hier ein Verweis auf das vorher erwähnte Tutorial, wie es in SQLite gehen kann:
+
+```ts
+id    Int     @id @default(autoincrement())
+```
+> [Quelle: Prisma Quickstart SQLite](https://www.prisma.io/docs/getting-started/quickstart#2-model-your-data-in-the-prisma-schema)
+
+
+## Änderungen zu Punkt 2
+
+Das Benennungsschema für automatisches Routing wurde geändert. Um den Pfad `/new/post` zu routen musste man früher einen neuen Ordner `/new/` anlegen. Jetzt muss man die einzelnen Ordner durch einen Punkt trennen. Die Datei sieht dann so aus: `/new.post.tsx`. 
 
 
 ## Änderungen zu Punkt 4
