@@ -24,7 +24,7 @@ Um zu gewährleisten dass alles funktioniert im Zweifel bitte nicht aus dem Tuto
 
 In dem Tutorial wird folgende Dateistruktur abgebildet:
 
-```js
+```
 │── app
 │   ├── entry.client.tsx
 │   ├── entry.server.tsx
@@ -47,7 +47,7 @@ In dem Tutorial wird folgende Dateistruktur abgebildet:
 
 Im aktuellen Stand (2024) sieht diese aber so aus:
 
-```js
+```
 ├── app
 ├── node_modules
 ├── package.json
@@ -164,142 +164,10 @@ Den 5. Punkt bezüglich Deployment lasst ihr bitte ganz weg. Vercel ist keine ei
 
 Eine eigene Anleitung dazu findest du [hier](/TeachingMaterials/AzureAnleitungNode).
 
-## Grundlagen Typescript 
+## Weitere Infos
 
-In dem Tutorial findet man oft folgenden Ausdruck:
-
-```ts
-
-interface FnProps{
-    attr1: string;
-    attr2: string;
-}
+> [Grundlagen Typescript](/prismaremix/typescript)
+> [Grundlagen React](/prismaremix/react)
+> [Grundlagen Remix](/prismaremix/remix)
 
 
-const fn: (FnProps) => void = ({attr1, attr2}): void => {
-    console.log(attr1, attr2)
-}
-```
-
-Das ist eine kurze Schreibweise von:
-
-```ts
-const fn: (FnProps) => void = (props): void => {
-    console.log(props.attr1, props.attr2)
-}
-```
-
-Das nennt sich `Destructuring assignment`, mehr dazu findest du in der Dokumentation von Typescript [hier](https://www.typescriptlang.org/docs/handbook/variable-declarations.html#destructuring). Funktioniert mit Arrays auch z.B. Destructuring ist keine Typescript-Eigenschaft sondern von JavaScript. Man kann auch mehrere ineinander verschaltelte Objekte durch destructuring ansteuren, mehr dazu auf [MDN hier](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#:~:text=Nested%20objects%20can%20also%20be%20unpacked).
-
-Andere wichtige Bereiche aus der Dokumentation sind:
-- [Type Annotations on Variables](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-annotations-on-variables)
-- [More on Functions](https://www.typescriptlang.org/docs/handbook/2/functions.html)
-- [Object Types](https://www.typescriptlang.org/docs/handbook/2/objects.html)
-- [Modules](https://www.typescriptlang.org/docs/handbook/2/modules.html)
-
-Diese bitte alle durchlesen. 
-
-### Grundlagen React
-
-Zunächst ist es wichtig React zu installieren. Dazu gibt es [hier](https://react.dev/learn/start-a-new-react-project) eine Anleitung. Dort wird auch erklärt warum man React am besten mit einem anderen Framework wie Remix oder Next.js einsetzt. Mit dem Befehl `npx create-remix` kann man sich ein Projekt generieren lassen. Falls noch nicht installiert, benötigt man [nodejs](https://nodejs.org/en) dafür. 
-
-> Damit mein System nicht mir zu vielen Programmen zugemüllt wird, entwickle ich gerne in [Dev-Containern](https://containers.dev/). Eine Vorlage für Javascript und Node gibt es [hier](https://github.com/devcontainers/templates/tree/main/src/javascript-node), Infos aus der Registry [hier](https://mcr.microsoft.com/en-us/product/devcontainers/javascript-node/about). 
-
-Mein devcontainer.json:
-
-```js
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
-{
-	"name": "Node.js",
-	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
-	"image": "mcr.microsoft.com/devcontainers/javascript-node:1-22-bookworm",
-	"forwardPorts": [
-		5173, 	// vite
-		5555 	// prisma studio
-	],
-	"privileged": true,
-	"customizations": {
-		"vscode": {
-		  "extensions": [
-			"bradlc.vscode-tailwindcss",		// tailwind suggestions
-			"Prisma.prisma",					// prisma schema support
-			"dbaeumer.vscode-eslint",			// esling
-			"esbenp.prettier-vscode", 			// pretty print
-			"formulahendry.auto-rename-tag",	// rename start and closing tag at the same time
-			"graphql.vscode-graphql",			// graphql support
-			"miguelsolorio.symbols",			// fancy symbols
-		  ]
-		}
-	  },
-	"remoteUser": "root"
-}
-
-```
-
-Für die ersten Schritte mir React gibt es [hier](https://react.dev/learn/tutorial-tic-tac-toe) ein Tutorial in dem eine kleine Tic-Tac-Toe App erstellt wird. 
-
-### Grundlagen Remix
-
-Remix baut auf React auf. React kann aber nur lokal auf dem Rechner der Benutzer ausgeführt werden. Remix kümmert sich um alles was serverseitig passiert. Basierend auf dem Dateinamen z.B das Routing. Heißt eine Datei `home.profile.tsx` ist deren Komponente unter `/home/profile` aufrufbar. Ausnahem: Mit `_index.tsx` wird der oberste Pfad `/` beschrieben. In einer solchen TSX-Datei kann es 3 Funktionen geben. Eine Funktion die eine Komponente beschreibt:
-
-```tsx
-export function MyComponent(){
-
-	return <div>
-		<p>Welcome to my Component<p>
-	</div>
-
-}
-```
-
-Die Funktion `loader` wird auf dem Server ausgeführt bevor die Komponente ausgeliefert wird. Wichtig ist hier zu unterscheiden dass die Funktion `MyComponent()` auf dem Client ausgeführt wird. Man kann also nicht ohne weiteres eine Variable definieren die dann in beiden Funktionen verfügbar ist. Dazu müssen zusätzliche Daten vom Server zum Client übertragen werden. Das kann z.B so funktionieren: 
-
-```tsx
-export const loader: LoaderFunction = async (args: LoaderFunctionArgs) => {
-
-	return json({"data". "server-generated data"})
-
-}
-
-export function MyComponent(){
-
-	const {data} = useLoaderData();
-
-	return <div>
-		<p>Welcome to my Component<p>
-		{data}
-	</div>
-
-}
-
-```
-
-Die dritte Funktion `action` ist dafür zuständig dass in die andere Richtung Daten vom Benutzer zum Server gesendet werden können. Natürlich kann man auch immer - wie in klassischen React Anwednungen - die fetch-API (siehe [MDN fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)) verwenden. Der Name der Funktion leitet sich aus dem Attributsnamen action des `<form>`-Tags ab.
-
-```tsx
-
-export const action: ActionFunction = async (args: ActionFunctionArgs) => {
-	const storyData = await args.request.formData();
-
-	console.log(storyData)
-	// returns (on the server)
-	/*
-		{
-			"title": "<entered title>",
-			"content": "<entered content>"
-		}
-	*/
-}
-
-export function MyComponent(){
-
-	return <form method="POST">
-		<input type="text" name="title" />
-		<textarea name="content" ></textarea>
-		<input type="Submit" />
-	</form>
-
-}
-
-``` 
