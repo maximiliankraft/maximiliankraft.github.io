@@ -167,7 +167,9 @@ Eine eigene Anleitung dazu findest du [hier](/TeachingMaterials/AzureAnleitungNo
 ## Weitere Infos
 
 > [Grundlagen Typescript](/prismaremix/typescript)
+
 > [Grundlagen React](/prismaremix/react)
+
 > [Grundlagen Remix](/prismaremix/remix)
 
 
