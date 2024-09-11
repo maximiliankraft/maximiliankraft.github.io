@@ -64,4 +64,5 @@ In dieser Übung werdet ihr die Grundlagen für eine Django-Webseite erstellen, 
 
 - [Django Installationsanleitung](https://docs.djangoproject.com/en/5.1/intro/install/)
 - [Erstes Django Projekt](https://docs.djangoproject.com/en/5.1/intro/tutorial01/)
+- [Youtube Tutorial für Django in Kombination mit SQLite](https://www.youtube.com/watch?v=UxTwFMZ4r5k)
 - [File Uploads](https://docs.djangoproject.com/en/5.1/topics/http/file-uploads/)
