@@ -1,3 +1,13 @@
+---
+layout: page
+title: Erstellung einer Django-Webseite
+permalink: /Assignments/4XHBGM/MGIN/Lehrstoff
+menubar: false
+nav_exclude: true
+exclude: true
+nav: false
+---
+
 ## Semester 1
 
 | Titel| Tasks| Kenntnisse | Begriffe|
