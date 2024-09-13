@@ -16,6 +16,7 @@ nav: false
 - Erstelle ein neues Django-Projekt mit dem Namen "WienerAdressen".
 - Richte eine neue App namens "adressformular" innerhalb des Projekts ein.
 - Initialisiere ein Git-Repository für dein Projekt.
+  - Mach dann auch regelmäßig Commits um deinen Fortschritt zu beschreiben und um im Fehlerfall zu einem früheren Zeitpunkt gehen zu können
 
 ### 2. Backend-Entwicklung
 
@@ -32,9 +33,10 @@ nav: false
 - Erstelle in `views.py` zwei Views:
   1. `adressformular`: Rendert das Formular zur Adresseingabe.
   2. `adresse_speichern`: API-Endpunkt zum Speichern der eingegebenen Adresse.
+  3. `adressen_anzeigen`:Übersichtsseite, die alle gespeicherten Adressen anzeigt.
 
 #### 2.3 URL-Konfiguration
-- Konfiguriere die URLs in `urls.py`, um die Views mit den entsprechenden Routen zu verbinden.
+- Konfiguriere die URLs in `urls.py`, um die Views/Templates mit den entsprechenden Routen zu verbinden.
 
 ### 3. Frontend-Entwicklung
 
@@ -52,7 +54,7 @@ nav: false
 
 #### 3.3 CSS-Styling
 - Erstelle eine CSS-Datei `styles.css` zur Gestaltung des Formulars und der Vorschläge.
-- Verwende Flexbox oder CSS Grid für das Layout.
+- Verwende Flexbox oder CSS Grid für das Layout. Damit ist es einfach möglich auch responsive Anwendungen zu erstellen. 
 
 ### 4. Integration und Testing
 
@@ -61,33 +63,24 @@ nav: false
 - Zeige eine Erfolgsmeldung an, wenn die Adresse erfolgreich gespeichert wurde.
 
 #### 4.2 Error Handling
-- Implementiere Fehlerbehandlung sowohl im Frontend als auch im Backend.
+- Implementiere eine Fehlerbehandlung sowohl im Frontend als auch im Backend.
 - Zeige benutzerfreundliche Fehlermeldungen an, wenn etwas schiefgeht.
 
 #### 4.3 Testfälle
-- Schreibe mindestens drei Testfälle in `tests.py`:
-  1. Test der Modellvalidierung
-  2. Test der View-Funktionalität
-  3. Test der API-Endpunkte
+- Schreibe Testfälle in `tests.py` um sowohl die eigenen als auch die externen API-Endpunkte zu testen
+
 
 ### 5. Dokumentation und Versionskontrolle
 
-- Dokumentiere deinen Code ausführlich mit Kommentaren.
+- Dokumentiere deinen Code mit Kommentaren.
 - Führe regelmäßige Git-Commits durch, die den Entwicklungsprozess nachvollziehbar machen.
 - Erstelle ein `README.md` mit einer Kurzbeschreibung des Projekts und Anweisungen zur Installation und Ausführung.
-
-### 6. Erweiterungen (Optional)
-
-- Implementiere eine Autocomplete-Funktion für die Straßeneingabe.
-- Füge eine Kartenansicht hinzu, die die eingegebene Adresse anzeigt (z.B. mit Leaflet.js und OpenStreetMap).
-- Erstelle eine Übersichtsseite, die alle gespeicherten Adressen anzeigt.
 
 ## Abgabe
 
 - Erstelle ein ausführliches Protokoll deiner Vorgehensweise.
 - Füge Screenshots von wichtigen Entwicklungsschritten und der finalen Anwendung hinzu.
 - Exportiere deine Git-Commit-Historie mit `git log --pretty=format:"%h - %an, %ar : %s" > commit_history.txt` und füge sie dem Protokoll bei.
-- Packe alle Projektdateien, das Protokoll und die Commit-Historie in ein ZIP-Archiv zur Abgabe.
 
 ## Hilfreiche Ressourcen
 
