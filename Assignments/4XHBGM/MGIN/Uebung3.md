@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Interaktives Adressformular mit Django
-permalink: /Assignments/4XBGM/MGIN/Uebung3
+permalink: /Assignments/4XHBGM/MGIN/Uebung3
 menubar: false
 nav_exclude: true
 exclude: true
