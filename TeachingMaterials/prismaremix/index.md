@@ -82,7 +82,7 @@ id    Int     @id @default(autoincrement())
 
 Das Benennungsschema für automatisches Routing wurde geändert. Um den Pfad `/new/post` zu routen musste man früher einen neuen Ordner `/new/` anlegen. Jetzt muss man die einzelnen Ordner durch einen Punkt trennen. Die Datei sieht dann so aus: `/new.post.tsx`. 
 
-Auch werden für MongoDB embedded types verwendet. Da diese in SQLite nicht unterstützt werden, entweder alles in eine große Datenstruktur geben, oder durch mehrere Tabellen die embedded Types nachbilden. Durch foreign keys kann man die einzelnen Einträge der Tabellen verbinden. 
+Auch werden für MongoDB embedded types verwendet. Da diese in SQLite nicht unterstützt werden, entweder alles in eine große Datenstruktur geben, oder durch mehrere Tabellen die embedded Types nachbilden. Durch foreign keys kann man die einzelnen Einträge der Tabellen verbinden. Wie man im Prisma Schema die notwendige `@relation`-Annotation erstellt wird  ([hier prisma.io/docs/](https://www.prisma.io/docs/orm/prisma-schema/data-model/relations)) erklärt.
 
 
 ## Änderungen zu Punkt 4
