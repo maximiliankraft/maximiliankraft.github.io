@@ -21,7 +21,7 @@ To use the CI/CD pipeline, a GitLab Runner has to be set up. It is a daemon that
 At first, in the `.gitlab-ci.yml` file (see [Listing 1](#listing-1)), an image is specified. Within that container, all further commands, such as building, testing, linting, etc., get executed. The image has to provide all the commands necessary to perform these steps.
 
 ```yaml
-image: gradle:8.5.0-jdk21
+
 stages:
   - deploy
 deploy:
