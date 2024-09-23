@@ -89,5 +89,7 @@ nav: false
 - [Wiener Adressservice Dokumentation](https://digitales.wien.gv.at/wp-content/uploads/sites/47/2019/01/adressservice-doku.pdf)
 - [JavaScript-Promises - MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [CSS Flexbox Guide](https://css-tricks.com/snippets/css/a-guide-to-flexbox/)
+- [Statische Dateien in Django](https://docs.djangoproject.com/en/5.1/howto/static-files/)
+  - Wichtig um eine js-Datei einzubinden im Template
 
 Viel Erfolg bei der Umsetzung!
