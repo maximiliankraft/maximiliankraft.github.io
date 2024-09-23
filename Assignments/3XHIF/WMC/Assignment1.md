@@ -50,8 +50,15 @@ Verwende CSS-Module, um deine Komponenten und Seiten zu stylen.
 - Erkläre deine Vorgehensweise für jeden Punkt der Angabe
 
 
+
 ## Bewertungskriterien
 - Funktionalität der Routing-Struktur
 - Korrekte Implementierung und Verwendung von Komponenten
 - Vollständigkeit der geforderten Inhalte
 - Code-Qualität und -Organisation
+
+## Weitere Infos
+
+ - [Remix - Quick Start](https://remix.run/docs/en/main/start/quickstart)
+ - [React - Quick Start](https://react.dev/learn)
+ - [React - Empfohlene Vorgehensweise](https://react.dev/learn/thinking-in-react)
