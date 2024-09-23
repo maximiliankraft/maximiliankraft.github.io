@@ -32,18 +32,21 @@ Erstelle folgende Routen:
 - `/contact` (Kontakt)
 
 ### 3. Komponenten erstellen
-a) Erstelle eine Header-Komponente mit einem Navigationsmenü für die oben genannten Routen.
-b) Erstelle eine Footer-Komponente mit Copyright-Informationen.
-c) Füge die Komponenten in root.tsx ein
+
+- Erstelle eine Header-Komponente mit einem Navigationsmenü für die oben genannten Routen.
+- Erstelle eine Footer-Komponente mit Copyright-Informationen.
+- Füge die Komponenten in root.tsx ein
+
 
 ### 4. Seiteninhalte
-a) Startseite: Kurze Begrüßung und Einleitung
-b) Über mich: Ihr persönlicher Steckbrief (Name, Alter, Hobbys, Fähigkeiten)
-c) Kontakt: Ein einfaches Kontaktformular (Name, E-Mail, Nachricht) 
+
+- Startseite: Kurze Begrüßung und Einleitung
+- Über mich: Ihr persönlicher Steckbrief (Name, Alter, Hobbys, Fähigkeiten)
+- Kontakt: Ein einfaches Kontaktformular (Name, E-Mail, Nachricht) 
     - Muss die Daten noch nicht tatsächlich absenden
 
 ### 5. Styling
-Verwende CSS-Module, um deine Komponenten und Seiten zu stylen.
+Verwende [Tailwind CSS](https://tailwindui.com/components), um deine Komponenten und Seiten zu stylen.
 
 ## Abgabe
 - Lade ein Protokoll auf Moodle hoch
@@ -62,3 +65,4 @@ Verwende CSS-Module, um deine Komponenten und Seiten zu stylen.
  - [Remix - Quick Start](https://remix.run/docs/en/main/start/quickstart)
  - [React - Quick Start](https://react.dev/learn)
  - [React - Empfohlene Vorgehensweise](https://react.dev/learn/thinking-in-react)
+ - [Tailwind CSS Beispiele](https://tailwindui.com/components)
