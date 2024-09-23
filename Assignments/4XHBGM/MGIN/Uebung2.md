@@ -43,6 +43,7 @@ nav: false
 #### 3.1 HTML-Template
 - Erstelle ein HTML-Template `adressformular.html` mit einem Formular zur Adresseingabe.
 - Implementiere Eingabefelder für Straße, Hausnummer, PLZ und Ort.
+- Erstelle ein HTML-Template `adressuebersicht.html`, um die gespeicherten Adressen anzuzeigen
 
 #### 3.2 JavaScript-Implementierung
 - Erstelle eine separate JavaScript-Datei `adressService.js`.
