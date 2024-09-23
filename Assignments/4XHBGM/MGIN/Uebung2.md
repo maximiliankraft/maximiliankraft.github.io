@@ -59,7 +59,7 @@ nav: false
 ### 4. Integration und Testing
 
 #### 4.1 AJAX-Implementierung
-- Verwende jQuery oder Vanilla JS, um eine AJAX-Anfrage an den `adresse_speichern`-Endpunkt zu senden, wenn das Formular abgeschickt wird.
+- Verwende die [fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch), um eine HTTP-Anfrage an den `adresse_speichern`-Endpunkt zu senden, wenn das Formular abgeschickt wird.
 - Zeige eine Erfolgsmeldung an, wenn die Adresse erfolgreich gespeichert wurde.
 
 #### 4.2 Error Handling
