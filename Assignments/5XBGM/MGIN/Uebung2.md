@@ -21,11 +21,11 @@ In dieser Übung wirst du deine Django-Webseite um eine ORF (Open Reading Frame)
    - Numerisches Feld für die minimale ORF-Länge
    - Checkbox für die Suche auf beiden DNA-Strängen (vorwärts und rückwärts)
 3. Erstelle eine neue View, die die Formulardaten entgegennimmt und an den Docker-Container sendet.
-4. Implementieren Sie eine Ergebnisseite, die die gefundenen ORFs anzeigt.
+4. Implementiere eine Ergebnisseite, die die gefundenen ORFs anzeigt. Dabei kannst du dich am ORF Finder von NCBI orientieren.
 
 ### Teil 2: Erstellung des Docker-Containers für die ORF-Suche
 1. Erstelle einen neuen Docker-Container, der Python und die notwendigen Bibliotheken für die ORF-Suche enthält.
-2. Implementiere einen einfachen Web-Server (z.B. mit fastAPI, Flask etc.) im Container, der POST-Anfragen mit DNA-Sequenzen entgegennimmt.
+2. Implementiere einen einfachen Web-Server (z.B. mit fastAPI, Flask, pure Python etc.) im Container, der POST-Anfragen mit DNA-Sequenzen entgegennimmt.
 3. Schreibe eine Python-Funktion zur ORF-Suche, die folgende Schritte durchführt:
    - Identifizierung von Start- (ATG) und Stopp-Codons (TAA, TAG, TGA)
    - Suche nach ORFs mit der angegebenen Mindestlänge
