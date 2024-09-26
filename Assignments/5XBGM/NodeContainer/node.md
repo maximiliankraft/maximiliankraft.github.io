@@ -49,7 +49,7 @@ Deine Aufgabe ist es, die Angular-Anwendung in einen Docker-Container zu verpack
 Im Protokoll soll enthalten sein:
 - Dockerfile
 - Angepasste nginx-Konfiguration (falls notwendig)
-- Kurze Dokumentation (max. 1 Seite) mit Erklärungen und Anweisungen zum Bauen und Starten des Containers
+- Kurze Dokumentation (max. 1 Seite des Protokolls) mit Erklärungen und Anweisungen zum Bauen und Starten des Containers
 
 ## Zusatzaufgabe (freiwillig)
 - Implementiere einen einfachen Gesundheitscheck (Health Check) für deinen Container.
