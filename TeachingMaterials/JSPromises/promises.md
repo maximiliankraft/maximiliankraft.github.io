@@ -52,3 +52,9 @@ function fetchData() {
   // Deine Lösung hier
 }
 ```
+
+## Weitere Unterlagen
+
+- [MDN Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [MDN - Using promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises)
+- [Common promise mistakes](https://pouchdb.com/2015/05/18/we-have-a-problem-with-promises.html)
