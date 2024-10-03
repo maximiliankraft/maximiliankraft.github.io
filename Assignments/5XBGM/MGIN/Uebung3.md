@@ -20,8 +20,8 @@ In dieser Übung erweiterst du deine Django-Webseite um Funktionen für Multiple
 ### 2. Implementierung des MSA- und Phylogenie-Services
 - Erstelle einen neuen Docker-Container für den MSA- und Phylogenie-Service.
 - Verwende Biopython zur Implementierung folgender Funktionen:
-  a) Multiple Sequence Alignment
-  b) Erstellung eines phylogenetischen Baums
+  a) [Multiple Sequence Alignment](https://biopython.org/docs/1.75/api/Bio.Align.html) 
+  b) [Erstellung eines phylogenetischen Baums](https://biopython.org/wiki/Phylo)
 
 ### 3. Microservice-Architektur
 - Implementiere eine API für den MSA- und Phylogenie-Service (z.B. mit Flask oder FastAPI).
@@ -123,6 +123,5 @@ In dieser Übung erweiterst du deine Django-Webseite um Funktionen für Multiple
 ## Abgabe
 - Stelle sicher, dass doe Docker-Container korrekt konfiguriert und lauffähig sind
 - Dokumentiere die API-Endpunkte des MSA-Services.
-- Schreibe Unit-Tests für die Funktionen im MSA-Service
-- Protokolliere die Durchführung und die Ergebnisse, insbesondere der Unit-Tests
+- Protokolliere die Durchführung und die Ergebnisse
 - Verwende folgende Protokollvorlage: [Protokoll Vorlage.docx](/TeachingMaterials/General/Protokoll%20Vorlage.docx)
