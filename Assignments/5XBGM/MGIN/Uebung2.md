@@ -15,7 +15,7 @@ In dieser Übung wirst du deine Django-Webseite um eine ORF (Open Reading Frame)
 ## Aufgabenstellung
 
 ### Teil 1: Erweiterung der Django-Webseite
-1. Erweiter deine bestehende Django-Webseite um ein neues Formular für die ORF-Suche.
+1. Erweitere deine bestehende Django-Webseite um ein neues Formular für die ORF-Suche.
 2. Das Formular soll folgende Eingabefelder haben:
    - Textfeld für die DNA-Sequenz
    - Numerisches Feld für die minimale ORF-Länge
