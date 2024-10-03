@@ -9,7 +9,7 @@ nav: false
 ---
 
 ## Zielsetzung
-In dieser Übung erweiterst du deine Django-Webseite um Funktionen für Multiple Sequence Alignment (MSA) und die Erstellung eines phylogenetischen Baums. Diese Funktionen werden als Microservices in einem separaten Container implementiert.
+In dieser Übung erweiterst du deine Django-Webseite um Funktionen für Multiple Sequence Alignment (MSA) und die Erstellung eines phylogenetischen Baums. Diese Funktionen werden als Microservices in einem separaten Container implementiert. Realistische Testdaten kannst du dir z.B von der [NCBI dbVar](https://www.ncbi.nlm.nih.gov/dbvar) holen. 
 
 ## Aufgabenstellung
 
