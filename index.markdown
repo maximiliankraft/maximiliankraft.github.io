@@ -42,6 +42,7 @@ title: Liste aller Unterrichtsmaterialien
 - [1. Jahrgang HBGM](/Assignments/1XHBGM/Index)
 - [2. Jahrgang HBGM](/Assignments/2XHBGM/Index)
 - [3. Jahrgang HBGM](/Assignments/3XHBGM/Index)
+- [3. Jahrgang HIF](/Assignments/3XHIF/WMC/Index)
 - [4. Jahrgang HBGM](/Assignments/4XHBGM/Index)
 - [5. Jahrgang HBGM](/Assignments/5XHBGM/Index)
 
