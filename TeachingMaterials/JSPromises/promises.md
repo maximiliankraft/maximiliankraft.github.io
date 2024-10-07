@@ -8,6 +8,8 @@ exclude: true
 nav: false
 ---
 
+Als Abgabe kopiere deinen Code mit Syntax-Highlighting in ein PDF. Wenn der Code bereits kommentiert ist reicht es aus nur den Code reinzugeben. Ansonsten jede Funktion kurz beschreiben. 
+
 ```js
 // Aufgabe 1: Einfaches Promise erstellen
 // Erstelle ein Promise, dass nach 2 Sekunden mit dem Wert "Hallo Welt" erfüllt wird.
