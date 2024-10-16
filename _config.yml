@@ -42,3 +42,6 @@ defaults:
       type: "pages"
     values:
       layout: "page"
+exclude:
+  - upload.sh
+  - secrets.sh
