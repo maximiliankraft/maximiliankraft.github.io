@@ -21,13 +21,13 @@ nav: false
 
 ## MGIN
 
-### 1. Semester
+**1. Semester** 
 
 - [Übung 1](/Assignments/4XHBGM/MGIN/Uebung1)
 - [Übung 2](/Assignments/4XHBGM/MGIN/Uebung2)
 <!--- [Übung 3](/Assignments/4XHBGM/MGIN/Uebung3) -->
 <!--- [Übung 4](/Assignments/4XHBGM/MGIN/Uebung4) -->
 
-### 2. Semester
+**2. Semester**
 
-- [KI-Integration in eine Webapplikation](/Assignments/4XHBGM/WhisperIntegration)
+- [KI Integration in eine Webapplikation](/Assignments/4XHBGM/WhisperIntegration)
