@@ -6,6 +6,9 @@
             "onAutoForward": "notify"
         }
     },
+    "mounts": [
+        "source=${localEnv:HOME}${localEnv:USERPROFILE}/.ssh,target=/home/vscode/.ssh,type=bind,readonly"
+      ],
     "privileged": false,
     "image": "mcr.microsoft.com/devcontainers/jekyll",
     "features": {
