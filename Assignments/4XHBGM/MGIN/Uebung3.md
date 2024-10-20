@@ -61,7 +61,7 @@ Nimm die Übung 2 als Grundlage. Bereits erstellte Dateien können gerne weiterv
 
 ### 5. Styling
 - Füge dem Shadow DOM ein `<style>`-Element hinzu
-- Definiere CSS-Regeln, um das Formular ansprechend zu gestalten (tobts euch aus)
+- Definiere CSS-Regeln, um das Formular ansprechend zu gestalten (tobt euch aus!)
 
 ### 6. Verwendung und Test
 - Fügen in der `index.html` das neue Custom Element `<address-form>` ein
@@ -80,7 +80,7 @@ Nimm die Übung 2 als Grundlage. Bereits erstellte Dateien können gerne weiterv
 - Füge Screenshots hinzu, die das funktionierende Formular und die Konsolenausgabe bei der Formularübermittlung zeigen
 - Der Code muss mit Sytax-Highlighting formatiert sein
 - Das Word-Template muss nicht als Vorlage genommen werden.
-  - Ein mit Markdown geschriebenes PDF nehme ich gerne entgegen. Gibt für CS Code eine Extension [Markdown-PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) oder man konvertierts mit [Pandoc](https://pandoc.org/)
+  - Ein mit Markdown geschriebenes PDF nehme ich gerne entgegen. Gibt für VS Code eine Extension [Markdown-PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) oder man konvertiert es mit [Pandoc](https://pandoc.org/)
 
 ## Weitere Ressourcen
 - [MDN Web Components Guide](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
