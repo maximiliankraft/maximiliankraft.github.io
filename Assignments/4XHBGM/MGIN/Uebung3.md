@@ -9,35 +9,38 @@ nav: false
 ---
 
 ## Zielsetzung
-In dieser Übung werdet ihr die Grundlagen von Web Components kennenlernen und anwenden. Das Adressformular aus der vorherigen Übung ist als Custom Element zu implementiern. Das soll euch einen Einblick in moderne Webtechnologien und komponentenbasierte Entwicklung geben. Diese Übung bildet eine solide Grundlage für das Verständnis von Frameworks wie Angular, React oder Vue.js, die ähnliche Konzepte verwenden.
+In dieser Übung werdet ihr die Grundlagen von Web Components kennenlernen und anwenden. Das Adressformular aus der vorherigen Übung ist als Custom Element zu implementiern. Dieses soll dann in den Code der Übung 2 integriert werden. Das soll euch einen Einblick in moderne Webtechnologien und komponentenbasierte Entwicklung geben. Komponenten werden bei Frameworks wie React, Vue oder Angular häufig in ähnlicher Form eingesetzt. 
 
 ## Hintergrundinformation
-Web Components sind eine Sammlung von Webtechnologien, die es ermöglichen, wiederverwendbare und gekapselte Benutzeroberflächen-Komponenten zu erstellen. Sie bestehen aus drei Haupttechnologien:
-1. [Custom Elements](https://developer.mozilla.org/en-US/docs/Web/API/Web_components): Erlauben die Definition eigener HTML-Elemente
+Web Components sind ein Standard, der es ermöglicht, wiederverwendbare und gekapselte Benutzeroberflächen-Komponenten zu erstellen. Wichtig hierfür sind:
+1. [Web Component Specification](https://developer.mozilla.org/en-US/docs/Web/API/Web_components): Erlaubt die Definition eigener HTML-Elemente
 2. [Shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM): Bietet eine gekapselte DOM- und Styling-Struktur
-3. HTML Templates: Ermöglichen die Erstellung von wiederverwendbaren HTML-Strukturen
+
 
 Das Verständnis und die Anwendung von Web Components sind aus folgenden Gründen wichtig:
 - Sie fördern modulares und wiederverwendbares Design
-- Sie bilden die Grundlage für viele moderne Frontend-Frameworks
 - Sie ermöglichen eine bessere Trennung von Markup, Stil und Logik
 - Sie verbessern die Wartbarkeit und Skalierbarkeit von Webanwendungen
+- Werden (wie bereits erwähnt) in modernen Webframeworks häufig eingesetzt
 
 ## Aufgabenstellung
 
 ### 1. Projekt-Setup
-- Erstellen Sie eine neue HTML-Datei namens `index.html`
-- Erstellen Sie eine JavaScript-Datei namens `address-form.js`
-- Verlinken Sie die JavaScript-Datei in Ihrer HTML-Datei
+
+Nimm die Übung 2 als Grundlage. Bereits erstellte Dateien können gerne weiterverwendet werden.
+
+- Erstelle eine HTML-Datei namens `index.html`
+- Erstelle eine JavaScript-Datei namens `address-form.js`
+- Verlinke die JavaScript-Datei in der HTML-Datei
 
 ### 2. Custom Element definieren
-- Definieren Sie in `address-form.js` eine neue Klasse `AddressForm`, die von `HTMLElement` erbt
-- Registrieren Sie das neue Custom Element mit dem Namen `address-form`
-- Beispielcode für eine ähnliche Komponente [hier (editable list MDN)](https://github.com/mdn/web-components-examples/blob/main/editable-list/main.js)
+- Definiere in `address-form.js` eine neue Klasse `AddressForm`, die von `HTMLElement` erbt
+- Registriere das neue Custom Element mit dem Namen `address-form`
+- Beispielcode für eine ähnliche Komponente [hier (editable list MDN)](https://github.com/mdn/web-components-examples/blob/main/editable-list/main.js) oder [(edit-word)](https://mdn.github.io/web-components-examples/edit-word/)
 
 ### 3. Template erstellen
-- Fügen Sie in Ihre HTML-Datei ein `<template>`-Element hinzu
-- Gestalten Sie innerhalb des Templates das Markup für ein Adressformular mit folgenden Feldern:
+- Füge in die HTML-Datei ein `<template>`-Element hinzu
+- Gestalte innerhalb des Templates ein Adressformular mit folgenden Feldern:
   - Vorname
   - Nachname
   - Straße
@@ -45,47 +48,39 @@ Das Verständnis und die Anwendung von Web Components sind aus folgenden Gründe
   - Postleitzahl
   - Stadt
   - Land
-- Fügen Sie dem Template auch einen "Absenden"-Button hinzu
+- Fügen dem Template auch einen "Absenden"-Button hinzu
+- In dem Template soll es einen Bearbeiten-Modus geben sowie einen Anzeige-Modus
+  - Beim erstellen eines neuen Eintrags soll der Bearbeiten-Modus verwendet werden
+  - In der Übersicht der gespeicherten Daten der Anzeige-Modus
 
-### 4. Shadow DOM und Template verwenden
-- Erstellen Sie in der `AddressForm`-Klasse einen Shadow DOM
-- Klonen Sie das Template und fügen Sie es dem Shadow DOM hinzu
 
-### 5. Eventhandling implementieren
-- Fügen Sie einen Event Listener für das "submit"-Event des Formulars hinzu
-- Implementieren Sie eine Methode, die die eingegebenen Daten sammelt und ausgibt (z.B. in der Konsole)
+### 4. Eventhandling implementieren
+- Füge einen Event Listener für das "submit"-Event des Formulars hinzu
+  - Um sofortiges Absenden zu unterdrücken, verwende [preventDefault](https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault)
+- Implementiere eine Methode, die die eingegebenen Daten sammelt und ausgibt in der Konsole
 
-### 6. Styling
-- Fügen Sie dem Shadow DOM ein `<style>`-Element hinzu
-- Definieren Sie CSS-Regeln, um das Formular ansprechend zu gestalten
-- Nutzen Sie die Kapselung des Shadow DOM, um zu demonstrieren, dass die Stile nicht mit dem Rest der Seite interagieren
+### 5. Styling
+- Füge dem Shadow DOM ein `<style>`-Element hinzu
+- Definiere CSS-Regeln, um das Formular ansprechend zu gestalten (tobts euch aus)
 
-### 7. Verwendung und Test
-- Fügen Sie in Ihrer `index.html` das neue Custom Element `<address-form>` ein
-- Testen Sie die Funktionalität des Formulars im Browser
+### 6. Verwendung und Test
+- Fügen in der `index.html` das neue Custom Element `<address-form>` ein
+- Testen die Funktionalität des Formulars im Browser
+- Protokolliere die Konsolenausgabe wenn man auf Senden klickt
 
-### 8. Erweiterung (Optional)
-- Implementieren Sie eine Methode, um die Formulardaten als strukturiertes Objekt zurückzugeben
-- Fügen Sie eine Validierung für die Eingabefelder hinzu (z.B. Pflichtfelder, Formatüberprüfung)
-
-### 9. Dokumentation
-- Kommentieren Sie Ihren Code ausführlich
-- Erstellen Sie eine kurze README-Datei, die erklärt, wie man die Komponente verwendet und welche Funktionen sie bietet
+### 7. Integration
+- Implementieren eine Methode, um die Formulardaten als JSON Objekt zurückzugeben. Das JSON soll dann an die entsprechenden Django-Endpunkte aus Übung 2 übergeben werden zum speichern.
+- Implementierte serverseitig auch eine Update-Funktion um bestehende Adressen ändern zu können.
+- (Optional) Füge eine Validierung für die Eingabefelder hinzu (z.B. Pflichtfelder, Formatüberprüfung)
 
 ## Abgabe
-- Reichen Sie folgende Dateien ein:
+- Füge im Protokoll folgende Dateien ein:
   - `index.html`
   - `address-form.js`
-  - README.md
-- Fügen Sie Screenshots hinzu, die das funktionierende Formular und die Konsolenausgabe bei der Formularübermittlung zeigen
-
-## Lernziele
-Nach Abschluss dieser Übung sollten Sie:
-- Die Grundkonzepte von Web Components verstehen
-- Ein Custom Element mit Shadow DOM erstellen können
-- HTML-Templates für wiederverwendbare Strukturen nutzen können
-- Die Vorteile der Kapselung durch Shadow DOM erkennen
-- Eine Basis für das Verständnis komponentenbasierter Frameworks wie Angular, React oder Vue.js haben
+- Füge Screenshots hinzu, die das funktionierende Formular und die Konsolenausgabe bei der Formularübermittlung zeigen
+- Der Code muss mit Sytax-Highlighting formatiert sein
+- Das Word-Template muss nicht als Vorlage genommen werden.
+  - Ein mit Markdown geschriebenes PDF nehme ich gerne entgegen. Gibt für CS Code eine Extension [Markdown-PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) oder man konvertierts mit [Pandoc](https://pandoc.org/)
 
 ## Weitere Ressourcen
 - [MDN Web Components Guide](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
