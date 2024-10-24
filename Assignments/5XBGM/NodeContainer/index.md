@@ -46,3 +46,22 @@ Dein Protokoll soll enthalten:
 - docker-compose.yml
 - Angepasste Anwendungskonfigurationsdateien
 - Kurze Dokumentation (max. 1 Seite des Protokolls) mit Erklärungen und Anweisungen zum Starten der Anwendung
+
+
+
+### Häufige Probleme und Lösungen:
+
+1. **Container startet nicht:**
+   - Logs prüfen: `sudo docker compose logs`
+   - Build-Logs prüfen: `sudo docker compose build --no-cache`
+   - Ports prüfen: `sudo netstat -tulpn`
+
+2. **Statische Assets werden nicht geladen:**
+   - Verifizieren Sie die Build-Ausgabe: `sudo docker exec -it <container-id> ls /<path>`
+
+3. **Performance-Probleme:**
+   - Container Ressourcen überprüfen: `sudo docker stats`
+   - System-Ressourcen monitoren (nur Linux): `htop`
+4. **Änderungen werden nicht übernommen**
+  - Container muss bei jeder Änderung neu gebaut werden
+  - Start mit `docker compose up -d --build`
