@@ -45,4 +45,4 @@ Dein Protokoll soll enthalten:
 - Dockerfile
 - docker-compose.yml
 - Angepasste Anwendungskonfigurationsdateien
-- Kurze Dokumentation (max. 1 Seite) mit Erklärungen und Anweisungen zum Starten der Anwendung
+- Kurze Dokumentation (max. 1 Seite des Protokolls) mit Erklärungen und Anweisungen zum Starten der Anwendung
