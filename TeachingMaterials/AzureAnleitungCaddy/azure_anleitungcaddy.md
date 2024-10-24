@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Azure Anleitung caddy
-permalink: /TeachingMaterials/AzureAnleitungNode
+title: Azure Anleitung nodejs
+permalink: /TeachingMaterials/AzureAnleitungCaddy
 menubar: false
 nav_exclude: true
 exclude: true
@@ -99,29 +99,198 @@ Ist das Update fertig können wir diverse Programme installieren. Wir benötigen
 Nun können wir mit `unzip <dateiname>.zip` unser Projekt auspacken. Um in den darin erstellen Ordner zu wechseln gibt es das Kommando `cd <dein-projektordner>`.
 
 
-## Installation mit nodejs
+## Installation Docker und Deployment mit Caddy
 
-So wie man unter Windows mit dem Kommando `npm run ...` bzw. `npm start` eine nodejs-Anwendung ohne IDE ausführen kann, geht das auch unter Linux. Wenn man nur einen Konsolen-Zugriff hat geht es auch garnicht anders. Das Programm `npm` bzw. `node` muss aber erst installiert werden. Weil nodejs etwas langsam darin ist deren Pakete in den Paketmanager zu aktualisieren ist es besser man schaut sich an wie man von nodejs bereitgestellte Paketrepositories verwendet in denen immer die aktuelle Version enthalten ist. Eine Anleitung dazu gibt es [hier (github.com/nodesource/distributions)](https://github.com/nodesource/distributions?tab=readme-ov-file#installation-instructions-deb). 
+Nachdem wir die Projektdateien auf die VM übertragen haben, erstellen wir zunächst die notwendigen Docker-Konfigurationsdateien für einen mehrstufigen Build-Prozess.
 
+1. Erstelle in deinem Projektordner ein `Dockerfile`:
+```dockerfile
+# Build stage
+FROM node:18-alpine as builder
 
-Mit dem Kommando:
+WORKDIR /app
+COPY package*.json ./
+RUN npm install
+COPY . .
+RUN npm run build
 
-```console
-npm run dev
+FROM node:18-alpine as runner
+
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY --from=builder /app/build ./build
+COPY --from=builder /app/public ./public
+COPY --from=builder /app/prisma ./prisma
+RUN npm run prismagen
+
+EXPOSE 3000
+CMD ["npm", "run", "start"]
 ```
 
-kann man dann den Webserver starten. Dabei ist wichtig dass in dem Ordner in dem der Befehl ausgeführt wird sich die `package.json` Datei befindet. Was genau macht dieser Befehl? Mit `sudo` (superuser do) wird der nachfolgende Befehl als Administrator ausgeführt. `npm run dev` startet das Remix-Projekt. Genau der Befehl wird ausgeführt wenn man in einer IDE auf den Play-Button klickt. Wichtig ist noch die Zone an zulässigen IPs und den Port zu konfigurieren. Diese Einstellungen müssen in Vite vorgenommen werden. Ein Anleitung dazu gibt es [hier (vitejs.dev/config)](https://v3.vitejs.dev/config/server-options.html). Wichtig ist die Postion des `server`-Objekts:
+Um beim Befehl `COPY . .` nicht zu viele Daten zu übertragen kannst du die Datei `.dockerignore` hinzufügen. Alle darin aufgelisteten Dateien und Ordner werden nicht reinkopiert. Syntax ist ähnlich wie bei der `.gitignore`.
 
-```js
-export default defineConfig({
-  // ... other config
-
-  server: {
-    host: "0.0.0.0",
-    port: 80
-  }
-});
+```
+node_modules
 ```
 
- Der Port 80 ist der Standardport von HTTP. Man könnte jede Seite mit :80 dahinter aufrufen. Standardmäßig kann man ihn aber auch weglassen. Mit 0.0.0.0 erlaubt man jeder IP Adresse auf den Webserver zugreifen zu dürfen. Hätte man 10.0.0.0 dürften z.B nur IPs aus dem internen Netz Daten abfragen. Um zu prüfen ob eine eingehende Verbindung erlaubt ist, wird der AND Operator auf die Maske (`0.0.0.0`) und die eingehende IP z.B `80.167.22.58` angewandt. Wenn das Ergebnis mit der Maske übereinstimmt ist die Verbindung erlaubt. Nachdem jede Zahl kombiniert mit dem AND-Operator und einer 0 wieder 0 ergibt sind alle Verbindungen erlaubt. Manchmal sieht man auch die Schreibweise `0.0.0.0/0`. Die wird [hier](https://networkengineering.stackexchange.com/a/77604/60739) erklärt. 
 
+2. Erstelle eine `Caddyfile` im Projektordner:
+```
+yourdomain.example.com {
+    # Reverse proxy to Remix server
+    reverse_proxy remix-app:3000 {
+        header_up Host {host}
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
+    }
+
+    # Enable compression
+    encode gzip
+}
+```
+
+3. Docker Compose für einfacheres Management:
+
+Erstelle ein `docker-compose.yml`:
+```yaml
+services:
+  remix-app:
+    build: .
+    restart: unless-stopped
+    networks:
+      - remix_network
+    environment:
+      - NODE_ENV=production
+    volumes:
+      - ./prisma:/app/prisma
+    env_file: .env
+      
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - remix_network
+    depends_on:
+      - remix-app
+
+networks:
+  remix_network:
+    driver: bridge
+
+volumes:
+  caddy_data:
+  caddy_config:
+```
+
+4. Deployment durchführen:
+```bash
+# Docker Compose starten
+sudo docker compose up -d --build
+```
+
+## Wartung und Monitoring
+
+1. Logs überprüfen:
+```bash
+# Container Logs anzeigen
+sudo docker compose logs -f
+```
+
+2. Container neustarten:
+```bash
+sudo docker compose restart
+```
+
+3. Updates durchführen:
+
+Funktioniert nur wenn man statt sftp die Daten zwischen privatem Rechner und Azure mit git überträgt.
+
+```bash
+# Neue Version pullen und Container neustarten
+git pull
+sudo docker compose down
+sudo docker compose up --build -d
+```
+
+## Troubleshooting
+
+### Häufige Probleme und Lösungen:
+
+1. **Container startet nicht:**
+   - Logs prüfen: `sudo docker compose logs`
+   - Build-Logs prüfen: `sudo docker compose build --no-cache`
+   - Ports prüfen: `sudo netstat -tulpn`
+
+2. **Statische Assets werden nicht geladen:**
+   - Prüfen Sie die Pfade in der Caddyfile
+   - Verifizieren Sie die Build-Ausgabe: `sudo docker exec -it <container-id> ls /srv`
+
+3. **Performance-Probleme:**
+   - Container Ressourcen überprüfen: `sudo docker stats`
+   - System-Ressourcen monitoren: `htop`
+4. **Änderungen werden nicht übernommen**
+  - Container muss bei jeder Änderung neu gebaut werden
+  - Start mit `docker compose up -d --build`
+
+## HTTPS einrichten
+
+Für eine produktive Umgebung mit eigener Domain, ändere das Caddyfile wie folgt:
+
+```
+your-domain.com {
+    root * /srv
+    
+    # Serve static files from build directory
+    handle /build/* {
+        file_server
+    }
+    
+    # Serve static files from public directory
+    handle /public/* {
+        file_server
+    }
+    
+    # Serve the index file for all other routes
+    handle * {
+        try_files {path} /build/index.html
+    }
+
+    # Enable compression
+    encode gzip
+}
+```
+
+Nach dem Ändern der Konfiguration:
+```bash
+sudo docker compose restart
+```
+
+## Sicherheitshinweise
+
+1. Regelmäßige System-Updates:
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+2. Docker-Images aktualisieren:
+```bash
+sudo docker compose pull
+sudo docker compose up -d
+```
+
+3. Backup der Volumes:
+```bash
+docker run --rm \
+    -v caddy_data:/data \
+    -v $(pwd):/backup \
+    alpine tar czf /backup/caddy_data_backup.tar.gz /data
+```
