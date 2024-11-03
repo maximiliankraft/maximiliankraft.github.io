@@ -14,7 +14,7 @@ nav: false
 Jeder Schüler soll:
 1. Eine FHIR-Ressource modellieren und Instanzen davon in einer Datenbank speichern.
 2. Ein Formular sowie ein Template erstellen, um bestehende Einträge zu ändern, neue Einträge zu erstellen oder bestehende Einträge zu löschen (CRUD-Funktionalität).
-3. Die Implementierung mit Git verwalten und durch viele kleine Commits regelmäpig dokumentieren.
+3. Die Implementierung mit Git verwalten und durch viele kleine Commits regelmäßig dokumentieren.
 
 
 ### Technische Anforderungen
@@ -32,7 +32,7 @@ Jeder Schüler soll:
     - [4AHBGM](https://github.com/Die-Spengergasse/SJ2425-MGIN4A-FHIR)
     - [4BHBGM](https://github.com/Die-Spengergasse/SJ2425-MGIN4B-FHIR)
 
-1. **Branch-Erstellung**: Jeder Schüler erstellt einen eigenen Branch für die jeweilige FHIR-Ressource. Der Branch muss folgende Namenskonvention haben: `feature/ressource-name`.
+1. **Branch-Erstellung**: Jeder Schüler erstellt einen eigenen Branch für die jeweilige FHIR-Ressource. Der Branch muss folgender Namenskonvention folgen: `feature/<ressource-name>`.
    
 2. **Entwicklung**: Implementiere für die Ressource, gemäß den Spezifikationen aus fhir.resources, die erforderlichen Datenbankmodelle, Formulare und Templates.
 
@@ -42,9 +42,9 @@ Jeder Schüler soll:
 
 5. **Integration**: Teste im dev-Branch ob dein Code auch nicht die Funktionalität des Codes deiner Kollegen beeinträchtigt.  Nach erfolgreichem Testen aller Ressourcen im `dev`-Branch, erfolgt der Merge in den `main`-Branch. Erstellt einen Workflow welcher bei jedem [pull-request](https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#pull_request) einen [Django Test Workflow](https://github.com/UKnowWhoIm/django-test-action) ausführt. 
 
-6. **Dokumentation**: Jeder Schüler erstellt ein Protokoll über die eigene Vorgehensweise und dokumentiert dabei alle wesentlichen Schritte.
+6. **Dokumentation**: Jeder Schüler erstellt ein Protokoll über die eigene Vorgehensweise und dokumentiert dabei alle wesentlichen Schritte. Achte darauf alle Punkte aus den Bewertungsgrundlagen zu erwähnen. Die Abgabe des Protokolls kann auch gerne als Text im Pull-Request auf den main-Branch erfolgen.
 
-7. **Änderungsprotokoll**: Verwende den folgenden Git-Befehl, um die von dir geänderten Dateien anzuzeigen:
+7. **Änderungsprotokoll**: Verwende den folgenden Git-Befehl, um die von dir erstellten Commits anzuzeigen:
 ```bash
 git log --author="<Dein Name>"
 ```
