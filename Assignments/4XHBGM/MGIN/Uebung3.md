@@ -82,6 +82,14 @@ Nimm die Übung 2 als Grundlage. Bereits erstellte Dateien können gerne weiterv
 - Das Word-Template muss nicht als Vorlage genommen werden.
   - Ein mit Markdown geschriebenes PDF nehme ich gerne entgegen. Gibt für VS Code eine Extension [Markdown-PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) oder man konvertiert es mit [Pandoc](https://pandoc.org/)
 
+
+### Erweiterungen von Übung 2
+
+- `/add` in den Views (+urls) hinzufügen
+  - Sende vom Server zum Client einen Primary Key mit, um zu erkennen ob die übermittelten Daten bestehende überschreiben sollen. Ist der primary key `-1` oder `null` soll ein neuer Eintrag in der Datenbank gespeichert werden. Über `<input type="hidden" value="<key>" ... />` kann man den Primary Key vor dem User verstecken und trotzdem mit übertragen.
+- Ergänze im `model.py` den Vornamen und den Nachnamen. Bundesland kannst du auf Land ändern
+- Verwende den neuen Tag `<address-form editable="false" ... />` in der Übersicht sowie beim anlegen neuer Adressen
+
 ## Weitere Ressourcen
 - [MDN Web Components Guide](https://developer.mozilla.org/en-US/docs/Web/Web_Components)
 - [Google Developers - Web Components](https://developers.google.com/web/fundamentals/web-components)
