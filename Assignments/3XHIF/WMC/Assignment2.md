@@ -19,38 +19,38 @@ Erweitere deine persönliche Remix-Webseite aus der vorherigen Übung um eine in
 ## Aufgaben
 
 ### 1. Erstellen einer neuen Route
-a) Füge eine neue Route `/skills` zu deiner Webseite hinzu.
-b) Aktualisiere die Header-Komponente, um einen Link zu dieser neuen Seite einzufügen.
+- Füge eine neue Route `/skills` zu deiner Webseite hinzu.
+- Aktualisiere die Header-Komponente, um einen Link zu dieser neuen Seite einzufügen.
 
 ### 2. Implementierung der Loader Funktion
-a) Erstelle eine `loader`-Funktion, die eine erste Liste von Fähigkeiten oder Projekten vom Server lädt.
+- Erstelle eine `loader`-Funktion, die eine erste Liste von Fähigkeiten oder Projekten vom Server lädt.
 
 ### 3. Entwicklung einer wiederverwendbaren Komponente
-a) Erstelle eine `SkillItem`-Komponente, die einen einzelnen Listeneintrag darstellt.
-b) Diese Komponente sollte sowohl den Anzeigemodus als auch den Bearbeitungsmodus unterstützen (conditional rendering).
+- Erstelle eine `SkillItem`-Komponente, die einen einzelnen Listeneintrag darstellt.
+- Diese Komponente sollte sowohl den Anzeigemodus als auch den Bearbeitungsmodus unterstützen (conditional rendering).
 
 ### 4. Implementierung der Skills-Liste
-a) Verwende die `useLoaderData`-Hook, um die Daten aus der `loader`-Funktion zu erhalten.
-b) Rendere die Liste der Fähigkeiten/Projekte unter Verwendung der `SkillItem`-Komponente und der `map`-Funktion.
+- Verwende die `useLoaderData`-Hook, um die Daten aus der `loader`-Funktion zu erhalten.
+- Rendere die Liste der Fähigkeiten/Projekte unter Verwendung der `SkillItem`-Komponente und der `map`-Funktion.
 
 ### 5. Hinzufügen von Interaktivität
-a) Implementiere ein Textfeld zum Hinzufügen neuer Fähigkeiten/Projekte.
-b) Füge Funktionen zum Bearbeiten und Löschen von Einträgen hinzu.
-c) Verwende die [useSubmit](https://remix.run/docs/en/main/hooks/use-submit)-Hook.
+- Implementiere ein Textfeld zum Hinzufügen neuer Fähigkeiten/Projekte.
+- Füge Funktionen zum Bearbeiten und Löschen von Einträgen hinzu.
+- Verwende die [useSubmit](https://remix.run/docs/en/main/hooks/use-submit)-Hook.
 
 ### 6. Filterung der Liste
-a) Füge ein Suchfeld hinzu, das die Liste der Fähigkeiten/Projekte filtert.
-b) Verwende die `filter`-Methode, um die Suchergebnisse anzuzeigen.
-c) Implementiere die Filterung client-seitig für sofortige Ergebnisse.
+- Füge ein Suchfeld hinzu, das die Liste der Fähigkeiten/Projekte filtert.
+- Verwende die `filter`-Methode, um die Suchergebnisse anzuzeigen.
+- Implementiere die Filterung client-seitig für sofortige Ergebnisse.
 
 ### 7. Local Storage Integration
-a) Verwende den [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage#examples), um die Liste der Fähigkeiten/Projekte zu speichern.
-b) Aktualisiere den Local Storage bei Änderungen.
+- Verwende den [LocalStorage](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage#examples), um die Liste der Fähigkeiten/Projekte zu speichern.
+- Aktualisiere den Local Storage bei Änderungen.
 
-### 8. Fortgeschrittenes Styling
-a) Verwende CSS-Transitionen oder Animationen, um das Hinzufügen/Entfernen von Listenelementen zu visualisieren.
+### 8. (Optional) Fortgeschrittenes Styling
+- Verwende CSS-Transitionen oder Animationen, um das Hinzufügen/Entfernen von Listenelementen zu visualisieren.
     - kleiner Tipp: Mit ChatGPT o.ä geht das ganz gut dass man dem den aktuellen Code gibt und dazuschreibt "Füge animationen hinzu"
-b) Implementiere ein responsives Design für die Liste, z.B mit einer Flexbox.
+- Implementiere ein responsives Design für die Liste, z.B mit einer Flexbox.
 
 ## Abgabe
 - Ein Protokoll in dem die Umsetzung jedes Punktes beschrieben wird
