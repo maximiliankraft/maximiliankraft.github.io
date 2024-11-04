@@ -36,7 +36,6 @@ Erweitere deine persönliche Remix-Webseite aus der vorherigen Übung um eine in
 ### 5. Hinzufügen von Interaktivität
 - Implementiere ein Textfeld zum Hinzufügen neuer Fähigkeiten/Projekte.
 - Füge Funktionen zum Bearbeiten und Löschen von Einträgen hinzu.
-- Verwende die [useSubmit](https://remix.run/docs/en/main/hooks/use-submit)-Hook.
 
 ### 6. Filterung der Liste
 - Füge ein Suchfeld hinzu, das die Liste der Fähigkeiten/Projekte filtert.
