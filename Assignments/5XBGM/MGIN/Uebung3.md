@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Übung - Multiple Sequence Alignment und Phylogenetischer Baum
+title: Übungen - Multiple Sequence Alignment und Phylogenetischer Baum
 permalink: /Assignments/5XBGM/MGIN/Uebung3
 menubar: false
 nav_exclude: true
@@ -9,41 +9,34 @@ nav: false
 ---
 
 ## Zielsetzung
-In dieser Übung erweiterst du deine Django-Webseite um Funktionen für Multiple Sequence Alignment (MSA) und die Erstellung eines phylogenetischen Baums. Diese Funktionen werden als Microservices in einem separaten Container implementiert. Realistische Testdaten kannst du dir z.B von der [NCBI dbVar](https://www.ncbi.nlm.nih.gov/dbvar) holen. 
+In diesen zwei Übungen erweiterst du deine Django-Webseite um Funktionen für Multiple Sequence Alignment (MSA) bzw. die Erstellung eines phylogenetischen Baums. Diese Funktionen werden von bereits bestehenden separaten Container bereitgestellt. Realistische Testdaten kannst du dir z.B von der [NCBI dbVar](https://www.ncbi.nlm.nih.gov/dbvar) oder der [NCBI Nucleotide DB](https://www.ncbi.nlm.nih.gov/nuccore) holen. 
 
 ## Aufgabenstellung
 
-### 1. Erweiterung der Django-Webseite
+### Erweiterung der Django-Webseite
 - Füge der bestehenden Django-Webseite ein neues Formular hinzu, das mehrere Sequenzen für das MSA akzeptiert.
-- Implementiere eine neue View, die die eingegebenen Sequenzen an den MSA-Service sendet.
+- Implementiere eine neue View, die die eingegebenen Sequenzen an den MSA-Service sendet
+- Für das Alignment kannst du z.B einen [Muscle-Container](https://hub.docker.com/r/biocontainers/muscle) verwenden
+  - Auch andere Container wie [Emboss](https://hub.docker.com/r/biocontainers/emboss) sind möglich
+  - [Hier](https://biopython.org/docs/dev/Tutorial/chapter_msa.html) eine Liste von Programmen die Biopython unterstützt
 
-### 2. Implementierung des MSA- und Phylogenie-Services
-- Erstelle einen neuen Docker-Container für den MSA- und Phylogenie-Service.
-- Verwende Biopython zur Implementierung folgender Funktionen:
-  a) [Multiple Sequence Alignment](https://biopython.org/docs/1.75/api/Bio.Align.html) 
-  b) [Erstellung eines phylogenetischen Baums](https://biopython.org/wiki/Phylo)
 
-### 3. Microservice-Architektur
-- Implementiere eine API für den MSA- und Phylogenie-Service (z.B. mit Flask oder FastAPI).
-- Definiere Endpunkte für:
-  - MSA-Durchführung
-  - Phylogenetische Baum-Erstellung
+### Implementierung des Phylogenie-Services
+- Verwende einen bestehenden Microservice für den Phylogenie-Service
+  - Möglich wäre z.B der [raxml](https://hub.docker.com/r/biocontainers/raxml)-Container
 
-### 4. Integration und Kommunikation
-- Implementiere die Kommunikation zwischen der Django-Webseite und dem MSA-Service.
-- Verwende HTTP-Requests für den Datenaustausch.
+### Integration und Kommunikation
+- Implementiere die Kommunikation zwischen der Django-Webseite und dem MSA- bzw. Phylogenie-Service.
+- Starte die Container direkt über os.system (Einfach Kommandos wie `docker run` übergeben) oder über das offizielle [docker](https://pypi.org/project/docker/)-Pythoninterface von der Docker Foundation 
 
-### 5. Datenverarbeitung und Visualisierung
+### Datenverarbeitung und Visualisierung
 - Verarbeite die vom Service zurückgegebenen Daten in Django.
-- Erstelle eine Ansicht zur Darstellung des MSA (z.B. mit einer JavaScript-Bibliothek wie MSAViewer).
-- Visualisiere den phylogenetischen Baum (z.B. mit ETE Toolkit oder einer JavaScript-Bibliothek wie Phylotree.js).
+- Erstelle eine Ansicht zur Darstellung des MSA (z.B. mit einer JavaScript-Bibliothek wie MSAViewer)
+  - Im letzten [MSA-Viewer Release](https://github.com/wilzbach/msa/releases/tag/v1.0.0) muss man eine Zeile auskommentieren, dann funktionierts wieder. Deren [Beispielcode](http://msa.biojs.net/app/) muss nur etwas abgeändert werden 
+- Visualisiere den phylogenetischen Baum mit raxml, Um DNA-Sequenzen zusammenzufassen benötigt man die Methode `GTRGAMMA`
 
-### 6. Fehlerbehandlung und Validierung
-- Implementiere eine Fehlerbehandlung sowohl im Django-Frontend als auch im MSA-Service.
-- Validiere die Eingabesequenzen, bevor sie an den Service gesendet werden.
-
-### 7. Container-Orchestrierung
-- Erstelle ein Docker-Compose-File, das sowohl den Django-Container als auch den MSA-Service-Container beinhaltet.
+### Container-Orchestrierung
+- Erstelle ein Docker-Compose-File, das sowohl den Django-Container als auch die Service-Container beinhaltet.
 
 ## Detaillierte Aufgabenschritte
 
@@ -55,65 +48,15 @@ In dieser Übung erweiterst du deine Django-Webseite um Funktionen für Multiple
 2. **MSA- und Phylogenie-Service:**
    - Verwende Biopython's `Bio.Align.MultipleSeqAlignment` für das MSA.
    - Nutzen `Bio.Phylo` für die Erstellung des phylogenetischen Baums.
-   - Beispielcode für MSA:
-     ```python
-     from Bio import AlignIO
-     from Bio.Align.Applications import ClustalwCommandline
-     
-     def perform_msa(sequences):
-         # Führen Sie hier das MSA durch
-         # Rückgabe des Alignment-Objekts
-     ```
-   - Beispielcode für den phylogenetischen Baum:
-     ```python
-     from Bio import Phylo
-     from Bio.Phylo.TreeConstruction import DistanceCalculator, DistanceTreeConstructor
-     
-     def create_phylogenetic_tree(alignment):
-         # Erstellen Sie hier den phylogenetischen Baum
-         # Rückgabe des Tree-Objekts
-     ```
 
-3. **API-Implementierung:**
-   - Erstelle Endpunkte wie z.B `/api/msa` und `/api/phylo_tree`.
-   - Beispiel mit Flask:
-     ```python
-     from flask import Flask, request, jsonify
-     
-     app = Flask(__name__)
-     
-     @app.route('/api/msa', methods=['POST'])
-     def msa_endpoint():
-         sequences = request.json['sequences']
-         alignment = perform_msa(sequences)
-         return jsonify({"alignment": str(alignment)})
-     
-     @app.route('/api/phylo_tree', methods=['POST'])
-     def phylo_tree_endpoint():
-         alignment = request.json['alignment']
-         tree = create_phylogenetic_tree(alignment)
-         return jsonify({"tree": tree.to_json()})
-     ```
+
 
 4. **Visualisierung:**
    - Verwende JavaScript-Bibliotheken zur Darstellung des MSA und des phylogenetischen Baums.
-   - Beispiel für die Integration von [MSAViewer](https://msa.biojs.net/index.html):
-     ```html
-     <div id="msaDiv"></div>
-     <script>
-         var msa = require("msa");
-         var opts = {
-             el: document.getElementById("msaDiv"),
-             vis: {
-                 conserv: false,
-                 overviewbox: false
-             },
-             seqs: // Hier die Sequenzdaten einfügen
-         };
-         var m = msa(opts);
-         m.render();
-     </script>
-     ```
+   - Beispiel für die Integration von [MSAViewer](http://msa.biojs.net/app/)
+   - Der MSAViewer von BioJS braucht eine Datei im CLUSTAL_Format um das Alignment darstellen zu können
+   - NAchdem MUSCLE nur im FASTA-Format arbeiten kann ist es notwendig eine Umwandlung zwischen den Dateiformaten vorzunehmen
+  
 
 ## Zusatzaufgaben (optional)
 - Implementiere verschiedene MSA-Algorithmen (z.B. ClustalW, MUSCLE) und lasse den Benutzer wählen.
