@@ -166,6 +166,12 @@ Den 5. Punkt bezüglich Deployment lasst ihr bitte ganz weg. Vercel ist keine ei
 
 Eine eigene Anleitung dazu findest du [hier](/TeachingMaterials/AzureAnleitungCaddy).
 
+## Abgaberichtlinien
+
+- Verwendung der Protokollvorlage
+- Beim reinkopieren von Code Syntax-Highlighting (der bunte Text in der IDE) verwenden
+- Regelmäßig Commits in Git erstellen und diese mit `git log` abrufen und ins Protokoll anfügen
+
 ## Weitere Infos
 
 > [Grundlagen Typescript](/prismaremix/typescript)
