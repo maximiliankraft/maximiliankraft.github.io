@@ -14,6 +14,8 @@ Du hast eine bestehende Spring-Anwendung, die bisher lokal auf deinem Entwicklun
 ## Ziel
 Deine Aufgabe ist es, die Spring-Anwendung in einen Docker-Container zu verpacken und sie mit einer MySQL-Datenbank in einem separaten Container zu verbinden. Dies soll mithilfe von Docker Compose geschehen.
 
+> Spring und MySQL müssen nicht unbedingt verwendet werden. Eine beliebige Anwendung und eine beliebige Datenbank reichen aus.
+
 ## Anforderungen
 
 ### 1. Dockerisierung der Spring-Anwendung
@@ -27,6 +29,7 @@ Deine Aufgabe ist es, die Spring-Anwendung in einen Docker-Container zu verpacke
   1. Deine Spring-Anwendung
   2. MySQL-Datenbank
 - Setze entsprechende Umgebungsvariablen für die Datenbankverbindung.
+- Lege ein Volume für die Datenbank an, und nutze dieses im Service
 
 ### 3. Anpassung der Anwendungskonfiguration
 - Passe das Anwendungsprofil für die Produktionsumgebung an (`application-docker.properties`).
@@ -37,6 +40,7 @@ Deine Aufgabe ist es, die Spring-Anwendung in einen Docker-Container zu verpacke
 - Teste deine Dockerisierte Anwendung lokal.
 - Dokumentiere die notwendigen Schritte zum Starten der Anwendung mit Docker Compose.
 - Beschreibe eventuell aufgetretene Probleme und deren Lösungen.
+- Zeige dass die Daten auch nach einem Neustart der Container noch vorhanden sind
 
 ## Abgabe
 
@@ -47,6 +51,10 @@ Dein Protokoll soll enthalten:
 - Angepasste Anwendungskonfigurationsdateien
 - Kurze Dokumentation (max. 1 Seite des Protokolls) mit Erklärungen und Anweisungen zum Starten der Anwendung
 
+### Beurteilungskriterien
+
+- Docker Volumes werden verwendet und beschrieben
+- Umgebungsvariablen, geladen aus einer .env-Datei werden geladen
 
 
 ### Häufige Probleme und Lösungen:
