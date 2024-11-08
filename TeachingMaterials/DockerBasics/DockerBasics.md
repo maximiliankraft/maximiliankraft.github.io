@@ -124,6 +124,82 @@ To transition from `docker run` to compose, the website [composerize](https://ww
 
 The specification of docker compose files can be seen [here](https://docs.docker.com/reference/compose-file/).
 
+## Creating a container using basic Linux commands only
+
+First, install `debootstrap`. This will download all the necessary files for a basic debian installation. This can be done on Fedora using `sudo dnf install debootstrap`. 
+
+Select a directory on your host system in which the necessary files for the namespace (container) will be stored: `mkdir /your/path`.
+
+Install Debian into the the selected directory:
+```
+debootstrap --arch amd64 buster /your/path http://deb.debian.org/debian
+```
+
+Run the namespace with systemd-nspawn. After the basic installation, you can start a namespace using systemd-nspawn. 
+
+```
+systemd-nspawn -D /your/path
+```
+
+The -D flag specifies the directory to use as the root filesystem. This creates an environment similar to a container, with better resource isolation than `chroot`.
+
+For further isolation the flag `--network-veth` can be appended to `systemd-nspawn`. 
+
+To see which interfaces are active on the host and in the namespace, execute `ip link show`. 
+
+Within the container run
+
+```sh
+ip link show
+
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN mode DEFAULT group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+2: host0@if95: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000
+    link/ether b6:31:71:1d:6d:26 brd ff:ff:ff:ff:ff:ff link-netnsid 0
+
+
+ip addr add 192.168.100.2/24 dev host0
+ip link set host0 up
+```
+
+On the host run 
+```sh
+ip link show
+wlp0s20f3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP mode DORMANT group default qlen 1000 ...
+< many interfaces>
+ve-debian@if2: <BROADCAST,MULTICAST> mtu 1500 qdisc noop state DOWN mode DEFAULT group default qlen 1000 ...
+
+sudo ip addr add 192.168.100.1/24 dev ve-debian
+ip link set ve-debian up
+```
+
+When everything is set up, mutual pinging is possible:
+
+In the namespace
+```sh
+ping 192.168.100.1
+```
+
+On the host:
+```sh
+ping 192.168.100.2
+```
+<!--
+TODO make it work
+To enable forwarding, from now it is equivalent to to set it up between two logical system and two hosts. You have to enable forwarding and set up a NAT route:
+
+```
+sysctl -w net.ipv4.ip_forward=1
+
+iptables -t nat -A POSTROUTING -o <host_interface> -j MASQUERADE
+iptables -A FORWARD -i <namespace_interface> -o <host_interface> -j ACCEPT
+iptables -A FORWARD -i <host_interface> -o <namespace_interface> -j ACCEPT
+```
+
+`<host_interface>` would be `wlp0s20f3`, since it represents the wifi module. `<namespace_interface>` is `ve-debian`. The interface names on your system are different. 
+-->
+
+ 
 ## Creating new container images with Dockerfiles
 
 > See specification [here](https://docs.docker.com/reference/dockerfile/)
