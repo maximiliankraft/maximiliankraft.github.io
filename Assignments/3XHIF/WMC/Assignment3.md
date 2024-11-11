@@ -1,67 +1,103 @@
 ---
 layout: page
-title: Implementierung eines Kontaktformulars mit Remix
-permalink: /Assignments/3XHIF/WMC/Assignment3
+title: Remix SQLite Übungsaufgabe
+permalink: /Assignments/3XHIF/WMC/Assignment4
 menubar: false
 nav_exclude: true
 exclude: true
 nav: false
 ---
 
-## Ziel
-Erweiterne deine Remix-Webseite um ein  Kontaktformular mit Validierungs- und Feedback-Funktionen.
+## Aufgabenstellung
+Erstelle eine Remix-Anwendung für einen einfachen Webshop. Die Anwendung soll Produkte aus einer SQLite-Datenbank laden und anzeigen können.
 
-## Voraussetzungen
-- Abgeschlossene erste und zweite Aufgabenstellung
-- Grundlegendes Verständnis von Remix-Actions und HTML-Formularen
+## Projekt-Setup
 
-## Aufgaben
+1. Erstelle ein neues Remix-Projekt:
+```bash
+npx create-remix@latest
+```
 
-### 1. Erweiterung der Kontaktseite
-a) Überarbeite die bestehende `/contact`-Route aus Übung 1
-b) Implementiere ein erweitertes Kontaktformular mit folgenden Feldern:
-   - Name (Vorname, Nachname)
-   - E-Mail
-   - Telefonnummer (optional)
-   - Betreff (Dropdown-Auswahl)
-   - Nachricht
-   - Bevorzugte Kontaktmethode (Radio-Buttons)
+2. Installiere die benötigten Abhängigkeiten:
+```bash
+npm install sqlite3 --save
+```
 
-### 2. Implementierung einer Remix-Action
-a) Erstelle eine `action`-Funktion für die Kontaktseite.
-b) Implementiere eine serverseitige Formularvalidierung in der `action`-Funktion.
-c) Simuliere das Senden einer E-Mail (z.B. durch Logging der Formulardaten in einer Datei).
+3. Lade dir die bestehende Datenbank `webshop.db` von Moodle herrunger, oder erstelle eine neue SQLite-Datenbank mit einer Produkttabelle:
+```sql
+CREATE TABLE products (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    price REAL NOT NULL,
+    description TEXT
+);
+```
 
-### 3. Clientseitige Formularvalidierung
-a) Implementiere eine reaktive, clientseitige Validierung für alle Formularfelder.
-b) Zeige Fehlermeldungen in Echtzeit an, während der Benutzer tippt.
-c) Deaktiviere den Submit-Button, wenn das Formular ungültig ist.
+## Datenbank-Konfiguration
 
-### 4. Reaktive Daten-Bindung
-a) Implementiere ein Two-Way-Binding für alle Formularfelder.
-b) Erstelle eine Vorschau der Formulardaten, die sich in Echtzeit aktualisiert.
+Verbinde dich zur Datenbank:
 
-### 5. Fortgeschrittenes Fehler-Handling
-a) Nutze die `useActionData` Hook, um Fehlermeldungen vom Server anzuzeigen.
-b) Implementiere eine Fehleranzeige für Netzwerkfehler oder serverseitige Probleme.
+```typescript
+const sqlite3 = require('sqlite3')
 
-### 6. Fortgeschrittene UI-Elemente
-a) Implementieren Sie einen mehrstufigen Formularprozess
-b) Fügen Sie einen Ladeindikator hinzu, der während der Formularübermittlung angezeigt wird.
+// Connect to the database specified by a single file path
+const db = new sqlite3.Database('./webshop.db', (err) => {
+    if (err) {
+        console.error('Error opening database', err.message);
+    } else {
+        console.log('Connected to the SQLite database.');
+    }
+});
+```
 
-### 7. Zugänglichkeit und UX
-a) Stellen Sie sicher, dass das Formular vollständig tastaturzugänglich ist.
-    - TabIndex einstellen
-    - Placeholder für die Textfelder
-b) Implementieren Sie ARIA-Attribute für verbesserte Zugänglichkeit.
-c) Fügen Sie Fokus-Management hinzu, um nach der Formularübermittlung auf Fehlermeldungen zu fokussieren.
+## Alle Produkte laden
 
-## Abgabe
+```typescript
+
+  const products = db
+    .prepare("SELECT * FROM products")
+    .all() as Product[];
+
+```
+
+## Einzelnes Produkt laden
+
+Erstelle eine Route-Datei `app/routes/products.$id.tsx`. Verwende [useParams](https://remix.run/docs/en/main/hooks/use-params) um die Daten aus der URL abzufragen.
 
 
-## Bewertungskriterien
-- Korrekte Implementierung der Remix-Action und clientseitiger Validierung
-- Effektive Nutzung reaktiver Daten-Bindung und Echtzeit-Aktualisierungen
-- Robustes Fehler-Handling und Benutzer-Feedback
-- Zugänglichkeit und Benutzerfreundlichkeit des Formulars
-- Code-Qualität und -Organisation
+```typescript
+´
+
+    id = useParams...
+
+  const product = db
+    .prepare("SELECT * FROM products WHERE id = ?")
+    .get(id);
+
+  if (!product) {
+    throw new Response("Produkt nicht gefunden", { status: 404 });
+  }
+
+
+```
+
+## Aufgaben für Schüler
+
+1. Implementiere die Basisfunktionalität wie oben beschrieben in Remix
+2. Erweitere die Anwendung um:
+   - Ein Formular zum Hinzufügen neuer Produkte
+   - Eine Suchfunktion für Produkte
+   - Eine Kategorisierung von Produkten
+
+
+## Aufgaben für Bonuspunkte
+
+1. Implementiere Fehlerbehandlung für die Datenbankabfragen
+2. Füge Validierung für das Produktformular hinzu
+3. Implementiere eine Sortierfunktion für die Produktliste
+4. Erstelle eine Shopping Cart Funktionalität
+
+## Tipps
+
+- Nutze die Remix-Dokumentation für [Details zur Action-Funktion](https://remix.run/docs/en/main/route/action) bei Formularen
+- Denke an die Fehlerbehandlung bei Datenbankoperationen
