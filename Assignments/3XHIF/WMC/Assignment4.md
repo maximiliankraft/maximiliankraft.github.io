@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Implementierung eines Kontaktformulars mit Remix
-permalink: /Assignments/3XHIF/WMC/Assignment4
+permalink: /Assignments/3XHIF/WMC/Assignment5
 menubar: false
 nav_exclude: true
 exclude: true
@@ -9,7 +9,7 @@ nav: false
 ---
 
 ## Ziel
-Erweiterne deine Remix-Webseite um ein  Kontaktformular mit Validierungs- und Feedback-Funktionen.
+Erweitere deine Remix-Webseite um ein  Kontaktformular mit Validierungs- und Feedback-Funktionen.
 
 ## Voraussetzungen
 - Abgeschlossene erste und zweite Aufgabenstellung
