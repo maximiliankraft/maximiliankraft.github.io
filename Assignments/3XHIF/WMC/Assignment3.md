@@ -81,7 +81,7 @@ Erstelle eine Route-Datei `app/routes/products.$id.tsx`. Verwende [useParams](ht
 
 ```
 
-## Aufgaben für Schüler
+## Aufgaben fürs Protokoll
 
 1. Implementiere die Basisfunktionalität wie oben beschrieben in Remix
 2. Erweitere die Anwendung um:
@@ -90,7 +90,7 @@ Erstelle eine Route-Datei `app/routes/products.$id.tsx`. Verwende [useParams](ht
    - Eine Kategorisierung von Produkten
 
 
-## Aufgaben für Bonuspunkte
+## Bonuspunkte (freiwillig)
 
 1. Implementiere Fehlerbehandlung für die Datenbankabfragen
 2. Füge Validierung für das Produktformular hinzu
