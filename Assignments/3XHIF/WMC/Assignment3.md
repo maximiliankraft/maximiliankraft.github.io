@@ -23,7 +23,7 @@ npx create-remix@latest
 npm install sqlite3 --save
 ```
 
-3. Lade dir die bestehende Datenbank `webshop.db` von Moodle herrunger, oder erstelle eine neue SQLite-Datenbank mit einer Produkttabelle:
+3. Lade dir die bestehende Datenbank `webshop.db` von Moodle herrunter, oder erstelle eine neue SQLite-Datenbank mit einer Produkttabelle:
 ```sql
 CREATE TABLE products (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
