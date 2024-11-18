@@ -25,7 +25,8 @@ nav: false
 
 - [Übung 1](/Assignments/4XHBGM/MGIN/Uebung1)
 - [Übung 2](/Assignments/4XHBGM/MGIN/Uebung2)
-<!--- [Übung 3](/Assignments/4XHBGM/MGIN/Uebung3) -->
+- [Übung 3](/Assignments/4XHBGM/MGIN/Uebung3)
+- [Übung 3A](/Assignments/4XHBGM/MGIN/Uebung3A)
 <!--- [Übung 4](/Assignments/4XHBGM/MGIN/Uebung4) -->
 
 **2. Semester**
