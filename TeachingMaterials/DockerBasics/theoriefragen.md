@@ -30,7 +30,7 @@ EXPOSE 8080
 CMD ["java", "-jar", "spengermed.jar" ]
  ```
 
-Welche Funktion erfüllen die folgenden Befehle? Wie ist ihre allgemeine Sytax?
+Welche Funktion erfüllen die folgenden Befehle? Wie ist ihre allgemeine Syntax?
 > Beispiel-Notation zur Syntax: ``kommando`` parameter1 parameter2 parameter3:parameter4 etc.
 
 - ``FROM``:

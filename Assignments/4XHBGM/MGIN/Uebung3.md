@@ -78,7 +78,7 @@ Nimm die Übung 2 als Grundlage. Bereits erstellte Dateien können gerne weiterv
   - `index.html`
   - `address-form.js`
 - Füge Screenshots hinzu, die das funktionierende Formular und die Konsolenausgabe bei der Formularübermittlung zeigen
-- Der Code muss mit Sytax-Highlighting formatiert sein
+- Der Code muss mit Syntax-Highlighting formatiert sein
 - Das Word-Template muss nicht als Vorlage genommen werden.
   - Ein mit Markdown geschriebenes PDF nehme ich gerne entgegen. Gibt für VS Code eine Extension [Markdown-PDF](https://marketplace.visualstudio.com/items?itemName=yzane.markdown-pdf) oder man konvertiert es mit [Pandoc](https://pandoc.org/)
 
