@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Docker & Django - Deine erste containerisierte Webanwendung
-permalink: /Assignments/4XHBGM/MGIN/Uebung3A
+permalink: /Assignments/4XHBGM/MGIN/Uebung3B
 menubar: false
 nav_exclude: true
 exclude: true
