@@ -77,7 +77,7 @@ All diese Erklöreungen findet ihr für Verschiedenste Container auch auf [Docke
            'NAME': 'meinprojekt',
            'USER': 'djangouser',
            'PASSWORD': 'djangopasswort',
-           'HOST': 'localhost',
+           'HOST': '127.0.0.1',
            'PORT': '3306',
        }
    }
