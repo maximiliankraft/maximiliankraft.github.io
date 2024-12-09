@@ -16,3 +16,6 @@ Die Cache API ermöglicht das Speichern von Netzwerkantworten im Cache, sodass s
 ### fetch interceptor
 Ein Fetch Interceptor ist ein Mechanismus, der Netzwerkanfragen abfängt und modifiziert. In einem Service Worker kannst du Fetch-Events abfangen, um Ressourcen aus dem Cache bereitzustellen oder alternative Inhalte anzuzeigen, wenn der Benutzer offline ist.
 
+### Beispiel:
+
+https://github.com/maximiliankraft/angular-pouchdb/
