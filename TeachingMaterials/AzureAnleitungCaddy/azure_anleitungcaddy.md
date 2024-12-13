@@ -94,7 +94,18 @@ Ist das Update fertig können wir diverse Programme installieren. Wir benötigen
 
 `sudo apt install  unzip dos2unix -y`
 
-`sudo snap install docker`
+
+```sh
+# GPG key für docker hinzufügen
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add –
+# Docker repository hinzufügen, ENTER drücken zum bestätigen
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+# Docker container engine (ce) installieren
+sudo apt-get install docker-ce -y
+```
+
+> [Quelle](https://www.c-sharpcorner.com/article/how-to-deploy-docker-in-ubuntu-server-using-azure-portal/)
+
 
 Nun können wir mit `unzip <dateiname>.zip` unser Projekt auspacken. Um in den darin erstellen Ordner zu wechseln gibt es das Kommando `cd <dein-projektordner>`.
 
