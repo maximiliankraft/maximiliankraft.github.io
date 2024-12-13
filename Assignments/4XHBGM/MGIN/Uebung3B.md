@@ -36,7 +36,7 @@ Stellt euch Docker wie eine transportable Mini-Umgebung vor. Ähnlich wie ihr vi
    - Erstellt im Hauptverzeichnis eures Projekts eine neue Datei namens `Dockerfile`
    - Fügt folgenden Inhalt ein:
    ```dockerfile
-   FROM python:3.11-slim
+   FROM python:3.11
    
    WORKDIR /app
    
