@@ -1,0 +1,32 @@
+flowchart LR
+    subgraph Internet
+        Client["Client (Any IP)"]
+    end
+
+    subgraph VPS["VPS Server(Static IP)"]
+        direction TB
+        Port[":80 :443"]
+        SSHd["sshd"]
+    end
+
+    subgraph Home["Home Network"]
+        direction TB
+        RPI["Raspberry Pi / Notebook (Dynamic IP)"]
+        LocalService["Local Service"]
+    end
+
+    %% Connections
+    Client -->  Port
+    Port --> SSHd
+    RPI -->|"Establishes reverse\nSSH tunnel (ssh -R)"| SSHd
+    SSHd -->|"Forwards traffic\nthrough tunnel"| RPI
+    RPI -->|"Forwards to\nlocal service"| LocalService
+
+    %% Styling
+    classDef server fill:#f96,stroke:#333
+    classDef client fill:#69b,stroke:#333
+    classDef service fill:#9c6,stroke:#333
+    
+    class VPS,RPI server
+    class Client client
+    class LocalService service

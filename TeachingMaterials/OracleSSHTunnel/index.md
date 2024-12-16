@@ -8,6 +8,8 @@ exclude: true
 nav: false
 ---
 
+![Reverse SSH Diagram](reversessh.svg)
+
 Reverse [ssh](https://www.openssh.com/) tunnels allow you to use any publicly available IP-Address to relay the traffic to a (more powerful) server where the requests get handled. Aside from that, SSH is mainly used for remotely operating computers. It is available [virtually everywhere](https://www.openssh.com/users.html). 
 
 For demonstration, I will use a freely available Oracle Cloud Instance. It is not very powerful but the limited features suffice for this task. Using similarly small systems on Azure or any privately hosted systems with access to a public IP will yield similar results. 
@@ -45,7 +47,7 @@ sudo firewall-cmd --zone=public --permanent --add-port=80/tcp
 sudo firewall-cmd --reload
 ```
 
-## allow non-root users to use ports below 1024 on vps
+## Allow non-root users to use ports below 1024 on vps
 
 https://superuser.com/questions/710253/allow-non-root-process-to-bind-to-port-80-and-443
 
@@ -56,9 +58,9 @@ net.ipv4.ip_unprivileged_port_start=0
 there
 
 
-## test connection
+## Testing the connection
 
-on the raspberry start a basic nginx container or your desired webservice. Use a docker-compose.yml that looks like this:
+On the raspberry start a basic nginx container or your desired webservice. Use a `docker-compose.yml` that looks like this:
 
 ```
 services:
@@ -68,9 +70,9 @@ services:
      - "80:80"
 ```
 
-Start it using docker compose up -d
+Start it using `docker compose up -d`
 
-## set up reverse ssh tunnel
+## Setting up a reverse ssh tunnel
 
 https://www.jeffgeerling.com/blog/2022/ssh-and-http-raspberry-pi-behind-cg-nat
 
@@ -86,5 +88,6 @@ to open multiple tunnels, use
 ssh -nNTv -R 443:0.0.0.0:443 -R 80:0.0.0.0:80 opc@your.server.ip
 ```
 
-## setting up dynamic dns service from afraid.org
+## Setting up the dynamic DNS service from afraid.org
 
+The VPS offers a free way to relay traffic but no free domain. This can be achieved using for example [freedns.afraid.org](freedns.afraid.org). 
