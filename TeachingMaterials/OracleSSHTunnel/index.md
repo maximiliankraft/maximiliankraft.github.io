@@ -91,3 +91,15 @@ ssh -nNTv -R 443:0.0.0.0:443 -R 80:0.0.0.0:80 opc@your.server.ip
 ## Setting up the dynamic DNS service from afraid.org
 
 The VPS offers a free way to relay traffic but no free domain. This can be achieved using for example [freedns.afraid.org](freedns.afraid.org). 
+
+
+## Persist the docker compose configuration using cronab
+
+With `crontab` commands can be executed periodically. Using [@reboot](https://github.com/cronie-crond/cronie/blob/2bbd3ba9a76312aca040ce3317bf31c5f7465be9/man/crontab.5#L349) it can be run on every startup.
+
+Therefore, in crontab the line:
+
+```
+@reboot docker compose up /path/to/docker-compose.yml -d
+```
+will ensure the containers are started as soon as the Raspberry Pi is operational. 
