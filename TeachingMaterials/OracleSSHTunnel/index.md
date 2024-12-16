@@ -100,6 +100,6 @@ With `crontab` commands can be executed periodically. Using [@reboot](https://gi
 Therefore, in crontab the line:
 
 ```
-@reboot docker compose up /path/to/docker-compose.yml -d
+@reboot docker compose -f /path/to/docker-compose.yml up -d
 ```
 will ensure the containers are started as soon as the Raspberry Pi is operational. 
