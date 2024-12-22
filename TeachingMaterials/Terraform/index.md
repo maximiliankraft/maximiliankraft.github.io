@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Dateibasierte provisionierung mit Terraform
+title: Dateibasierte Provisionierung mit Terraform
 permalink: /TeachingMaterials/Terraform
 menubar: false
 nav_exclude: true

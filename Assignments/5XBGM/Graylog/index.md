@@ -80,7 +80,7 @@ volumes:
   graylog_data:
 ```
 
-Hier werden die Logs vom `example_service`, einer `nginx`-Instanz aufgezeichen und gespeichert. Dozzle, im Gegensatz zu Graylog, speichert keine Logs. 
+Hier werden die Logs vom `example_service`, einer `nginx`-Instanz aufgezeichnet und gespeichert. Dozzle, im Gegensatz zu Graylog, speichert keine Logs. 
 
 ![graylog and compose](graylog.png)
 > In Graylog und in compose werden die (beinahe) gleichen Logs angezeigt.
