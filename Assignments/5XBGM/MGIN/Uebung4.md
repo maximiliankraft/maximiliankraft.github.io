@@ -26,7 +26,7 @@ In dieser Übung wirst du dein ORF-Finder-Projekt um eine NCBI BLAST-Funktionali
 
 ### 2. Erweiterung des ORF-Finder-Containers
 - Implementiere eine neue Funktion im ORF-Finder-Container, die die gefundenen ORFs entgegennimmt und BLAST-Abfragen durchführt.
-- Verwende z.B die Biopython [Bio.Blast.NCBIWWW](https://biopython.org/docs/1.75/api/Bio.Blast.NCBIWWW.html)-Module für die BLAST-Suche.
+- Verwende z.B die Biopython [Bio.Blast.NCBIWWW](https://biopython.org/docs/1.75/api/Bio.Blast.NCBIWWW.html)-Module für die BLAST-Suche. Verwende `blastx` als Algorithmus. Mehr Infos zu den unterschieden [hier](https://www.ncbi.nlm.nih.gov/books/NBK1734/#:~:text=5.1.%20Available%20Translated%20Searches)
 - Die Funktion sollte folgende Parameter akzeptieren:
   - ORF-Sequenz
   - E-value Threshold
@@ -34,7 +34,7 @@ In dieser Übung wirst du dein ORF-Finder-Projekt um eine NCBI BLAST-Funktionali
 
 ### 3. Anpassung der Django-Webanwendung
 - Erweiter die ORF-Ergebnisseite um eine Option, für jeden gefundenen ORF eine BLAST-Suche zu starten.
-- Erstellen Sie eine neue View zur Anzeige der BLAST-Ergebnisse.
+- Erstelle eine neue View zur Anzeige der BLAST-Ergebnisse.
 
 ### 4. Ergebnisdarstellung
 - Zeige die BLAST-Ergebnisse in einer übersichtlichen Tabelle an, die folgende Informationen enthält:
@@ -69,3 +69,7 @@ In dieser Übung wirst du dein ORF-Finder-Projekt um eine NCBI BLAST-Funktionali
 - Beachten die Rate-Limits bei der Implementierung.
 - Testen deine Anwendung gründlich mit verschiedenen Eingabesequenzen und Parametern.
 - Achten auf eine effiziente Verarbeitung, insbesondere bei großen Sequenzen oder vielen ORFs.
+
+## Weitere Unterlagen
+
+> [Blast Quick Start](https://www.ncbi.nlm.nih.gov/books/NBK1734/)
