@@ -262,6 +262,29 @@ Logge dich via SSH in die aktuell provisionierte VM ein und erstelle ein Skript,
 2. Eine Docker Compose-Datei erstellt und gestartet wird
 3. Lege eine Resource an (z.B. `azurerm_virtual_machine_extension` [(siehe terraform-docs)](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/virtual_machine_extension)) [(siehe azure-docs)](https://learn.microsoft.com/de-de/azure/virtual-machines/extensions/features-linux?tabs=azure-cli#azure-resource-manager-templates), die dieses Skript beim erstmaligen Start der VM in Zukunft ausführt und dafür sorgt, dass sofort alles verfügbar ist, was man braucht, um die Webanwendung ausführen zu können. Teste das Skript zunächst über SSH. 
 
+
+Wenn die `output`-Direktiven richtig gesetzt sind, kannst du gleich folgendes Skript zum einloggen nehmen:
+
+```sh
+#!/bin/bash
+private_key=$(terraform output -raw ssh_private_key)
+username=$(terraform output -raw admin_username)
+ip=$(terraform output -raw public_ip_address)
+
+# Create a temporary key file, since ssh is whiny about using /dev/stdin
+temp_key=$(mktemp)
+echo "$private_key" > "$temp_key"
+chmod 600 "$temp_key"
+
+# Connect using the temporary file
+ssh -i "$temp_key" "$username@$ip"
+
+# Clean up
+rm "$temp_key"
+echo "$temp_key deleted"
+```
+
+
 Beispiel für ein Startup-Skript:
 ```bash
 #!/bin/bash
