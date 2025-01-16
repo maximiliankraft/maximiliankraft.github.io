@@ -140,11 +140,14 @@ RUN npm install --production
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/prisma ./prisma
-RUN npm run prismagen
+RUN npm run prisma generate
 
 EXPOSE 3000
 CMD ["npm", "run", "start"]
 ```
+
+Dass `prisma generate` funktioniert musst du darauf achten, dass im `package.json` in den `scripts` folgender eintrag ist: `"scripts": {"prisma": "prisma"}`
+
 
 Um beim Befehl `COPY . .` nicht zu viele Daten zu übertragen kannst du die Datei `.dockerignore` hinzufügen. Alle darin aufgelisteten Dateien und Ordner werden nicht reinkopiert. Syntax ist ähnlich wie bei der `.gitignore`.
 
