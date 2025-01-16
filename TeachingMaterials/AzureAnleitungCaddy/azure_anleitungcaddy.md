@@ -132,11 +132,11 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM node:18-alpine as runner
+FROM node:18-alpine
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm install --production
+RUN npm ci
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/prisma ./prisma
