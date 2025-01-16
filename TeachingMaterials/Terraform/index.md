@@ -15,8 +15,6 @@ nav: false
 
 ## Vorwort 
 
-Nachdem wir mit dem Azure Web Interface eine VM erstellt haben, um in dieser Container zu hosten, ist der nächste Schritt die Provisionierung der VM zu automatisieren. 
-
 In Docker Compose kann man eine Umgebung für seine Software definieren, d.h. welche Ports und anderen Services verfügbar sind. Terraform macht dasselbe auf der Ebene der Infrastruktur. Man legt hier seine Umgebung fest - welche VM erzeugt werden soll, wie viel Arbeits- und Festplattenspeicher diese hat. Auch öffentliche IP-Adressen und Hostnamen kann man festlegen. All das sind sogenannte `Resources` in einer .tf Datei. Diese `Resources` kann man später verwenden, um seine Services darauf auszuführen.
 
 ## Aufbau einer .tf Datei
