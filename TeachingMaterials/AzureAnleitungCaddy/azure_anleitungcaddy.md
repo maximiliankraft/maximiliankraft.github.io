@@ -124,7 +124,10 @@ Nachdem wir die Projektdateien auf die VM übertragen haben, erstellen wir zunä
 1. Erstelle in deinem Projektordner ein `Dockerfile`:
 ```dockerfile
 # Build stage
-FROM node:18-alpine as builder
+# use latest lts node version
+FROM node:22-alpine as builder
+
+RUN apk add openssl
 
 WORKDIR /app
 COPY package*.json ./
@@ -132,7 +135,10 @@ RUN npm install
 COPY . .
 RUN npm run build
 
-FROM node:18-alpine
+# use latest lts node version
+FROM node:22-alpine
+
+RUN apk add openssl
 
 WORKDIR /app
 COPY package*.json ./
