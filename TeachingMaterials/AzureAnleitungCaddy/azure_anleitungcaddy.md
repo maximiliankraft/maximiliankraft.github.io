@@ -271,31 +271,23 @@ sudo docker compose up --build -d
 
 ## HTTPS einrichten
 
-Für eine produktive Umgebung mit eigener Domain, ändere das Caddyfile wie folgt:
+Für eine produktive Umgebung mit eigener Domain, nutze folgendes Caddyfile:
 
 ```
-your-domain.com {
-    root * /srv
-    
-    # Serve static files from build directory
-    handle /build/* {
-        file_server
-    }
-    
-    # Serve static files from public directory
-    handle /public/* {
-        file_server
-    }
-    
-    # Serve the index file for all other routes
-    handle * {
-        try_files {path} /build/index.html
+yourdomain.example.com {
+    # Reverse proxy to Remix server
+    reverse_proxy remix-app:3000 {
+        header_up Host {host}
+        header_up X-Real-IP {remote}
+        header_up X-Forwarded-For {remote}
+        header_up X-Forwarded-Proto {scheme}
     }
 
     # Enable compression
     encode gzip
 }
 ```
+
 
 Nach dem Ändern der Konfiguration:
 ```bash
