@@ -25,26 +25,57 @@ At first, in the `.gitlab-ci.yml` file (see [Listing 1](#listing-1)), an image i
 > A sample gitlab-ci configuration file that uploads the generated container to the GitLab container registry, based on the official documentation from GitLab**
 
 ```yaml
-stages:
-  - deploy
-deploy:
-  stage: deploy
-  tags:
-    - any
+build:
+  stage: build
+  variables:
+    http_proxy: <your-proxy>
+    https_proxy: <your-proxy>
+    no_proxy: <your-no-proxy>
   image:
-    name: gcr.io/kaniko-project/executor:debug
+    name: gcr.io/kaniko-project/executor:v1.23.2-debug
     entrypoint: [""]
   script:
-  # setup config for kaniko 
-    - echo "{\"auths\":{\"${CI_REGISTRY}\":{\"auth\":\"$(printf "%s:%s" "${CI_REGISTRY_USER}" "${CI_REGISTRY_PASSWORD}" | base64 | tr -d '\n')\"},\"$(echo -n $CI_DEPENDENCY_PROXY_SERVER | awk -F[:] '{print $1}')\":{\"auth\":\"$(printf "%s:%s" ${CI_DEPENDENCY_PROXY_USER} "${CI_DEPENDENCY_PROXY_PASSWORD}" | base64 | tr -d '\n')\"}}}" > /kaniko/.docker/config.json
-  # start the build-process
     - /kaniko/executor
       --context "${CI_PROJECT_DIR}"
+      --build-arg http_proxy=$http_proxy
+      --build-arg https_proxy=$https_proxy
+      --build-arg no_proxy=$no_proxy
       --dockerfile "${CI_PROJECT_DIR}/Dockerfile"
       --destination "${CI_REGISTRY_IMAGE}:${CI_COMMIT_TAG}"
-      --destination "${CI_REGISTRY_IMAGE}:latest"
-  only:
-    - tags
+  rules:
+    - if: $CI_COMMIT_TAG
+
+```
+
+Dockerfile for MIS Project
+
+```Dockerfile
+
+FROM alpine:3.20 as build
+
+# gefunden auf: https://pkgs.alpinelinux.org
+RUN apk add openjdk21-jdk
+RUN apk add maven
+
+RUN apk add nodejs-current
+
+WORKDIR /build
+
+COPY . . 
+
+RUN mvn package -DskipTests
+
+# ENTRYPOINT [ "sh" ]
+
+FROM openjdk:21
+
+WORKDIR /app
+
+COPY --from=build /build/target/*.jar /app/app.jar
+
+
+ENTRYPOINT ["java", "-jar", "-Dspring.profiles.active=docker", "/app/app.jar"]
+
 ```
 
 In this [GitLab documentation](https://docs.gitlab.com/runner/install/docker.html), detailed instructions are shown how to install a Gitlab runner via Docker. 
