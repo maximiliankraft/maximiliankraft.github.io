@@ -21,8 +21,9 @@ In dieser Übung wirst du dein ORF-Finder-Projekt um eine NCBI BLAST-Funktionali
 
 ### 1. Vorbereitung
 - Installiere Biopython für die Projekte in den entsprechenden ContainernS
-- Registriere eidh sich für einen NCBI API-Schlüssel (https://www.ncbi.nlm.nih.gov/account/settings/).
+- `[Optional]` Registriere dich für einen NCBI API-Schlüssel (https://www.ncbi.nlm.nih.gov/account/settings/).
     - Vorzugsweise mit der Spengergassen-Email
+    - Nur Notwendig wenn die Requests blockiert werden, sollte auch ohne gehen
 
 ### 2. Erweiterung des ORF-Finder-Containers
 - Implementiere eine neue Funktion im ORF-Finder-Container, die die gefundenen ORFs entgegennimmt und BLAST-Abfragen durchführt.
