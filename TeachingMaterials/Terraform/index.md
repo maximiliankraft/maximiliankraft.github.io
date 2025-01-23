@@ -13,6 +13,8 @@ nav: false
 
 - [How to install the Azure CLI - learn.microsoft.com](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
 
+- [Terrform installation](https://developer.hashicorp.com/terraform/install)
+
 ## Vorwort 
 
 In Docker Compose kann man eine Umgebung für seine Software definieren, d.h. welche Ports und anderen Services verfügbar sind. Terraform macht dasselbe auf der Ebene der Infrastruktur. Man legt hier seine Umgebung fest - welche VM erzeugt werden soll, wie viel Arbeits- und Festplattenspeicher diese hat. Auch öffentliche IP-Adressen und Hostnamen kann man festlegen. All das sind sogenannte `Resources` in einer .tf Datei. Diese `Resources` kann man später verwenden, um seine Services darauf auszuführen.
