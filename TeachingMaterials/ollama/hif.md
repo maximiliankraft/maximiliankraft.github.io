@@ -59,6 +59,7 @@ Verfügbar auf [PyPi](https://pypi.org/project/ollama/).
 Übergabe von Bildern an das Modell: [siehe Blogpost](https://ollama.com/blog/vision-models)
 
 7. Entwicklung einer Chat-Webanwendung 
+
 Verwende Remix + React mit Material-UI zur Frontendentwicklung. Die Kommunikation mit dem Backend erfolgt über die REST-API von Ollama. 
 Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit, Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite übergeben werden.
 
