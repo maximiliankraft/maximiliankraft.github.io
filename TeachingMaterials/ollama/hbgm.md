@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Einen Chatbot mit Ollama erstellen
-permalink: /TeachingMaterials/Ollama/HIF
+permalink: /TeachingMaterials/Ollama/HBGM
 menubar: false
 nav_exclude: true
 exclude: true
@@ -59,18 +59,16 @@ Verfügbar auf [PyPi](https://pypi.org/project/ollama/).
 Übergabe von Bildern an das Modell: [siehe Blogpost](https://ollama.com/blog/vision-models)
 
 7. Entwicklung einer Chat-Webanwendung 
-Verwende Remix + React mit Material-UI zur Frontendentwicklung. Die Kommunikation mit dem Backend erfolgt über die REST-API von Ollama. 
-Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit, Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite übergeben werden.
 
-Die gestreamte Antwort des Modells soll dann schrittweise angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf an das Modell geschickt werden, damit es den Kontext kennt und bessere Antworten liefern kann.
+Entscheide selbst, wie du Ollama von einer Webanwendung aus ansteuerst. Entweder über Javascript. In dem Fall wird von einem Webserver eine Anfrage an einen anderen Server geschickt. Man muss also entweder die CORS-Header richtig einrichten, oder beide Server über einen reverse Proxy bündeln, so dass es am Client wie ein einzelner Server aussieht. 
+
+Oder du bindest die Ollama Python Schnittstelle in ein Python-Webframework ein. Anbieten würden sich z.B Django oder FastAPI. Du kannst aber auch ein anderes verwenden. Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite übergeben werden. 
+
+Die gestreamte Antwort des Models soll dann schrittweise angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf an das Model geschickt werden. Nur so kennt es den Kontext um bessere Antworten liefern zu können. 
+
 
 ## Weitere Informationen
-
-> [Material UI Installation](https://mui.com/material-ui/getting-started/installation/)
-
-> [Material UI Komponenten](https://mui.com/material-ui/all-components/)
 
 > [Ollama Github](https://github.com/ollama/ollama)
 
 > [Bestehende Modelle in Ollama integrieren](https://github.com/ollama/ollama/blob/main/docs/import.md)
-
