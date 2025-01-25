@@ -60,7 +60,14 @@ Verfügbar auf [PyPi](https://pypi.org/project/ollama/).
 
 7. Entwicklung einer Chat-Webanwendung 
 
-Verwende Remix + React mit Material-UI zur Frontendentwicklung. Die Kommunikation mit dem Backend erfolgt über die REST-API von Ollama. 
+Verwende Remix + React mit Material-UI zur Frontendentwicklung. Die Kommunikation mit dem Backend erfolgt über die REST-API von Ollama. Folgendermaßen kannst du dir ein Projekt holen:
+
+```sh
+curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip=2  material-ui-master/examples/material-ui-remix-ts
+cd material-ui-remix-ts
+
+```
+
 Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit, Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite übergeben werden.
 
 Die gestreamte Antwort des Modells soll dann schrittweise angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf an das Modell geschickt werden, damit es den Kontext kennt und bessere Antworten liefern kann.
