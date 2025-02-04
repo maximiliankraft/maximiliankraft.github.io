@@ -1,0 +1,7 @@
+*.aux
+*latexmk
+*.fls
+*.log
+*.gz
+requirements.txt
+*.py
