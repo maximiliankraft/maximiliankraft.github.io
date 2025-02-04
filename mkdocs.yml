@@ -1,0 +1,10 @@
+site_name: maximiliankraft.github.io
+
+theme: cinder
+github_user: maximiliankraft
+github_repo: maximiliankraft.github.io
+github_banner: true
+site_description: Diese Webseite stellt Unterrichtsmaterialien zur Verfügung.
+
+repo_url: https://github.com/maximiliankraft/maximiliankraft.github.io
+edit_uri: edit/main/docs/
