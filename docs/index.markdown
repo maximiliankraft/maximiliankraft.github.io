@@ -5,7 +5,7 @@ title: Startseite
 
 ### 1. Jahrgang 
 
-[Python Skriptum von Prof. Radlbauer](https://github.com/rradlbauer/python_skriptum/)
+- [Python Skriptum von Prof. Radlbauer](https://github.com/rradlbauer/python_skriptum/)
 
 ### 2. Jahrgang
 
