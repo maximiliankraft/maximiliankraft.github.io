@@ -8,6 +8,8 @@ exclude: true
 nav: false
 ---
 
+# Dateibasierte Provisionierung mit Terraform
+
 ## Vorbereitung
 
 
@@ -331,3 +333,7 @@ exit 0
 - [Terraform explained in 15 mins | Terraform Tutorial for Beginners - TechWorldwithNana](https://www.youtube.com/watch?v=l5k1ai_GBDE)
 
 - Statt VMs: [azurerm_linux_web_app](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/linux_web_app)
+
+## Weiterführende Übungen
+
+> [Teil 2 - Shellskript nach VM provisionierung](/TeachingMaterials/DevOps/Terraform/extension)
