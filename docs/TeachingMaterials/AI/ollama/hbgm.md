@@ -8,8 +8,10 @@ exclude: true
 nav: false
 ---
 
-1. Docker Container herunterladen
+1. Ollama-Docker Container herunterladen
     - [Ollama auf Docker Hub](https://hub.docker.com/r/ollama/ollama)
+
+> Oder Ollama direkt installieren: [Ollama Downloads](https://ollama.com/download/windows) 
 
 2. Wenn eine Nvidia Grafikkarte verbaut ist:
  - [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation)
@@ -59,7 +61,8 @@ ollama pull <modellname>
 
 Verfügbar auf [PyPi](https://pypi.org/project/ollama/).
 
-Übergabe von Bildern an das Modell: [siehe Blogpost](https://ollama.com/blog/vision-models)
+- Übergabe von Bildern an das Modell: [siehe Blogpost](https://ollama.com/blog/vision-models)
+- Einfacher Chat: [siehe Dokumentation](https://github.com/ollama/ollama-python/blob/main/examples/chat.py)
 
 7. Entwicklung einer Chat-Webanwendung 
 
@@ -75,3 +78,5 @@ Die gestreamte Antwort des Models soll dann schrittweise angezeigt werden. Antwo
 > [Ollama Github](https://github.com/ollama/ollama)
 
 > [Bestehende Modelle in Ollama integrieren](https://github.com/ollama/ollama/blob/main/docs/import.md)
+
+> [Functions as Tools](https://ollama.com/blog/functions-as-tools)
