@@ -20,6 +20,8 @@ nav: false
 services:
   ollama:
     image: ollama/ollama
+    environment:
+      - OLLAMA_ORIGINS="*"
     deploy:
       resources:
         reservations:
@@ -35,6 +37,7 @@ services:
       - 11434:11434
 volumes:
   ollama:
+    name: ollama
 ```
 
 4. Eine Shell des Containers öffnen und Ollama starten
