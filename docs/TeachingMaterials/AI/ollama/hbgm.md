@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Einen Chatbot mit Ollama erstellen
+title: Chatbot Ollama [HBGM]
 permalink: /TeachingMaterials/Ollama/HBGM
 menubar: false
 nav_exclude: true
@@ -8,10 +8,12 @@ exclude: true
 nav: false
 ---
 
+# Einen Chatbot mit Ollama erstellen
+
 1. Ollama-Docker Container herunterladen
     - [Ollama auf Docker Hub](https://hub.docker.com/r/ollama/ollama)
 
-> Oder Ollama direkt installieren: [Ollama Downloads](https://ollama.com/download/windows) 
+    - Oder Ollama direkt installieren: [Ollama Downloads](https://ollama.com/download/windows) 
 
 2. Wenn eine Nvidia Grafikkarte verbaut ist:
  - [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation)
@@ -66,11 +68,11 @@ Verfügbar auf [PyPi](https://pypi.org/project/ollama/).
 
 7. Entwicklung einer Chat-Webanwendung 
 
-Entscheide selbst, wie du Ollama von einer Webanwendung aus ansteuerst. Entweder über Javascript. In dem Fall wird von einem Webserver eine Anfrage an einen anderen Server geschickt. Man muss also entweder die CORS-Header richtig einrichten, oder beide Server über einen reverse Proxy bündeln, so dass es am Client wie ein einzelner Server aussieht. 
+Verwende Python für den Serverseitigen Code. Am Client ist JavaScript zu verwenden.
 
-Oder du bindest die Ollama Python Schnittstelle in ein Python-Webframework ein. Anbieten würden sich z.B Django oder FastAPI. Du kannst aber auch ein anderes verwenden. Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite übergeben werden. 
+Binde die Ollama Python Schnittstelle in ein Django-Projekt ein. Du kannst aber auch ein anderes Webframework verwenden, wenn du willst. Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite an das Modell llama3.2-vision:11b übergeben werden. Falls dein PC dieses Modell nicht ausführen kann, kannst du auch ein kleineres nehmen. 
 
-Die gestreamte Antwort des Models soll dann schrittweise angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf an das Model geschickt werden. Nur so kennt es den Kontext um bessere Antworten liefern zu können. 
+Die gestreamte Antwort des Models soll dann schrittweise am Client angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf an das Model geschickt werden. Nur so kennt es den Kontext um bessere Antworten liefern zu können. Packe dazu Das JSON und den CSRF-Token in ein FormData-Objekt. Die Rückmeldung des Modells soll dann dynamisch in einem div-Container hinzugefügt werden. 
 
 
 ## Weitere Informationen
