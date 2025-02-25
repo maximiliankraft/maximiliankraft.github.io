@@ -72,7 +72,7 @@ Verwende Python für den Serverseitigen Code. Am Client ist JavaScript zu verwen
 
 Binde die Ollama Python Schnittstelle in ein Django-Projekt ein. Du kannst aber auch ein anderes Webframework verwenden, wenn du willst. Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite an das Modell llama3.2-vision:11b übergeben werden. Falls dein PC dieses Modell nicht ausführen kann, kannst du auch ein kleineres nehmen. 
 
-Die gestreamte Antwort des Models soll dann schrittweise am Client angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf an das Model geschickt werden. Nur so kennt es den Kontext um bessere Antworten liefern zu können. Packe dazu Das JSON und den CSRF-Token in ein FormData-Objekt. Die Rückmeldung des Modells soll dann dynamisch in einem div-Container hinzugefügt werden. 
+Die gestreamte Antwort des Models soll dann schrittweise am Client angezeigt werden, siehe [Beispielprojekt](https://github.com/edilio/StreamingHttpResponse/tree/master). Antwortet der User, soll der gesamte Chatverlauf an das Model geschickt werden. Nur so kennt es den Kontext um bessere Antworten liefern zu können. Packe dazu das JSON und den CSRF-Token in ein [FormData](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects)-Objekt. Die Rückmeldung des Modells soll dann dynamisch in einem div-Container hinzugefügt werden. 
 
 
 ## Weitere Informationen
