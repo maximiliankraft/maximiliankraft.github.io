@@ -7,6 +7,8 @@ exclude: true
 nav: false
 ---
 
+
+
 ## Anleitung zur Erstellung eines Sprachrekorders mit Whisper.cpp und Docker
 
 ### Schritte
@@ -66,23 +68,8 @@ nav: false
 
 4. **HTML-Datei für die Weboberfläche erstellen**
     - Erstelle eine Remix-Route, um eine einfache Weboberfläche für die Sprachaufnahme zu bieten.
-    - Beispiel mit reinem HTML+JS:
-      ```html
-      <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Recorder</title>
-</head>
-<body>
-    <h1>Voice Recorder</h1>
-    <button id="recordButton">Start</button>
-    <button id="stopButton" disabled>Stop</button>
-    <p id="status"></p>
-    <pre id="response"></pre>
-
-    <script>
+    - Beispiel mit reinem JS:
+      ```js
         let mediaRecorder;
         let audioChunks = [];
 
@@ -128,9 +115,6 @@ nav: false
             const result = await response.json();
             document.getElementById('response').textContent = JSON.stringify(result, null, 2);
         }
-    </script>
-</body>
-</html>
       ```
 
 
