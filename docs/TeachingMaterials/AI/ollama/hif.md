@@ -67,10 +67,9 @@ curl https://codeload.github.com/mui/material-ui/tar.gz/master | tar -xz --strip
 cd material-ui-remix-ts
 
 ```
+Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit, Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite übergeben werden [siehe blog](https://ollama.com/blog/vision-models).
 
-Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit, Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite übergeben werden.
-
-Die gestreamte Antwort des Modells soll dann schrittweise angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf an das Modell geschickt werden, damit es den Kontext kennt und bessere Antworten liefern kann.
+Die gestreamte Antwort des Modells [siehe docs](https://github.com/ollama/ollama-js?tab=readme-ov-file#streaming-responses) soll dann schrittweise angezeigt werden. Antwortet der User, soll der gesamte Chatverlauf [siehe messages-Array](https://github.com/ollama/ollama-js?tab=readme-ov-file#streaming-responses) an das Modell geschickt werden, damit es den Kontext kennt und bessere Antworten liefern kann.
 
 ## Weitere Informationen
 
