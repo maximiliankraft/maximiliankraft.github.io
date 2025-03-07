@@ -70,10 +70,41 @@ Verfügbar auf [PyPi](https://pypi.org/project/ollama/).
 
 Verwende Python für den Serverseitigen Code. Am Client ist JavaScript zu verwenden.
 
-Binde die Ollama Python Schnittstelle in ein Django-Projekt ein. Du kannst aber auch ein anderes Webframework verwenden, wenn du willst. Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite an das Modell llama3.2-vision:11b übergeben werden. Falls dein PC dieses Modell nicht ausführen kann, kannst du auch ein kleineres nehmen. 
+Binde die Ollama Python Schnittstelle in ein Django-Projekt ein. Du kannst aber auch ein anderes Webframework verwenden, wenn du willst. Auf der Webseite soll es ein Eingabefeld geben sowie die Möglichkeit Bilder und PDFs hochzuladen. Wenn ein PDF hochgeladen wird, soll dieses als ein Bild je Seite an das Modell `llama3.2-vision:11b` übergeben werden. Falls dein PC dieses Modell nicht ausführen kann, kannst du auch ein kleineres nehmen. [Moondream](https://ollama.com/library/moondream) z.B.  
 
-Die gestreamte Antwort des Models soll dann schrittweise am Client angezeigt werden, siehe [Beispielprojekt](https://github.com/edilio/StreamingHttpResponse/tree/master). Antwortet der User, soll der gesamte Chatverlauf an das Model geschickt werden. Nur so kennt es den Kontext um bessere Antworten liefern zu können. Packe dazu das JSON und den CSRF-Token in ein [FormData](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects)-Objekt. Die Rückmeldung des Modells soll dann dynamisch in einem div-Container hinzugefügt werden. 
+Die [gestreamte](https://github.com/ollama/ollama-python/blob/main/examples/generate-stream.py) Antwort des Models soll dann schrittweise am Client angezeigt werden, siehe [Beispielprojekt](https://github.com/edilio/StreamingHttpResponse/tree/master). Antwortet der User, soll der gesamte Chatverlauf an das Model geschickt werden. Nur so kennt es den Kontext um bessere Antworten liefern zu können. Packe dazu das JSON und den CSRF-Token in ein [FormData](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest_API/Using_FormData_Objects)-Objekt. Die Rückmeldung des Modells soll dann dynamisch in einem div-Container hinzugefügt werden. 
 
+### Vorgehensweise
+
+#### In den views: 
+
+- chat endpoint 
+- serve chat ui
++ ensprechende urls für endpunkte
++ 
+#### templates: 
+Erstelle eine chat ui in html+js+(css)
+
+#### compose
+siehe Punkt 3
+#### models
+Model für speicher der Chat-Nachrichten
+
+- Chat Message  
+  - Session id  
+  - message  
+  - sender bzw. role  
+  - timestamp
+
+#### manage.py
+- makemigrations 
+- migrate
+
+#### uuid 
+```python
+import uuid
+str(uuid.uuid4())
+```
 
 ## Weitere Informationen
 
