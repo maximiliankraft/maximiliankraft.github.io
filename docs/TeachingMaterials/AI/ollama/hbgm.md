@@ -10,15 +10,15 @@ nav: false
 
 # Einen Chatbot mit Ollama erstellen
 
-1. Ollama-Docker Container herunterladen
+### Ollama-Docker Container herunterladen
     - [Ollama auf Docker Hub](https://hub.docker.com/r/ollama/ollama)
 
     - Oder Ollama direkt installieren: [Ollama Downloads](https://ollama.com/download/windows) 
 
-2. Wenn eine Nvidia Grafikkarte verbaut ist:
+### Wenn eine Nvidia Grafikkarte verbaut ist:
  - [Nvidia Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html#installation)
 
-3. Compose-Datei für Ollama mit GPU-Konfiguration
+### Compose-Datei für Ollama mit GPU-Konfiguration
 
 ```yaml
 services:
@@ -44,14 +44,14 @@ volumes:
     name: ollama
 ```
 
-4. Eine Shell des Containers öffnen und Ollama starten
+### Eine Shell des Containers öffnen und Ollama starten
 
 ```sh
 C:/> docker compose exec ollama bash
 root@containerid# ollama ...
 ```
 
-5. Ein Modell herunterladen
+### Ein Modell herunterladen
 
 Nimm eine Multimodales `Vision` Modell aus deren [Registry](https://ollama.com/search?c=vision). 
 
@@ -59,14 +59,14 @@ Nimm eine Multimodales `Vision` Modell aus deren [Registry](https://ollama.com/s
 ollama pull <modellname>
 ```
 
-6. Ollama Python-Schnittstelle
+### Ollama Python-Schnittstelle
 
 Verfügbar auf [PyPi](https://pypi.org/project/ollama/).
 
 - Übergabe von Bildern an das Modell: [siehe Blogpost](https://ollama.com/blog/vision-models)
 - Einfacher Chat: [siehe Dokumentation](https://github.com/ollama/ollama-python/blob/main/examples/chat.py)
 
-7. Entwicklung einer Chat-Webanwendung 
+### Entwicklung einer Chat-Webanwendung 
 
 Verwende Python für den Serverseitigen Code. Am Client ist JavaScript zu verwenden.
 
