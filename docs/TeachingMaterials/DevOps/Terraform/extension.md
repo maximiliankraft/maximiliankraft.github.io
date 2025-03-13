@@ -117,4 +117,5 @@ git clone https://<token>@git[hub|lab].com/owner/repo.git
 ```
 
 > [Git Clone mit Token (Github)](https://stackoverflow.com/q/42148841)
+ 
 > [Git Clone mit Token (Gitlab)](https://forum.gitlab.com/t/how-to-git-clone-via-https-with-personal-access-token-in-private-project/43418/4)
