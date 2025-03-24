@@ -164,7 +164,7 @@ export async function uploadProfilePicture(file: File): Promise<string | undefin
 ## Änderungen zu Punkt 5
 Den 5. Punkt bezüglich Deployment lasst ihr bitte ganz weg. Vercel ist keine eigenständige Technologie, sondern ein Produkt. Es nimmt einem zwar viel ab, jedoch hat man auch weniger Kontrolle wie das eigene Deployment arbeitet. Wir werden stattdessen mit Azure arbeiten. Dort bekommt man als Schüler ein Kontingent von 100$ um auf deren Platform alle möglichen Ressourcen zu verwenden. 
 
-Eine eigene Anleitung dazu findest du [hier](/TeachingMaterials/AzureAnleitungCaddy).
+Eine eigene Anleitung dazu findest du [hier](/TeachingMaterials/DevOps/AzureAnleitungCaddy/azure_anleitungcaddy/).
 
 ## Abgaberichtlinien
 
@@ -174,10 +174,10 @@ Eine eigene Anleitung dazu findest du [hier](/TeachingMaterials/AzureAnleitungCa
 
 ## Weitere Infos
 
-> [Grundlagen Typescript](/prismaremix/typescript)
+> [Grundlagen Typescript](typescript)
 
-> [Grundlagen React](/prismaremix/react)
+> [Grundlagen React](react)
 
-> [Grundlagen Remix](/prismaremix/remix)
+> [Grundlagen Remix](remix)
 
 
