@@ -1,6 +1,6 @@
 ---
 layout: page
-title: React Remix und Github OAuth
+title: React Remix und GitHub OAuth
 permalink: /prismaremix/githuboauth
 menubar: false
 nav_exclude: true
@@ -8,188 +8,221 @@ exclude: true
 nav: false
 ---
 
-## Aufgabe: "Login with GitHub" Button in einer Remix-Anwendung hinzufügen
+# OAuth 2.0 Authentifizierung mit GitHub in einer Remix-Anwendung
 
-In dieser Aufgabe lernst du, wie du in einer neu erstellten Remix-Anwendung einen "Login with GitHub"-Button hinzufügst. Folge den untenstehenden Schritten:
+## Einführung in OAuth 2.0
+
+OAuth 2.0 ist ein offener Standard für Authentifizierungs- und Autorisierungsprozesse, der es Diensten von Drittanbietern ermöglicht, auf Ressourcen eines Benutzers zuzugreifen, ohne dessen Zugangsdaten direkt zu verwenden. Dieser Prozess wird durch ein Token-System realisiert, das temporären Zugriff auf bestimmte Ressourcen gewährt.
+
+Der OAuth 2.0 Prozess ist in [RFC 6749](https://datatracker.ietf.org/doc/html/rfc6749) standardisiert und umfasst vier Rollen:
+
+1. **Resource Owner**: Der Benutzer, der Zugriff auf sein Konto gewähren kann
+2. **Client**: Die Anwendung, die Zugriff auf das Konto des Benutzers anfordert
+3. **Authorization Server**: Der Server, der Zugriffstoken ausstellt
+4. **Resource Server**: Der Server, der die geschützten Ressourcen hostet
+
+### Der OAuth 2.0 Autorisierungsablauf mit GitHub
+
+Der OAuth 2.0 Ablauf, speziell für die GitHub-Authentifizierung, läuft folgendermaßen ab:
+
+1. **Autorisierungsanfrage**: Die Anwendung leitet den Benutzer zur GitHub-Autorisierungsseite weiter
+2. **Benutzerautorisierung**: Der Benutzer genehmigt die Zugriffsanfrage
+3. **Autorisierungscode**: GitHub sendet einen temporären Code an die Anwendung zurück
+4. **Tokenanfrage**: Die Anwendung tauscht diesen Code gegen ein Zugriffstoken aus
+5. **Ressourcenzugriff**: Mit diesem Token kann die Anwendung auf die API und Ressourcen zugreifen
+
+## Einrichtung einer GitHub OAuth-App
+
+Um OAuth mit GitHub zu verwenden, muss eine OAuth-App in den GitHub-Entwicklereinstellungen registriert werden.
+
+### Schritt 1: Erstellen einer neuen OAuth-App in GitHub
+
+1. Melde dich bei [GitHub](https://github.com/) an
+2. Navigiere zu den [GitHub Developer Settings](https://github.com/settings/developers)
+3. Wähle "OAuth Apps" und klicke auf "New OAuth App"
+
+<!-- SCREENSHOT: GitHub Developer Settings Seite mit hervorgehobenem "New OAuth App" Button -->
+![](2025-04-27-11-21-27.png)
+
+### Schritt 2: Konfiguration der OAuth-App
+
+Fülle folgende Felder aus:
+
+- **Application name**: Ein aussagekräftiger Name für deine App (z.B. "Remix GitHub Login")
+- **Homepage URL**: Die Basis-URL deiner Anwendung (z.B. "http://localhost:5173")
+- **Application description**: (Optional) Eine kurze Beschreibung deiner Anwendung
+- **Authorization callback URL**: Die URL, an die GitHub nach der Authentifizierung weiterleitet (z.B. "http://localhost:5173/auth/github/callback")
+
+<!-- SCREENSHOT: Formular zum Ausfüllen der OAuth-App Details mit den oben genannten Feldern -->
+![](2025-04-27-11-22-25.png)
+
+### Schritt 3: Client ID und Client Secret
+
+Nach dem Erstellen der App erhältst du zwei wichtige Credentials:
+
+- **Client ID**: Öffentlicher Identifikator für deine App
+- **Client Secret**: Geheimer Schlüssel, der sicher aufbewahrt werden muss
+
+Diese Credentials werden in deiner Anwendung benötigt, um den OAuth-Prozess zu durchlaufen.
+
+<!-- SCREENSHOT: Seite mit Client ID und Client Secret (mit teilweise verdecktem Secret) -->
+
+![](2025-04-27-11-24-12.png)
+
+## Umsetzung in einer Remix-Anwendung
+
+In diesem Projekt wurde der OAuth 2.0 Authentifizierungsfluss mit GitHub direkt implementiert, ohne die Passport.js-Middleware zu verwenden. Dies bietet mehr Kontrolle über den Authentifizierungsprozess und erleichtert das Verständnis der einzelnen Schritte.
+
+### Technische Struktur der OAuth-Implementation
+
+1. **GitHub Strategie (`app/auth/github.ts`):**
+  - Definition des GitHub-Profil-Typs
+  - Methoden zum Generieren der Autorisierungs-URL
+  - Funktionen zum Austausch des Codes gegen ein Token
+  - Abrufen des Benutzerprofils mit dem erhaltenen Token
+
+2. **Authentifizierungsinitiierung (`app/routes/auth.github.tsx`):**
+  - Leitet dich zur GitHub-Autorisierungsseite weiter
+  - Verarbeitet sowohl direkte Link-Aufrufe als auch Formular-Übermittlungen
+
+3. **Callback-Verarbeitung (`app/routes/auth.github.callback.tsx`):**
+  - Empfängt den Autorisierungscode von GitHub
+  - Tauscht ihn gegen ein Zugriffstoken aus
+  - Ruft das Benutzerprofil ab
+  - Speichert die Benutzerdaten in der Session
+  - Leitet nach erfolgreicher Authentifizierung weiter
+
+4. **Session-Verwaltung (`app/session.server.ts`):**
+  - Erstellt einen Cookie-basierten Session-Speicher
+  - Bietet Funktionen zum Abrufen, Speichern und Löschen von Sitzungsdaten
+
+5. **Login-Seite (`app/routes/login.tsx`):**
+  - Zeigt den "Login with GitHub"-Button an
+  - Verarbeitet und zeigt Fehlermeldungen bei fehlgeschlagener Authentifizierung
+
+6. **Startseite (`app/routes/_index.tsx`):**
+  - Prüft, ob ein Benutzer angemeldet ist
+  - Zeigt Benutzerinformationen an, wenn angemeldet
+  - Bietet eine Abmelde-Funktion
+
+## Code-Beispiel: Einleitung des OAuth-Flows
+
+```typescript
+// app/auth/github.ts (Auszug)
+export const githubStrategy = {
+  options: {
+   clientID: process.env.GITHUB_CLIENT_ID!,
+   clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+   callbackURL: "http://localhost:5173/auth/github/callback",
+  },
+
+  getAuthorizationURL(scopes: string[] = ["user:email"]) {
+   const url = new URL("https://github.com/login/oauth/authorize");
+   url.searchParams.set("client_id", this.options.clientID);
+   url.searchParams.set("redirect_uri", this.options.callbackURL);
+   url.searchParams.set("scope", scopes.join(" "));
+   return url.toString();
+  },
+  
+  // Weitere Methoden...
+};
+```
+
+## Code-Beispiel: Verarbeitung des Callback
+
+```typescript
+// app/routes/auth.github.callback.tsx (Auszug)
+export let loader: LoaderFunction = async ({ request }) => {
+  try {
+   const url = new URL(request.url);
+   const code = url.searchParams.get("code");
+   
+   if (!code) {
+    return redirect("/login?error=github-auth-failed-no-code");
+   }
+   
+   // Code gegen Access Token austauschen
+   const accessToken = await githubStrategy.getAccessToken(code);
+   
+   // Benutzerprofil abrufen
+   const profile = await githubStrategy.getUserProfile(accessToken);
+   
+   // In Session speichern
+   const session = await getSession(request.headers.get("Cookie"));
+   session.set("user", {
+    id: profile.id,
+    displayName: profile.displayName || profile.username,
+    // Weitere Benutzerdaten...
+   });
+   
+   return redirect("/", {
+    headers: {
+      "Set-Cookie": await commitSession(session)
+    }
+   });
+  } catch (error) {
+   return redirect("/login?error=github-auth-failed");
+  }
+};
+```
+
+## Aufgabe: GitHub OAuth in einer Remix-Anwendung
+
+In dieser Aufgabe erstellst du eine Remix-Anwendung mit GitHub-Authentifizierung. Befolge die folgenden Schritte, um diese Funktionalität zu implementieren:
 
 ### 1. Neue Remix-Anwendung erstellen
+
 Erstelle eine neue Remix-Anwendung mit folgendem Befehl:
 
 ```bash
 npx create-remix@latest
 ```
 
-Folge den Anweisungen im Terminal, um die Anwendung zu konfigurieren. Wähle z. B. `Remix App Server` als Deployment-Target.
+Folge den Anweisungen im Terminal, um die Anwendung zu konfigurieren.
 
 ### 2. GitHub OAuth-App einrichten
-1. Gehe zu [GitHub Developer Settings](https://github.com/settings/developers).
-2. Klicke auf "New OAuth App".
-3. Fülle die Felder aus:
-    - **Application name**: `Remix GitHub Login`
-    - **Homepage URL**: `http://localhost:3000`
-    - **Authorization callback URL**: `http://localhost:3000/auth/github/callback`
-4. Speichere die App und notiere dir die **Client ID** und **Client Secret**.
 
-### 3. Abhängigkeiten installieren
-Installiere die benötigten Pakete:
+Erstelle eine OAuth-App in deinen GitHub-Entwicklereinstellungen, wie oben beschrieben:
+- **Application name**: `Remix GitHub Login`
+- **Homepage URL**: `http://localhost:5173`
+- **Authorization callback URL**: `http://localhost:5173/auth/github/callback`
 
-```bash
-npm install passport passport-github2 express-session
-```
+Notiere dir die erhaltene Client ID und das Client Secret.
 
-### 4. Middleware für GitHub OAuth hinzufügen
-Erstelle eine Datei `auth.github.ts` im Ordner `routes` und füge folgenden Code hinzu:
+### 3. OAuth-Implementierung
 
-```ts
-import { Strategy as GitHubStrategy } from "passport-github2";
-import passport from "passport";
+Implementiere die GitHub-Authentifizierung basierend auf der in diesem Projekt vorgestellten Struktur:
 
-passport.use(
-  new GitHubStrategy(
-     {
-        clientID: process.env.GITHUB_CLIENT_ID!,
-        clientSecret: process.env.GITHUB_CLIENT_SECRET!,
-        callbackURL: "http://localhost:3000/auth/github/callback",
-     },
-     function (accessToken, refreshToken, profile, done) {
-        return done(null, profile);
-     }
-  )
-);
+1. Erstelle die GitHub-Strategie in `app/auth/github.ts`
+2. Richte die Session-Verwaltung in `app/session.server.ts` ein
+3. Erstelle die Authentifizierungsroute in `app/routes/auth.github.tsx`
+4. Implementiere die Callback-Verarbeitung in `app/routes/auth.github.callback.tsx`
+5. Gestalte die Login-Seite in `app/routes/login.tsx`
+6. Passe die Startseite in `app/routes/_index.tsx` an, um den Benutzerstatus anzuzeigen
 
-passport.serializeUser((user, done) => {
-  done(null, user);
-});
+### 4. Umgebungsvariablen konfigurieren
 
-passport.deserializeUser((obj, done) => {
-  done(null, obj);
-});
-```
-### 5. Session-Handling einrichten
-In Remix wird das Session-Handling über Loader und Actions in Kombination mit Session-Storage-Mechanismen wie Cookies oder Datenbanken implementiert. Hier ist ein Beispiel für die Einrichtung von Session-Handling mit Cookies:
-
-#### a) Session-Storage einrichten
-Erstelle eine Datei `session.server.ts` im Ordner `app` und füge folgenden Code hinzu:
-
-```ts
-import { createCookieSessionStorage } from "@remix-run/node";
-
-export let sessionStorage = createCookieSessionStorage({
-    cookie: {
-        name: "__session",
-        secrets: ["your-secret-key"],
-        sameSite: "lax",
-        path: "/",
-        httpOnly: true,
-        secure: process.env.NODE_ENV === "production",
-    },
-});
-
-export let { getSession, commitSession, destroySession } = sessionStorage;
-```
-
-#### b) Session in Loaders und Actions verwenden
-Du kannst die Session in deinen Loaders und Actions verwenden, um Benutzerdaten zu speichern oder abzurufen. Beispiel:
-
-```ts
-import { redirect } from "@remix-run/node";
-import { getSession, commitSession } from "~/session.server";
-
-export async function loader({ request }: { request: Request }) {
-    let session = await getSession(request.headers.get("Cookie"));
-    let user = session.get("user");
-
-    if (!user) {
-        return redirect("/login");
-    }
-
-    return { user };
-}
-
-export async function action({ request }: { request: Request }) {
-    let session = await getSession(request.headers.get("Cookie"));
-    session.set("user", { id: "123", name: "GitHub User" });
-
-    return redirect("/", {
-        headers: {
-            "Set-Cookie": await commitSession(session),
-        },
-    });
-}
-```
-
-#### c) Session in der Anwendung nutzen
-In deinen Komponenten kannst du die Daten aus dem Loader verwenden, um den Benutzerstatus anzuzeigen oder zu verarbeiten.
-
-```tsx
-import { useLoaderData } from "@remix-run/react";
-
-export default function Dashboard() {
-    let { user } = useLoaderData();
-
-    return (
-        <div>
-            <h1>Willkommen, {user.name}!</h1>
-        </div>
-    );
-}
-```
-
-#### d) Login route implementieren
-
-<!-- todo login route beschreiben -->
-
-### 6. Routen für GitHub-Login erstellen
-Erstelle in `routes/auth/github.tsx` folgende Routen:
-
-```tsx
-import { LoaderFunction } from "@remix-run/node";
-import { redirect } from "@remix-run/node";
-import passport from "~/auth/github";
-
-export let loader: LoaderFunction = async ({ request }) => {
-  return new Promise((resolve, reject) => {
-     passport.authenticate("github", (err, user) => {
-        if (err || !user) {
-          return reject(redirect("/login"));
-        }
-        resolve(redirect("/"));
-     })(request);
-  });
-};
-```
-
-### 7. "Login with GitHub"-Button hinzufügen
-Füge in deiner `index.tsx` oder einer anderen Seite folgenden Button hinzu:
-
-```tsx
-export default function Index() {
-  return (
-     <div>
-        <h1>Willkommen bei Remix!</h1>
-        <a href="/auth/github">
-          <button>Login with GitHub</button>
-        </a>
-     </div>
-  );
-}
-```
-
-### 8. Umgebungsvariablen konfigurieren
 Erstelle eine `.env`-Datei und füge deine GitHub-Credentials hinzu:
 
 ```
-GITHUB_CLIENT_ID=your-client-id
-GITHUB_CLIENT_SECRET=your-client-secret
+GITHUB_CLIENT_ID=Deine-Client-ID
+GITHUB_CLIENT_SECRET=Dein-Client-Secret
 ```
 
-### 9. Anwendung starten
+### 5. Anwendung testen
+
 Starte die Anwendung mit:
 
 ```bash
 npm run dev
 ```
 
-Öffne [http://localhost:3000](http://localhost:3000) und teste den "Login with GitHub"-Button.
+Öffne [http://localhost:5173](http://localhost:5173) und teste den "Login with GitHub"-Button.
 
-Viel Erfolg!
+## Zusätzliche Ressourcen
+
+- [OAuth 2.0 Spezifikation (RFC 6749)](https://datatracker.ietf.org/doc/html/rfc6749)
+- [GitHub OAuth Dokumentation](https://docs.github.com/en/developers/apps/building-oauth-apps)
+- [Remix Dokumentation](https://remix.run/docs/en/main)
+- [GitHub REST API](https://docs.github.com/en/rest)
+
