@@ -31,6 +31,8 @@ Der OAuth 2.0 Ablauf, speziell für die GitHub-Authentifizierung, läuft folgend
 4. **Tokenanfrage**: Die Anwendung tauscht diesen Code gegen ein Zugriffstoken aus
 5. **Ressourcenzugriff**: Mit diesem Token kann die Anwendung auf die API und Ressourcen zugreifen
 
+> [Quelle: Authorizing OAuth apps | Web Application Flow](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow)
+
 ## Einrichtung einer GitHub OAuth-App
 
 Um OAuth mit GitHub zu verwenden, muss eine OAuth-App in den GitHub-Entwicklereinstellungen registriert werden.
@@ -225,4 +227,5 @@ npm run dev
 - [GitHub OAuth Dokumentation](https://docs.github.com/en/developers/apps/building-oauth-apps)
 - [Remix Dokumentation](https://remix.run/docs/en/main)
 - [GitHub REST API](https://docs.github.com/en/rest)
+- [Authorizing OAuth apps | Web Application Flow](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow)
 
