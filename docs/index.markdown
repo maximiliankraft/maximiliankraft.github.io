@@ -45,6 +45,7 @@ title: Startseite
 ## Allgemeines
 
 - [Protokollvorlage](/TeachingMaterials/General/Protokoll%20Vorlage.docx)
+- [Live Code XP](https://livecodexp-evgpgtawgsbyfuff.swedencentral-01.azurewebsites.net/)
 
 
 > Einige Links funktionieren noch nicht. Solltest du auf eine Aufgabe nicht zugreifen können, schicke mir einfach eine E-Mail
