@@ -8,3 +8,5 @@ site_description: Diese Webseite stellt Unterrichtsmaterialien zur Verfügung.
 
 repo_url: https://github.com/maximiliankraft/maximiliankraft.github.io
 edit_uri: edit/main/docs/
+nav:
+  - Livecode XP: https://livecodexp-evgpgtawgsbyfuff.swedencentral-01.azurewebsites.net/
