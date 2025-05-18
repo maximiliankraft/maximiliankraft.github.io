@@ -33,7 +33,7 @@ Der OAuth 2.0 Ablauf, speziell für die GitHub-Authentifizierung, läuft folgend
 
 > [Quelle: Authorizing OAuth apps | Web Application Flow](https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow)
 
-## Einrichtung einer GitHub OAuth-App
+## Einrichten einer GitHub OAuth-App
 
 Um OAuth mit GitHub zu verwenden, muss eine OAuth-App in den GitHub-Entwicklereinstellungen registriert werden.
 
@@ -75,37 +75,6 @@ Diese Credentials werden in deiner Anwendung benötigt, um den OAuth-Prozess zu 
 
 In diesem Projekt wurde der OAuth 2.0 Authentifizierungsfluss mit GitHub direkt implementiert, ohne die Passport.js-Middleware zu verwenden. Dies bietet mehr Kontrolle über den Authentifizierungsprozess und erleichtert das Verständnis der einzelnen Schritte.
 
-### Technische Struktur der OAuth-Implementation
-
-1. **GitHub Strategie (`app/auth/github.ts`):**
-  - Definition des GitHub-Profil-Typs
-  - Methoden zum Generieren der Autorisierungs-URL
-  - Funktionen zum Austausch des Codes gegen ein Token
-  - Abrufen des Benutzerprofils mit dem erhaltenen Token
-
-2. **Authentifizierungsinitiierung (`app/routes/auth.github.tsx`):**
-  - Leitet dich zur GitHub-Autorisierungsseite weiter
-  - Verarbeitet sowohl direkte Link-Aufrufe als auch Formular-Übermittlungen
-
-3. **Callback-Verarbeitung (`app/routes/auth.github.callback.tsx`):**
-  - Empfängt den Autorisierungscode von GitHub
-  - Tauscht ihn gegen ein Zugriffstoken aus
-  - Ruft das Benutzerprofil ab
-  - Speichert die Benutzerdaten in der Session
-  - Leitet nach erfolgreicher Authentifizierung weiter
-
-4. **Session-Verwaltung (`app/session.server.ts`):**
-  - Erstellt einen Cookie-basierten Session-Speicher
-  - Bietet Funktionen zum Abrufen, Speichern und Löschen von Sitzungsdaten
-
-5. **Login-Seite (`app/routes/login.tsx`):**
-  - Zeigt den "Login with GitHub"-Button an
-  - Verarbeitet und zeigt Fehlermeldungen bei fehlgeschlagener Authentifizierung
-
-6. **Startseite (`app/routes/_index.tsx`):**
-  - Prüft, ob ein Benutzer angemeldet ist
-  - Zeigt Benutzerinformationen an, wenn angemeldet
-  - Bietet eine Abmelde-Funktion
 
 ## Code-Beispiel: Einleitung des OAuth-Flows
 
@@ -113,8 +82,8 @@ In diesem Projekt wurde der OAuth 2.0 Authentifizierungsfluss mit GitHub direkt 
 // app/auth/github.ts (Auszug)
 export const githubStrategy = {
   options: {
-   clientID: process.env.GITHUB_CLIENT_ID!,
-   clientSecret: process.env.GITHUB_CLIENT_SECRET!,
+   clientID: "your-client-id",
+   clientSecret: "your-client-secret",
    callbackURL: "http://localhost:5173/auth/github/callback",
   },
 
@@ -147,7 +116,8 @@ export let loader: LoaderFunction = async ({ request }) => {
    const accessToken = await githubStrategy.getAccessToken(code);
    
    // Benutzerprofil abrufen
-   const profile = await githubStrategy.getUserProfile(accessToken);
+   // Anleitung dazu findest du hier: https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#3-use-the-access-token-to-access-the-api
+   const profile = await getUserProfile(accessToken);
    
    // In Session speichern
    const session = await getSession(request.headers.get("Cookie"));
@@ -174,6 +144,8 @@ In dieser Aufgabe erstellst du eine Remix-Anwendung mit GitHub-Authentifizierung
 
 ### 1. Neue Remix-Anwendung erstellen
 
+Verwende die Vorlage auf Moodle, *ODER*
+
 Erstelle eine neue Remix-Anwendung mit folgendem Befehl:
 
 ```bash
@@ -191,27 +163,12 @@ Erstelle eine OAuth-App in deinen GitHub-Entwicklereinstellungen, wie oben besch
 
 Notiere dir die erhaltene Client ID und das Client Secret.
 
-### 3. OAuth-Implementierung
 
-Implementiere die GitHub-Authentifizierung basierend auf der in diesem Projekt vorgestellten Struktur:
+### 3. Übersicht der Userdaten
 
-1. Erstelle die GitHub-Strategie in `app/auth/github.ts`
-2. Richte die Session-Verwaltung in `app/session.server.ts` ein
-3. Erstelle die Authentifizierungsroute in `app/routes/auth.github.tsx`
-4. Implementiere die Callback-Verarbeitung in `app/routes/auth.github.callback.tsx`
-5. Gestalte die Login-Seite in `app/routes/login.tsx`
-6. Passe die Startseite in `app/routes/_index.tsx` an, um den Benutzerstatus anzuzeigen
+Nachdem der OAuth-Flow fertig ist, erhalten wir die Userdaten in einem JSON-Dokument. Erstelle eine schöne Übersicht in der der Benutzername, E-Mail und optional noch weitere Informationen deines Accounts ersichtlich sind. Beim Design kannst du dich an dem Code aus `login.tsx` orientieren. Die Übersicht soll in `_index.tsx` implementiert werden. `/auth/github/callback` verweist dort hin wenn der OAuth-Flow fertig ist.
 
-### 4. Umgebungsvariablen konfigurieren
-
-Erstelle eine `.env`-Datei und füge deine GitHub-Credentials hinzu:
-
-```
-GITHUB_CLIENT_ID=Deine-Client-ID
-GITHUB_CLIENT_SECRET=Dein-Client-Secret
-```
-
-### 5. Anwendung testen
+### 4. Anwendung testen
 
 Starte die Anwendung mit:
 
