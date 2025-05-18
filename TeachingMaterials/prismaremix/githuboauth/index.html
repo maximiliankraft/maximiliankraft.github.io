@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Diese Webseite stellt Unterrichtsmaterialien zur Verfügung.">
+    
+    
+    <link rel="shortcut icon" href="../../../img/favicon.ico">
+
+    
+    <title>React Remix und GitHub OAuth - maximiliankraft.github.io</title>
+    
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/v4-shims.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hack-font@3.3.0/build/web/hack.min.css">
+    <link href='//rsms.me/inter/inter.css' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,600,700&subset=latin-ext,latin' rel='stylesheet' type='text/css'>
+    <link href="../../../css/bootstrap-custom.min.css" rel="stylesheet">
+    <link href="../../../css/base.min.css" rel="stylesheet">
+    <link href="../../../css/cinder.min.css" rel="stylesheet">
+
+    
+        
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/styles/github.min.css">
+        
+    
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+            <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+            <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+        <![endif]-->
+
+    
+
+     
+</head>
+
+<body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+
+        <!-- Collapsed navigation -->
+        <div class="navbar-header">
+            <!-- Expander button -->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            
+
+            <!-- Main title -->
+
+            
+              <a class="navbar-brand" href="../../..">maximiliankraft.github.io</a>
+            
+        </div>
+
+        <!-- Expanded navigation -->
+        <div class="navbar-collapse collapse">
+                <!-- Main navigation -->
+                <ul class="nav navbar-nav">
+                
+                
+                    <li >
+                        <a href="../../..">Startseite</a>
+                    </li>
+                
+                
+                
+                    <li >
+                        <a href="../../../LivecodeXP/">LivecodeXP</a>
+                    </li>
+                
+                
+                
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Assignments <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">1XHBGM</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/1XHBGM/Index/">Übungen 1XHBGM</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">2XHBGM</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/FirstProjectASP/">Azure Anleitung ASP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/Index/">Übungen 2XHBGM</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/authentication/">Azure Anleitung ASP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/calendar/">Calendar</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/components/">Components</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/cookies/">Cookies</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/database/">Azure Anleitung ASP</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/deployment/">Deployment</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/fileupload/">Fileupload</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/2XHBGM/persistenttodo/">Azure Anleitung ASP</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">3XHBGM</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/3XHBGM/Index/">Index</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">3XHIF</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">WMC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Assignment1/">Erstellen einer persönlichen Webseite mit Remix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Assignment2/">Erweiterung der Remix-Webseite mit interaktiver Liste</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Assignment3/">Remix SQLite Übungsaufgabe</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Assignment4/">Implementierung eines Kontaktformulars mit Remix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Index/">Aufgabensammlung für den 3. Jahrgang HIF in WMC</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Projektabgabe/">Projekt</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Task2/">State Management mit useState und Seiteneffekte mit useEffect</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Task2b/">State Management mit useState und Seiteneffekte mit useEffect</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Task3/">Routing und Datenmanagement</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Task4/">Datenbankintegration mit Prisma</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Task5/">Authentifizierung in Remix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/3XHIF/WMC/Task6/">Progressive Web App (PWA) Grundlagen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">4XHBGM</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/Index/">Übungen 4XHBGM</a>
+</li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MGIN</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Lehrstoff/">Erstellung einer Django-Webseite</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Uebung1/">Erstellung einer Django-Webseite</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Uebung2/">Interaktives Adressformular mit Django</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Uebung3/">Erstellung eines Adressformulars als Web Component</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Uebung3A/">Django-Projekt auf MySQL mit Docker umstellen</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Uebung3B/">Docker & Django - Deine erste containerisierte Webanwendung</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Uebung4/">Gruppenprojekt</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/Uebung5/">PACS einrichten und ansteuern</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MGIN/whisperIntegration/">KI-Integration in eine Webapplikation</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MIS</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Assignment1</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MIS/Assignment1/">1. Hausübung</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MultiService</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MIS/MultiService/">Spring in Verbindung mit weiteren Services nutzen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">OIDC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MIS/OIDC/">Spring OIDC & OAuth</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">SpringDataKRM</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MIS/SpringDataKRM/">Spring Data Assignment</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">SpringFHIRKRM</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MIS/SpringFHIRKRM/">Spring FHIR</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">greetingAssignment</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/MIS/greetingAssignment/">Greeting Assignment</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">WMC</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/4XHBGM/WMC/projekt/">WMC Projekt</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">5XHBGM</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/Index/">Übungen 5XHBGM</a>
+</li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">CICDDeployment</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/CICDDeployment/">Deployment</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">DockerRegistry</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/DockerRegistry/">Registries Hausübung</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Graylog</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/Graylog/">Graylog zu bestehendem Deployment hinzufügen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MGIN</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MGIN/Uebung1/">Erstellung einer Django-Webseite für Bioinformatik-Anwendungen</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MGIN/Uebung2/">Übungsaufgabe - ORF-Finder mit Django und Docker</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MGIN/Uebung3/">Übung Multiple Sequence Alignment</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MGIN/Uebung3A/">Übung Phylogenetischer Baum</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MGIN/Uebung4/">Übungsaufgabe - Integration von NCBI BLAST in den ORF-Finder</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">MIS</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AngularAdressservice</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MIS/AngularAdressservice/">Angular Adressformular</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AngularCRUDAssignment</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MIS/AngularCRUDAssignment/">AngularMaterialCRUD</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AngularRequestAssignment</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MIS/AngularRequestAssignment/">Angular Request Assignment</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">SafeAPIAssignment</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MIS/SafeAPIAssignment/">Rest-API absichern</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Security</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">SafeAPIAssignment</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/MIS/Security/SafeAPIAssignment/">Rest-API absichern</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">NodeContainer</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/NodeContainer/">Dockerisierung einer Spring-Anwendung mit MySQL-Datenbank</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../../Assignments/5XHBGM/NodeContainer/node/">Dockerisierung einer Angular-Frontend-Anwendung</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                
+                    <li class="dropdown active">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">TeachingMaterials <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AI</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AngularGPT</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../AI/AngularGPT/angularCRUD-GPT/">Angular Anwendung mit GPT erstellen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">RAG</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../AI/RAG/">RAG mit Langchain</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">SafeapiGPT</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../AI/SafeapiGPT/spingSafeApi-GPT/">Sichere Spring-Anwendung mit ChatGPT erstellen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ollama</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../AI/ollama/hbgm/">Chatbot Ollama [HBGM]</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../AI/ollama/hif/">Einen Chatbot mit Ollama erstellen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Whisper.cpp</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../AI/whisper.cpp/docker-setup/">Whisper.cpp Container verbessern</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../AI/whisper.cpp/recorder/">Whisper.cpp und Docker</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">DevOps</a>
+    <ul class="dropdown-menu">
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AzureAnleitung</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/AzureAnleitung/azure_anleitung/">Azure Anleitung</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AzureAnleitungASP</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/AzureAnleitungASP/azure_anleitungasp/">Azure Anleitung ASP</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AzureAnleitungCaddy</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/AzureAnleitungCaddy/azure_anleitungcaddy/">Azure Anleitung nodejs</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">AzureAnleitungNode</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/AzureAnleitungNode/azure_anleitungnode/">Azure Anleitung caddy</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">BegleitendeAufgaben</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/BegleitendeAufgaben/">Index</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../DevOps/BegleitendeAufgaben/container/">Begleitende Aufgabe - Containerisierung</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../DevOps/BegleitendeAufgaben/deployment/">Begleitende Aufgabe - Deployment</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../DevOps/BegleitendeAufgaben/git/">Begleitende Aufgabe - Versionsverwaltung</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../DevOps/BegleitendeAufgaben/logging/">Begleitende Aufgabe - Logging</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Bind9</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/Bind9/">Index</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">DevContainers</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/DevContainers/DevContainers/">Dev Container</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">DockerBasics</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/DockerBasics/DockerBasics/">Deployment methods and virtualization in Linux systems</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../DevOps/DockerBasics/theoriefragen/">Fragen zu Docker</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">DockerRegistry</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/DockerRegistry/DockerRegistry/">Verteilung von Containern</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">KanikoCI</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/KanikoCI/KanikoCI/">Building and providing container images automatically using Kaniko</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">OracleCloudAnleitung</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/OracleCloudAnleitung/OracleCloudSetup/">Azure Anleitung ASP</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">OracleSSHTunnel</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/OracleSSHTunnel/">Using an Oracle Cloud instance as reverse SSH tunnel</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Prometheus</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/Prometheus/">Prometheus konfigurieren für eine Spring-Anwendung</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">RCloneBackups</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/RCloneBackups/">Backups mit rclone erstellen</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Terraform</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../DevOps/Terraform/">Dateibasierte Provisionierung mit Terraform</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../DevOps/Terraform/extension/">Automatisches Deployment mittels Shellskript</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">HTTPGrundlagen</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../HTTPGrundlagen/httpGrundlagen/">HTTP Grundlagen</a>
+</li>
+
+        
+            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">JSPromises</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../HTTPGrundlagen/JSPromises/promises/">Übungsaufgaben zu Promises</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Ionic</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../Ionic/ionic/">App mit Ionic erstellen</a>
+</li>
+
+        
+            
+<li >
+    <a href="../../Ionic/projekt/">Projekt</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">LegoMindstorms</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../../LegoMindstorms/">Lego Mindstorms</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                            
+  <li class="dropdown-submenu">
+    <a tabindex="-1" href="">Prismaremix</a>
+    <ul class="dropdown-menu">
+        
+            
+<li >
+    <a href="../">Webentwicklung mit Remix und Prisma</a>
+</li>
+
+        
+            
+<li class="active">
+    <a href="./">React Remix und GitHub OAuth</a>
+</li>
+
+        
+            
+<li >
+    <a href="../offline/">Offline</a>
+</li>
+
+        
+            
+<li >
+    <a href="../react/">Grundlagen React</a>
+</li>
+
+        
+            
+<li >
+    <a href="../remix/">Grundlagen Remix</a>
+</li>
+
+        
+            
+<li >
+    <a href="../typescript/">Grundlagen Typescript</a>
+</li>
+
+        
+    </ul>
+  </li>
+
+                        
+                        </ul>
+                    </li>
+                
+                
+                </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#" data-toggle="modal" data-target="#mkdocs_search_modal">
+                            <i class="fas fa-search"></i> Search
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="prev" href="../">
+                            <i class="fas fa-arrow-left"></i> Previous
+                        </a>
+                    </li>
+                    <li >
+                        <a rel="next" href="../offline/">
+                            Next <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/maximiliankraft/maximiliankraft.github.io/edit/main/docs/TeachingMaterials/prismaremix/githuboauth.md"><i class="fab fa-github"></i> Edit on GitHub</a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        
+        
+        <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
+    <ul class="nav bs-sidenav">
+        <li class="first-level active"><a href="#oauth-20-authentifizierung-mit-github-in-einer-remix-anwendung">OAuth 2.0 Authentifizierung mit GitHub in einer Remix-Anwendung</a></li>
+            <li class="second-level"><a href="#einfuhrung-in-oauth-20">Einführung in OAuth 2.0</a></li>
+                
+                <li class="third-level"><a href="#der-oauth-20-autorisierungsablauf-mit-github">Der OAuth 2.0 Autorisierungsablauf mit GitHub</a></li>
+            <li class="second-level"><a href="#einrichten-einer-github-oauth-app">Einrichten einer GitHub OAuth-App</a></li>
+                
+                <li class="third-level"><a href="#schritt-1-erstellen-einer-neuen-oauth-app-in-github">Schritt 1: Erstellen einer neuen OAuth-App in GitHub</a></li>
+                <li class="third-level"><a href="#schritt-2-konfiguration-der-oauth-app">Schritt 2: Konfiguration der OAuth-App</a></li>
+                <li class="third-level"><a href="#schritt-3-client-id-und-client-secret">Schritt 3: Client ID und Client Secret</a></li>
+            <li class="second-level"><a href="#umsetzung-in-einer-remix-anwendung">Umsetzung in einer Remix-Anwendung</a></li>
+                
+            <li class="second-level"><a href="#code-beispiel-einleitung-des-oauth-flows">Code-Beispiel: Einleitung des OAuth-Flows</a></li>
+                
+            <li class="second-level"><a href="#code-beispiel-verarbeitung-des-callback">Code-Beispiel: Verarbeitung des Callback</a></li>
+                
+            <li class="second-level"><a href="#aufgabe-github-oauth-in-einer-remix-anwendung">Aufgabe: GitHub OAuth in einer Remix-Anwendung</a></li>
+                
+                <li class="third-level"><a href="#1-neue-remix-anwendung-erstellen">1. Neue Remix-Anwendung erstellen</a></li>
+                <li class="third-level"><a href="#2-github-oauth-app-einrichten">2. GitHub OAuth-App einrichten</a></li>
+                <li class="third-level"><a href="#3-ubersicht-der-userdaten">3. Übersicht der Userdaten</a></li>
+                <li class="third-level"><a href="#4-anwendung-testen">4. Anwendung testen</a></li>
+            <li class="second-level"><a href="#zusatzliche-ressourcen">Zusätzliche Ressourcen</a></li>
+                
+    </ul>
+</div></div>
+        <div class="col-md-9" role="main">
+
+<h1 id="oauth-20-authentifizierung-mit-github-in-einer-remix-anwendung">OAuth 2.0 Authentifizierung mit GitHub in einer Remix-Anwendung</h1>
+<h2 id="einfuhrung-in-oauth-20">Einführung in OAuth 2.0</h2>
+<p>OAuth 2.0 ist ein offener Standard für Authentifizierungs- und Autorisierungsprozesse, der es Diensten von Drittanbietern ermöglicht, auf Ressourcen eines Benutzers zuzugreifen, ohne dessen Zugangsdaten direkt zu verwenden. Dieser Prozess wird durch ein Token-System realisiert, das temporären Zugriff auf bestimmte Ressourcen gewährt.</p>
+<p>Der OAuth 2.0 Prozess ist in <a href="https://datatracker.ietf.org/doc/html/rfc6749">RFC 6749</a> standardisiert und umfasst vier Rollen:</p>
+<ol>
+<li><strong>Resource Owner</strong>: Der Benutzer, der Zugriff auf sein Konto gewähren kann</li>
+<li><strong>Client</strong>: Die Anwendung, die Zugriff auf das Konto des Benutzers anfordert</li>
+<li><strong>Authorization Server</strong>: Der Server, der Zugriffstoken ausstellt</li>
+<li><strong>Resource Server</strong>: Der Server, der die geschützten Ressourcen hostet</li>
+</ol>
+<h3 id="der-oauth-20-autorisierungsablauf-mit-github">Der OAuth 2.0 Autorisierungsablauf mit GitHub</h3>
+<p>Der OAuth 2.0 Ablauf, speziell für die GitHub-Authentifizierung, läuft folgendermaßen ab:</p>
+<ol>
+<li><strong>Autorisierungsanfrage</strong>: Die Anwendung leitet den Benutzer zur GitHub-Autorisierungsseite weiter</li>
+<li><strong>Benutzerautorisierung</strong>: Der Benutzer genehmigt die Zugriffsanfrage</li>
+<li><strong>Autorisierungscode</strong>: GitHub sendet einen temporären Code an die Anwendung zurück</li>
+<li><strong>Tokenanfrage</strong>: Die Anwendung tauscht diesen Code gegen ein Zugriffstoken aus</li>
+<li><strong>Ressourcenzugriff</strong>: Mit diesem Token kann die Anwendung auf die API und Ressourcen zugreifen</li>
+</ol>
+<blockquote>
+<p><a href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow">Quelle: Authorizing OAuth apps | Web Application Flow</a></p>
+</blockquote>
+<h2 id="einrichten-einer-github-oauth-app">Einrichten einer GitHub OAuth-App</h2>
+<p>Um OAuth mit GitHub zu verwenden, muss eine OAuth-App in den GitHub-Entwicklereinstellungen registriert werden.</p>
+<h3 id="schritt-1-erstellen-einer-neuen-oauth-app-in-github">Schritt 1: Erstellen einer neuen OAuth-App in GitHub</h3>
+<ol>
+<li>Melde dich bei <a href="https://github.com/">GitHub</a> an</li>
+<li>Navigiere zu den <a href="https://github.com/settings/developers">GitHub Developer Settings</a></li>
+<li>Wähle "OAuth Apps" und klicke auf "New OAuth App"</li>
+</ol>
+<!-- SCREENSHOT: GitHub Developer Settings Seite mit hervorgehobenem "New OAuth App" Button -->
+<p><img alt="" src="../2025-04-27-11-21-27.png" /></p>
+<h3 id="schritt-2-konfiguration-der-oauth-app">Schritt 2: Konfiguration der OAuth-App</h3>
+<p>Fülle folgende Felder aus:</p>
+<ul>
+<li><strong>Application name</strong>: Ein aussagekräftiger Name für deine App (z.B. "Remix GitHub Login")</li>
+<li><strong>Homepage URL</strong>: Die Basis-URL deiner Anwendung (z.B. "http://localhost:5173")</li>
+<li><strong>Application description</strong>: (Optional) Eine kurze Beschreibung deiner Anwendung</li>
+<li><strong>Authorization callback URL</strong>: Die URL, an die GitHub nach der Authentifizierung weiterleitet (z.B. "http://localhost:5173/auth/github/callback")</li>
+</ul>
+<!-- SCREENSHOT: Formular zum Ausfüllen der OAuth-App Details mit den oben genannten Feldern -->
+<p><img alt="" src="../2025-04-27-11-22-25.png" /></p>
+<h3 id="schritt-3-client-id-und-client-secret">Schritt 3: Client ID und Client Secret</h3>
+<p>Nach dem Erstellen der App erhältst du zwei wichtige Credentials:</p>
+<ul>
+<li><strong>Client ID</strong>: Öffentlicher Identifikator für deine App</li>
+<li><strong>Client Secret</strong>: Geheimer Schlüssel, der sicher aufbewahrt werden muss</li>
+</ul>
+<p>Diese Credentials werden in deiner Anwendung benötigt, um den OAuth-Prozess zu durchlaufen.</p>
+<!-- SCREENSHOT: Seite mit Client ID und Client Secret (mit teilweise verdecktem Secret) -->
+
+<p><img alt="" src="../2025-04-27-11-24-12.png" /></p>
+<h2 id="umsetzung-in-einer-remix-anwendung">Umsetzung in einer Remix-Anwendung</h2>
+<p>In diesem Projekt wurde der OAuth 2.0 Authentifizierungsfluss mit GitHub direkt implementiert, ohne die Passport.js-Middleware zu verwenden. Dies bietet mehr Kontrolle über den Authentifizierungsprozess und erleichtert das Verständnis der einzelnen Schritte.</p>
+<h2 id="code-beispiel-einleitung-des-oauth-flows">Code-Beispiel: Einleitung des OAuth-Flows</h2>
+<pre><code class="language-typescript">// app/auth/github.ts (Auszug)
+export const githubStrategy = {
+  options: {
+   clientID: &quot;your-client-id&quot;,
+   clientSecret: &quot;your-client-secret&quot;,
+   callbackURL: &quot;http://localhost:5173/auth/github/callback&quot;,
+  },
+
+  getAuthorizationURL(scopes: string[] = [&quot;user:email&quot;]) {
+   const url = new URL(&quot;https://github.com/login/oauth/authorize&quot;);
+   url.searchParams.set(&quot;client_id&quot;, this.options.clientID);
+   url.searchParams.set(&quot;redirect_uri&quot;, this.options.callbackURL);
+   url.searchParams.set(&quot;scope&quot;, scopes.join(&quot; &quot;));
+   return url.toString();
+  },
+
+  // Weitere Methoden...
+};
+</code></pre>
+<h2 id="code-beispiel-verarbeitung-des-callback">Code-Beispiel: Verarbeitung des Callback</h2>
+<pre><code class="language-typescript">// app/routes/auth.github.callback.tsx (Auszug)
+export let loader: LoaderFunction = async ({ request }) =&gt; {
+  try {
+   const url = new URL(request.url);
+   const code = url.searchParams.get(&quot;code&quot;);
+
+   if (!code) {
+    return redirect(&quot;/login?error=github-auth-failed-no-code&quot;);
+   }
+
+   // Code gegen Access Token austauschen
+   const accessToken = await githubStrategy.getAccessToken(code);
+
+   // Benutzerprofil abrufen
+   // Anleitung dazu findest du hier: https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#3-use-the-access-token-to-access-the-api
+   const profile = await getUserProfile(accessToken);
+
+   // In Session speichern
+   const session = await getSession(request.headers.get(&quot;Cookie&quot;));
+   session.set(&quot;user&quot;, {
+    id: profile.id,
+    displayName: profile.displayName || profile.username,
+    // Weitere Benutzerdaten...
+   });
+
+   return redirect(&quot;/&quot;, {
+    headers: {
+      &quot;Set-Cookie&quot;: await commitSession(session)
+    }
+   });
+  } catch (error) {
+   return redirect(&quot;/login?error=github-auth-failed&quot;);
+  }
+};
+</code></pre>
+<h2 id="aufgabe-github-oauth-in-einer-remix-anwendung">Aufgabe: GitHub OAuth in einer Remix-Anwendung</h2>
+<p>In dieser Aufgabe erstellst du eine Remix-Anwendung mit GitHub-Authentifizierung. Befolge die folgenden Schritte, um diese Funktionalität zu implementieren:</p>
+<h3 id="1-neue-remix-anwendung-erstellen">1. Neue Remix-Anwendung erstellen</h3>
+<p>Verwende die Vorlage auf Moodle, <em>ODER</em></p>
+<p>Erstelle eine neue Remix-Anwendung mit folgendem Befehl:</p>
+<pre><code class="language-bash">npx create-remix@latest
+</code></pre>
+<p>Folge den Anweisungen im Terminal, um die Anwendung zu konfigurieren.</p>
+<h3 id="2-github-oauth-app-einrichten">2. GitHub OAuth-App einrichten</h3>
+<p>Erstelle eine OAuth-App in deinen GitHub-Entwicklereinstellungen, wie oben beschrieben:
+- <strong>Application name</strong>: <code>Remix GitHub Login</code>
+- <strong>Homepage URL</strong>: <code>http://localhost:5173</code>
+- <strong>Authorization callback URL</strong>: <code>http://localhost:5173/auth/github/callback</code></p>
+<p>Notiere dir die erhaltene Client ID und das Client Secret.</p>
+<h3 id="3-ubersicht-der-userdaten">3. Übersicht der Userdaten</h3>
+<p>Nachdem der OAuth-Flow fertig ist, erhalten wir die Userdaten in einem JSON-Dokument. Erstelle eine schöne Übersicht in der der Benutzername, E-Mail und optional noch weitere Informationen deines Accounts ersichtlich sind. Beim Design kannst du dich an dem Code aus <code>login.tsx</code> orientieren. Die Übersicht soll in <code>_index.tsx</code> implementiert werden. <code>/auth/github/callback</code> verweist dort hin wenn der OAuth-Flow fertig ist.</p>
+<h3 id="4-anwendung-testen">4. Anwendung testen</h3>
+<p>Starte die Anwendung mit:</p>
+<pre><code class="language-bash">npm run dev
+</code></pre>
+<p>Öffne <a href="http://localhost:5173">http://localhost:5173</a> und teste den "Login with GitHub"-Button.</p>
+<h2 id="zusatzliche-ressourcen">Zusätzliche Ressourcen</h2>
+<ul>
+<li><a href="https://datatracker.ietf.org/doc/html/rfc6749">OAuth 2.0 Spezifikation (RFC 6749)</a></li>
+<li><a href="https://docs.github.com/en/developers/apps/building-oauth-apps">GitHub OAuth Dokumentation</a></li>
+<li><a href="https://remix.run/docs/en/main">Remix Dokumentation</a></li>
+<li><a href="https://docs.github.com/en/rest">GitHub REST API</a></li>
+<li><a href="https://docs.github.com/en/apps/oauth-apps/building-oauth-apps/authorizing-oauth-apps#web-application-flow">Authorizing OAuth apps | Web Application Flow</a></li>
+</ul></div>
+        
+        
+    </div>
+
+    
+      <footer class="col-md-12 text-center">
+          
+          
+            <hr>
+            <p>
+            <small>Documentation built with <a href="http://www.mkdocs.org/">MkDocs</a>.</small>
+            </p>
+          
+
+          
+          
+      </footer>
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="../../../js/bootstrap-3.0.3.min.js"></script>
+
+    
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@9.18.0/build/highlight.min.js"></script>
+        
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    <script>var base_url = "../../.."</script>
+    
+    <script src="../../../js/base.js"></script>
+    <script src="../../../search/main.js"></script>
+
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    From here you can search these documents. Enter
+                    your search terms below.
+                </p>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+
+</html>
