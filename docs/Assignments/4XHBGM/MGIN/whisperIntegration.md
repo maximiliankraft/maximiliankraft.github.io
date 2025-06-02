@@ -47,3 +47,7 @@ Der Soundrekorder aus Punkt 2 erzeugt ein JavaScript `Blob`-Objekt. Wie man dies
 ### Zu Punkt 4:
 Um die Sounddaten annehmen zu können und an die Transformer-Library weitergeben zu können würde sich ein Webserver in Python anbieten. In der FastAPI-Dokumentation gibt es eine [Anleitung](https://fastapi.tiangolo.com/tutorial/request-files/) wie dieser Server Dateien annehmen kann. Für die ersten Schritte in FastAPI gibt es ein Tutorial [hier](https://fastapi.tiangolo.com/tutorial/first-steps/). 
 
+## Abgabe
+
+Gib ein Protokoll ab in dem du die Erweiterung der vorherigen Aufgabe beschreibst. Die Chat-Anwendung soll um einen "Aufnehmen" Button erweitert werden. Das Gesagte soll dan im Textfeld zum absenden der Nachricht eingefügt werden. 
+
