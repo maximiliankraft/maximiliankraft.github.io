@@ -49,5 +49,5 @@ Um die Sounddaten annehmen zu können und an die Transformer-Library weitergeben
 
 ## Abgabe
 
-Gib ein Protokoll ab in dem du die Erweiterung der vorherigen Aufgabe beschreibst. Die Chat-Anwendung soll um einen "Aufnehmen" Button erweitert werden. Das Gesagte soll dan im Textfeld zum absenden der Nachricht eingefügt werden. 
+Gib ein Protokoll ab in dem du die Erweiterung der vorherigen Aufgabe beschreibst. Die Chat-Anwendung soll um einen "Aufnehmen" Button erweitert werden. Das Gesagte soll dann im Textfeld zum absenden der Nachricht eingefügt werden. 
 
