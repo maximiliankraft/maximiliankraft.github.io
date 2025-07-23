@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  mkdocs-builder:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./schoolsite:/sitebuild:wo
+      - ./:/site
+    command: >
+      sh -c "mkdocs build --site-dir /sitebuild"
+
+#volumes:
+#  mkdocs-site:
